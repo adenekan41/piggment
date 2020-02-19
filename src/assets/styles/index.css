@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap');
+
+@import './app.css';
+@import './font.css';
+
+:root {
+	--theme-primary: #0089e1;
+	--white: #fafafa;
+	--accent: #062e64;
+	--alert-success: #438875;
+	--alert-danger: #da3451;
+	--sidebar-width: 260px;
+	--gray: #8f9bb3;
+	--font-primary: 'Right ManRope';
+	--font-secondary: 'Source Sans Pro';
+}
+
+::selection {
+	background: var(--theme-primary);
+	color: var(--white);
+	/* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+	background: var(--theme-primary);
+	color: var(--white);
+	/* Gecko Browsers */
+}
+
+::-webkit-input-placeholder {
+	color: var(--gray);
+	opacity: 1;
+}
+
+:-moz-placeholder {
+	color: var(--gray);
+	opacity: 1;
+}
+
+::-moz-placeholder {
+	color: var(--gray);
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+	color: var(--gray);
+	opacity: 1;
+}
+
+body {
+	font-family: var(--font-primary), -apple-system, BlinkMacSystemFont,
+		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+	font-weight: 400;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-display: fallback;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	image-rendering: crisp-edges;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.btn-developp {
+	background: var(--theme-primary);
+	box-shadow: none;
+	border-radius: 6px;
+	border: none;
+}
+
+.btn-developp:hover {
+	opacity: 0.8;
+	color: #fff;
+}
+
+@media screen and (max-width: 935px) {
+	:root {
+		--sidebar-width: 0px !important;
+	}
+}
