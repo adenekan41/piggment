@@ -5,10 +5,12 @@ import Home from 'pages/home';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import ErrorBoundary from 'components/error-boundary';
+import NavLayout from 'components/navbar';
 
 const routes = ({ location }) => (
 	<Wrapper>
 		<ErrorBoundary>
+			<NavLayout />
 			<TransitionGroup>
 				<CSSTransition
 					key={location.key}

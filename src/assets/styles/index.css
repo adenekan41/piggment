@@ -1,98 +1,101 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap');
-
 @import './app.css';
 @import './font.css';
+@import './normalize.css';
 
 :root {
-	--theme-primary: #0089e1;
-	--white: #fafafa;
-	--accent: #062e64;
-	--alert-success: #438875;
-	--alert-danger: #da3451;
-	--sidebar-width: 260px;
-	--gray: #8f9bb3;
-	--font-primary: 'Right ManRope';
-	--font-secondary: 'Source Sans Pro';
+  --theme-primary: #1b21dd;
+  --white: #fafafa;
+  --black: #0d1442;
+  --accent: #152ba2;
+  --alert-success: #438875;
+  --alert-danger: #da3451;
+  --sidebar-width: 260px;
+  --gray: #8f9bb3;
+  --font-primary: 'Pigment GT';
+  --font-secondary: 'Source Sans Pro';
 }
 
 ::selection {
-	background: var(--theme-primary);
-	color: var(--white);
-	/* WebKit/Blink Browsers */
+  background: var(--theme-primary);
+  color: var(--white);
+  /* WebKit/Blink Browsers */
 }
 
 ::-moz-selection {
-	background: var(--theme-primary);
-	color: var(--white);
-	/* Gecko Browsers */
+  background: var(--theme-primary);
+  color: var(--white);
+  /* Gecko Browsers */
 }
 
 ::-webkit-input-placeholder {
-	color: var(--gray);
-	opacity: 1;
+  color: var(--gray);
+  opacity: 1;
 }
 
 :-moz-placeholder {
-	color: var(--gray);
-	opacity: 1;
+  color: var(--gray);
+  opacity: 1;
 }
 
 ::-moz-placeholder {
-	color: var(--gray);
-	opacity: 1;
+  color: var(--gray);
+  opacity: 1;
 }
 
 :-ms-input-placeholder {
-	color: var(--gray);
-	opacity: 1;
+  color: var(--gray);
+  opacity: 1;
 }
 
 body {
-	font-family: var(--font-primary), -apple-system, BlinkMacSystemFont,
-		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-	font-weight: 400;
-	margin: 0;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-primary), -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
-	font-display: fallback;
-	box-sizing: border-box;
-	scroll-behavior: smooth;
-	image-rendering: crisp-edges;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  image-rendering: crisp-edges;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
-.btn-developp {
-	background: var(--theme-primary);
-	box-shadow: none;
-	border-radius: 6px;
-	border: none;
+.btn-pigment {
+  background: linear-gradient(200deg, var(--theme-primary), var(--accent));
+  box-shadow: none;
+  color: #fff !important;
+  border-radius: 4px;
+  transition: all .5s ease !important;
+  border: none;
 }
 
-.btn-developp:hover {
-	opacity: 0.8;
-	color: #fff;
+.btn-pigment:hover {
+
+  box-shadow: 6px 8px 13px #0000006b !important;
+  color: #fff;
 }
 
 @media screen and (max-width: 935px) {
-	:root {
-		--sidebar-width: 0px !important;
-	}
+  :root {
+    --sidebar-width: 0px !important;
+  }
 }

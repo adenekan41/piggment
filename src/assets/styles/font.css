@@ -1,40 +1,33 @@
 /* HK Gorkest */
+
 @font-face {
-	font-family: 'Right ManRope';
-	src: url('../fonts/manrope-light.ttf') format('ttf');
-	font-weight: 300;
-	font-display: swap;
-	font-style: normal;
+  font-family: 'Pigment GT';
+  src: url('../fonts/GT-Walsheim-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Right ManRope';
-	src: url('../fonts/manrope-regular.ttf') format('ttf');
-	font-weight: 400;
-	font-display: swap;
-	font-style: normal;
+  font-family: 'Pigment GT';
+  src: url('../fonts/GT-Walsheim-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Right ManRope';
-	src: url('../fonts/manrope-medium.ttf') format('ttf');
-	font-weight: 500;
-	font-display: swap;
-	font-style: normal;
+  font-family: 'Pigment GT';
+  src: url('../fonts/GT-Walsheim-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Right ManRope';
-	src: url('../fonts/manrope-bold.ttf') format('woff2');
-	font-weight: 600;
-	font-display: swap;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Right ManRope';
-	src: url('../fonts/manrope-extrabold.ttf') format('ttf');
-	font-weight: 700;
-	font-display: swap;
-	font-style: normal;
+  font-family: 'Pigment GT';
+  src: url('../fonts/GT-Walsheim-Black.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
 }
