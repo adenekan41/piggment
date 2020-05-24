@@ -6,6 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import ErrorBoundary from 'components/error-boundary';
 import NavLayout from 'components/navbar';
+import Explore from 'pages/explore';
 
 const routes = ({ location }) => (
 	<Wrapper>
@@ -19,6 +20,7 @@ const routes = ({ location }) => (
 				>
 					<Switch location={location}>
 						<Route exact path="/" component={Home} />
+						<Route exact path="/explore" component={Explore} />
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>

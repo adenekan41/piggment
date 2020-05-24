@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "codewonders-helpers": "^0.0.1",
+    "codewonders-helpers": "^0.0.10-beta",
     "history": "^4.10.1",
     "prop-types": "^15.7.2",
     "random-words": "^1.1.1",

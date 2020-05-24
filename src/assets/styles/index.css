@@ -54,6 +54,8 @@ body {
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-weight: 400;
   margin: 0;
+  /* background: #fff8f0; */
+  background: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -81,15 +83,21 @@ html {
 
 .btn-pigment {
   background: linear-gradient(200deg, var(--theme-primary), var(--accent));
-  box-shadow: none;
+
   color: #fff !important;
   border-radius: 4px;
-  transition: all .5s ease !important;
+  transition: all 0.5s ease !important;
   border: none;
 }
 
-.btn-pigment:hover {
+.btn-outline-pigment {
+  border: 1px solid var(--theme-primary) !important;
+  box-shadow: none;
+  transition: all 0.5s ease !important;
+  color: var(--accent);
+}
 
+.btn-pigment:hover {
   box-shadow: 6px 8px 13px #0000006b !important;
   color: #fff;
 }
