@@ -30,7 +30,7 @@ module.exports = {
 		'jsx-a11y/click-events-have-key-events': [0],
 		'jsx-a11y/no-static-element-interactions': [0],
 		camelcase: [0],
-		'import/prefer-default-export': [0],
+		'import/prefer-de a fault-export': [0],
 		'no-nested-ternary': [0],
 		'react/no-array-index-key': [0],
 	},

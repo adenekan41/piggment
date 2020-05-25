@@ -50,8 +50,6 @@ const Generate = () => {
 		[handleSpaceBar]
 	);
 
-	console.log(state);
-
 	return (
 		<GenerateWrapper>
 			<header>

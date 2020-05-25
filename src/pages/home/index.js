@@ -138,6 +138,10 @@ const Header = styled.header`
 		font-weight: 500;
 		margin-top: 2rem;
 	}
+	.large__sum-card {
+		position: absolute;
+		top: 27rem;
+	}
 `;
 
 const Section = styled.section`

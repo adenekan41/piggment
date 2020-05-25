@@ -65,7 +65,7 @@ const GradientLayout = React.memo(
 						)}
 					</div>
 				</CardWrapper>
-				<Grid>
+				<Grid className="grid">
 					{state &&
 						state.map((bg_gradient, index) => (
 							<Card
@@ -124,7 +124,7 @@ const CardWrapper = styled.nav`
 
 const Grid = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(19em, 1fr));
 	grid-template-rows: 1fr;
 	grid-column-gap: 40px;
 	grid-row-gap: 40px;
@@ -132,7 +132,6 @@ const Grid = styled.div`
 
 GradientLayout.propTypes = {
 	header: PropTypes.string,
-	onClick: PropTypes.func,
 	noRefresh: PropTypes.bool,
 	state: PropTypes.array,
 	mode: PropTypes.string,

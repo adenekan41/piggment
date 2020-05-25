@@ -44,23 +44,22 @@ const SavedColors = () => {
 						mode="delete"
 						state={state}
 					/>
-					{!state ||
-						(state.length === 0 && (
-							<div className="text-center empty">
-								<Empty className="large__svg" />
-								<h3>You dont have any saved gradient yet</h3>
-								<p>
-									Click <Love className="small__svg" /> to save a gradient
-								</p>
-								<Link
-									className="btn btn-pigment mt-4"
-									type="button"
-									to="/explore"
-								>
-									Explore Gradients
-								</Link>
-							</div>
-						))}
+					{!state && state.length === 0 && (
+						<div className="text-center empty">
+							<Empty className="large__svg" />
+							<h3>You dont have any saved gradient yet</h3>
+							<p>
+								Click <Love className="small__svg" /> to save a gradient
+							</p>
+							<Link
+								className="btn btn-pigment mt-4"
+								type="button"
+								to="/explore"
+							>
+								Explore Gradients
+							</Link>
+						</div>
+					)}
 				</div>
 				<br />
 				<br />
