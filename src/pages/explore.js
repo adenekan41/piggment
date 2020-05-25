@@ -5,9 +5,9 @@ import { debounce } from 'utils';
 import GradientLayout from 'components/card/card-container';
 import { GradientContext } from 'context';
 
-import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
-import { ReactComponent as Loader } from '../../assets/icons/loader.svg';
-import { ReactComponent as Search } from '../../assets/icons/icon-search.svg';
+import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
+import { ReactComponent as Loader } from '../assets/icons/loader.svg';
+import { ReactComponent as Search } from '../assets/icons/icon-search.svg';
 
 const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);

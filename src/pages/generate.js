@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Card from 'components/card';
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
+import { ReactComponent as Logo } from '../assets/icons/logo_.svg';
 
 const Generate = () => {
 	const { state, loadGradients } = useContext(GradientContext);

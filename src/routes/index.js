@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Home from 'pages/home';
+import Home from 'pages';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import ErrorBoundary from 'components/error-boundary';
