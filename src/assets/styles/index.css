@@ -130,3 +130,7 @@ html {
 
 	background-color: #fff8f0 !important;
 }
+
+.navbar-toggler {
+	border: none !important ;
+}

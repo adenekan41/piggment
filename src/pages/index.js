@@ -116,11 +116,19 @@ const Header = styled.header`
 	justify-content: center;
 	text-align: center;
 	display: flex;
+	@media (max-width: 990px) {
+		display: block;
+		padding-top: 8rem;
+		height: 34em;
+	}
 	h1 {
 		font-weight: 900;
 		font-size: 3.82em;
 		color: var(--black);
 		letter-spacing: -1.3px;
+		@media (max-width: 990px) {
+			font-size: 2.3em;
+		}
 	}
 	.pos-rel {
 		position: relative;
@@ -130,6 +138,9 @@ const Header = styled.header`
 		margin: 6px 0;
 		font-size: 17px;
 		font-weight: 400;
+		@media (max-width: 990px) {
+			font-size: 14px;
+		}
 	}
 	a.btn {
 		padding: 12px 40px;
@@ -137,15 +148,24 @@ const Header = styled.header`
 		font-size: 15px;
 		font-weight: 500;
 		margin-top: 2rem;
+		@media (max-width: 990px) {
+			font-size: 14px;
+		}
 	}
 	.large__sum-card {
 		position: absolute;
 		top: 27rem;
+		@media (max-width: 990px) {
+			display: none;
+		}
 	}
 `;
 
 const Section = styled.section`
 	margin-top: 26rem;
+	@media (max-width: 990px) {
+		margin-top: 6rem;
+	}
 	.w-70 {
 		width: 70px;
 	}

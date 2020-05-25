@@ -25,7 +25,7 @@ const GradientLayout = React.memo(
 
 		return (
 			<>
-				<CardWrapper className="d-flex justify-content-between explore_more">
+				<CardWrapper className="d-md-flex d-block justify-content-between explore_more">
 					<h2>
 						{header}{' '}
 						{mode === 'see-more' && (
@@ -34,7 +34,7 @@ const GradientLayout = React.memo(
 							</Link>
 						)}
 					</h2>
-					<div className="d-flex">
+					<div className="d-flex mb-md-0 mb-3">
 						<div
 							onClick={() => {
 								saveState('LAYOUT', 1);
@@ -118,7 +118,10 @@ const CardWrapper = styled.nav`
 		font-size: 1.62em;
 		color: var(--black);
 		margin-bottom: 1.4rem;
-		letter-spacing: -1.3px;
+    letter-spacing: -1.3px;
+    @media (max-width: 990px) {
+      font-size: 1.3em;
+	}
 	}
 `;
 
