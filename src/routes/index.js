@@ -10,6 +10,7 @@ import Explore from 'pages/explore';
 import SavedColors from 'pages/saved';
 import DataProvider from 'context/provider';
 import Footer from 'components/footer';
+import Generate from 'pages/generate';
 
 const routes = ({ location }) => (
 	<Wrapper>
@@ -26,11 +27,13 @@ const routes = ({ location }) => (
 							<Route exact path="/" component={Home} />
 							<Route exact path="/explore" component={Explore} />
 							<Route exact path="/saved" component={SavedColors} />
+
+							<Route exact path="/generate" component={Generate} />
 						</DataProvider>
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>
-			<Footer />
+			{location.pathname !== '/generate' && <Footer />}
 		</ErrorBoundary>
 	</Wrapper>
 );

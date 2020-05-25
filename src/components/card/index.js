@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { rgbToHex } from 'utils';
 import { setState, getState } from 'codewonders-helpers';
 import history from 'utils/history';
+import { GradientContext } from 'context';
 
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Delete } from '../../assets/icons/icon-delete.svg';
@@ -15,6 +16,7 @@ import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
 
 const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 	const textCanvas = useRef(null);
+	const { clearGradient } = useContext(GradientContext);
 	const [url, setUrl] = useState('');
 	const [viewCode, setViewCode] = useState(false);
 	const [loved, setLoved] = useState(false);
@@ -168,7 +170,7 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 						</BorderWrap>
 					</div>
 				</CardWrapper>
-			) : (
+			) : type === 'large' ? (
 				<LargeCardWrapper
 					style={{
 						background: data.color,
@@ -193,6 +195,7 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 							<h4>{data.name}</h4>
 							<p>By Pigment Gradients</p>
 						</article>
+
 						<BorderWrap className="float-right border-wrap">
 							<Code
 								className="mr-2"
@@ -212,6 +215,80 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 						</BorderWrap>
 					</div>
 				</LargeCardWrapper>
+			) : (
+				<GenerateWrapper
+					style={{
+						background: data.color,
+					}}
+					color={{ one: rgbToHex(data.color, 1), two: rgbToHex(data.color, 0) }}
+				>
+					<canvas
+						ref={textCanvas}
+						width="1360"
+						height="768"
+						style={{ display: 'none' }}
+					/>
+					{viewCode && (
+						<CodeSnippnets
+							data={data}
+							setViewCode={setViewCode}
+							copyText={copyText}
+						/>
+					)}
+
+					<div className="write__up">
+						<article>
+							<h4>{data.name}</h4>
+							<p className="hex__section">
+								<span>{rgbToHex(data.color, 1)}</span> <ArrowRight />{' '}
+								<span>{rgbToHex(data.color, 0)}</span>
+							</p>{' '}
+							<div
+								className="small__colors"
+								style={{
+									background: `${rgbToHex(data.color, 1)}`,
+								}}
+							/>
+							<div
+								className="small__colors"
+								style={{
+									background: `${rgbToHex(data.color, 0)}`,
+								}}
+							/>
+						</article>
+
+						<div className="control__panel">
+							<h6>Tap space bar to generate new gradients</h6>
+							<div className="d-flex justify-content-between">
+								<span>
+									<ArrowRight style={{ transform: 'rotate(180deg)' }} />{' '}
+									Previous
+								</span>
+								<span onClick={() => clearGradient()}>
+									Next <ArrowRight />
+								</span>
+							</div>
+						</div>
+
+						<BorderWrap className="float-right border-wrap">
+							<Code
+								className="mr-2"
+								onClick={() => {
+									setViewCode(true);
+									copyText();
+								}}
+							/>
+							<a download={`Pigment-${data.name}`} href={url} title={data.name}>
+								<Save />
+							</a>
+
+							<Love
+								onClick={() => saveGradient(data)}
+								className={`${loved && 'active_love'} ml-2`}
+							/>
+						</BorderWrap>
+					</div>
+				</GenerateWrapper>
 			)}
 		</>
 	);
@@ -221,7 +298,7 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 
 const CodeSnippnets = ({ copyText, setViewCode, data }) => {
 	return (
-		<Snippet>
+		<Snippet className="snippet">
 			<div className="css_code">
 				<Close className="ml-auto d-block" onClick={() => setViewCode(false)} />
 				<h4>CSS Code.</h4>
@@ -425,6 +502,110 @@ const CardWrapper = styled.div`
 	}
 `;
 
+const GenerateWrapper = styled.div`
+	height: 100vh;
+	width: 100%;
+
+	.css_code {
+		article {
+			text-align: center !important;
+		}
+	}
+	.small__colors {
+		height: 18px;
+		width: 18px;
+		margin: 0 1.5px;
+		border-radius: 50%;
+		display: inline-block;
+		transition: all 0.4s ease;
+		&:hover {
+			transform: scale(1.14);
+		}
+	}
+	.control__panel span {
+		font-size: 15px;
+		color: #676767;
+		cursor: pointer;
+	}
+
+	.control__panel h6 {
+		font-size: 17px;
+		font-weight: 600;
+		letter-spacing: -0.4px;
+		margin-bottom: 9px;
+	}
+	.hex__section {
+		span {
+			transition: all 0.3s ease;
+			&:first-child {
+				&:hover {
+					color: ${(props) => props.color.one};
+				}
+			}
+			&:last-child {
+				&:hover {
+					color: ${(props) => props.color.two};
+				}
+			}
+		}
+	}
+	.border-wrap {
+		border: none;
+	}
+	.snippet {
+		position: absolute;
+		height: 350px;
+		z-index: 99;
+		width: 500px;
+		top: 50%;
+
+		left: 50%;
+		transform: translate(-50%, -50%);
+		article {
+			text-align: left !important;
+		}
+	}
+	.write__up {
+		padding: 0 30px;
+		background: #fff8f0;
+		border-radius: 6px;
+
+		display: flex;
+		width: 97.5%;
+		position: fixed;
+		bottom: 1rem;
+		left: 50%;
+		transform: translate(-50%, 0);
+		align-items: center;
+		justify-content: space-between;
+
+		text-align: left;
+		height: 110px;
+
+		h4 {
+			font-size: 18px;
+			text-transform: capitalize;
+			font-weight: 500;
+			color: var(--black);
+			margin-bottom: 5px;
+		}
+		p {
+			font-size: 13px;
+			color: #8c8c8c;
+			margin: 5px 0;
+			svg {
+				width: 17px;
+				height: auto;
+				fill: #8c8c8c;
+			}
+		}
+		svg {
+			width: 23px;
+			height: 33px;
+			fill: #a7a7a7;
+		}
+	}
+`;
 const LargeCardWrapper = styled.div`
 	height: 400px;
 	width: 100%;
@@ -437,6 +618,7 @@ const LargeCardWrapper = styled.div`
 			text-align: center !important;
 		}
 	}
+
 	&:before {
 		content: '';
 		position: absolute;

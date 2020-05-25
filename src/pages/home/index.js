@@ -30,9 +30,9 @@ const Home = () => {
 									place
 								</p>
 
-								<button className="btn btn-pigment" type="button">
+								<Link className="btn btn-pigment" to="/generate" type="button">
 									Generate Gradients
-								</button>
+								</Link>
 							</article>
 						</div>
 						{state[6] && (
@@ -76,7 +76,11 @@ const Home = () => {
 								Create the perfect gradient palette and get inspired to make
 								something beautiful.
 							</p>
-							<Link className="btn btn-pigment mr-md-3" to="/" type="button">
+							<Link
+								className="btn btn-pigment mr-md-3"
+								to="/generate"
+								type="button"
+							>
 								Start Generating
 							</Link>
 							<Link
@@ -127,7 +131,7 @@ const Header = styled.header`
 		font-size: 17px;
 		font-weight: 400;
 	}
-	button {
+	a {
 		padding: 12px 40px;
 		border: none;
 		font-size: 15px;
