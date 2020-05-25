@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 
-import GradientLayout from 'components/card/card-container';
 import { Link } from 'react-router-dom';
+import GradientLayout from '../components/card/card-container';
 
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
 import { ReactComponent as Love } from '../assets/icons/icon-love.svg';

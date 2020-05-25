@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { GradientContext } from 'context';
 import styled from 'styled-components';
-import Card from 'components/card';
 import { Link } from 'react-router-dom';
+
+import Card from '../components/card';
 
 import { ReactComponent as Logo } from '../assets/icons/logo_.svg';
 

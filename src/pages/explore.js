@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 
 import { debounce } from 'utils';
-import GradientLayout from 'components/card/card-container';
-import { GradientContext } from 'context';
+import GradientLayout from '../components/card/card-container';
+import { GradientContext } from '../context';
 
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';

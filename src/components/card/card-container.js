@@ -6,7 +6,7 @@ import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import { clearState, setState as saveState } from 'codewonders-helpers';
 
 import { Link } from 'react-router-dom';
-import { GradientContext } from 'context';
+import { GradientContext } from '../../context';
 
 import { ReactComponent as Reload } from '../../assets/icons/icon-refresh.svg';
 import { ReactComponent as Circle } from '../../assets/icons/icon-circle.svg';

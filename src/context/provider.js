@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { GradientContext } from 'context';
+import { GradientContext } from '.';
 import randomWords from 'random-words';
 
-import { generateGradient, guidGenerator } from 'utils';
+import { generateGradient, guidGenerator } from '../utils';
 
 class DataProvider extends React.PureComponent {
 	constructor(props) {

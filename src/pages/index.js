@@ -2,10 +2,10 @@ import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Card from 'components/card';
-import { GradientContext } from 'context';
+import Card from '../components/card';
+import { GradientContext } from '../context';
 
-import GradientLayout from 'components/card/card-container';
+import GradientLayout from '../components/card/card-container';
 import { ReactComponent as Banner } from '../assets/icons/banner.svg';
 
 const Home = () => {

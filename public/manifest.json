@@ -1,8 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
+  "short_name": "Piggment",
+  "name": "Piggment",
+  "description": "The gradient you have always wanted. Generate, explore, easy CSS copy crossbrowser code all in one place",
+  "author": "Adenekan Wonderful",
+  "icons": [{
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
@@ -20,6 +21,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#152ba2",
+  "background_color": "#fff8f0"
 }

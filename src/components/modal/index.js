@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { Modal } from 'react-bootstrap';
-import Card from 'components/card';
-import GradientLayout from 'components/card/card-container';
-import { GradientContext } from 'context';
 import { rgbToHex } from 'utils';
+import Card from '../card';
+import GradientLayout from '../card/card-container';
+import { GradientContext } from '../../context';
 
 import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';

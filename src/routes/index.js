@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Home from 'pages';
+
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
-import ErrorBoundary from 'components/error-boundary';
-import NavLayout from 'components/navbar';
-import Explore from 'pages/explore';
-import SavedColors from 'pages/saved';
-import DataProvider from 'context/provider';
-import Footer from 'components/footer';
-import Generate from 'pages/generate';
+// import ErrorBoundary from 'components/error-boundary';
+import NavLayout from '../components/navbar';
+import DataProvider from '../context/provider';
+import Footer from '../components/footer';
+import { ReactComponent as Loader } from '../assets/icons/icon-circle.svg';
+
+const Explore = lazy(() => import('../pages/explore'));
+const SavedColors = lazy(() => import('../pages/saved'));
+const Home = lazy(() => import('../pages'));
+const Generate = lazy(() => import('../pages/generate'));
 
 const routes = ({ location }) => (
 	<Wrapper>
-		<ErrorBoundary>
-			{location.pathname !== '/generate' && <NavLayout />}
-			<TransitionGroup>
-				<CSSTransition
-					key={location.key}
-					timeout={{ enter: 300, exit: 300 }}
-					classNames="fade"
-				>
+		{/* <ErrorBoundary> */}
+		{location.pathname !== '/generate' && <NavLayout />}
+		<TransitionGroup>
+			<CSSTransition
+				key={location.key}
+				timeout={{ enter: 300, exit: 300 }}
+				classNames="fade"
+			>
+				<Suspense fallback={<Loader />}>
 					<Switch location={location}>
 						<DataProvider>
 							<Route exact path="/" component={Home} />
@@ -31,10 +35,11 @@ const routes = ({ location }) => (
 							<Route exact path="/generate" component={Generate} />
 						</DataProvider>
 					</Switch>
-				</CSSTransition>
-			</TransitionGroup>
-			{location.pathname !== '/generate' && <Footer />}
-		</ErrorBoundary>
+				</Suspense>
+			</CSSTransition>
+		</TransitionGroup>
+		{location.pathname !== '/generate' && <Footer />}
+		{/* </ErrorBoundary> */}
 	</Wrapper>
 );
 

@@ -6,7 +6,7 @@ import { rgbToHex } from 'utils';
 import { setState, getState } from 'codewonders-helpers';
 import history from 'utils/history';
 
-import ModalLayout from 'components/modal';
+import ModalLayout from '../modal/index';
 
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Delete } from '../../assets/icons/icon-delete.svg';
