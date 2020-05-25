@@ -95,7 +95,7 @@ const Home = () => {
 			</SectionMore>
 			<SectionTrusted>
 				<div>
-					<p>We are super fast and inspiring.</p>
+					<p>We are super fast and inspiring and open sourced.</p>
 					<h2>Trusted by thousands of expert creators.</h2>
 				</div>
 			</SectionTrusted>

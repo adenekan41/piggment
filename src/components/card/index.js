@@ -19,20 +19,6 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 	const [viewCode, setViewCode] = useState(false);
 	const [loved, setLoved] = useState(false);
 
-	const copyText = () => {
-		const textField = document.createElement('textarea');
-
-		textField.innerText = `
-    background: ${rgbToHex(data.color, 0)}; /* fallback for old browsers */ \n
-    background: -webkit-${data.color}; /* Chrome 10-25, Safari 5.1-6 */ \n
-    background: ${data.color}`;
-
-		document.body.appendChild(textField);
-		textField.select();
-		document.execCommand('copy');
-		textField.remove();
-	};
-
 	// Get and draw canvas URL
 	useEffect(() => {
 		const canvasObj = textCanvas.current;
@@ -43,6 +29,8 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 			.replace(/\/$/, '')
 			.split('(')
 			.pop();
+
+		console.log(dataAngle);
 		const angle = (dataAngle * Math.PI) / 360;
 		const x2 = Math.cos(angle) * canvasObj.width;
 		const y2 = Math.sin(angle) * canvasObj.height;
@@ -97,20 +85,34 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 		history.go();
 	};
 
+	const copyText = () => {
+		const textField = document.createElement('textarea');
+
+		textField.innerText = `
+    background: ${rgbToHex(data.color, 0)}; /* fallback for old browsers */ \n
+    background: -webkit-${data.color}; /* Chrome 10-25, Safari 5.1-6 */ \n
+    background: ${data.color}`;
+
+		document.body.appendChild(textField);
+		textField.select();
+		document.execCommand('copy');
+		textField.remove();
+	};
+
 	return (
 		<>
-			<canvas
-				ref={textCanvas}
-				width="1360"
-				height="768"
-				style={{ display: 'none' }}
-			/>
 			{type === 'small' ? (
 				<CardWrapper
 					className="card"
 					layout={layout}
 					color={{ one: rgbToHex(data.color, 1), two: rgbToHex(data.color, 0) }}
 				>
+					<canvas
+						ref={textCanvas}
+						width="1360"
+						height="768"
+						style={{ display: 'none' }}
+					/>
 					{viewCode && (
 						<CodeSnippnets
 							data={data}
@@ -118,7 +120,6 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 							copyText={copyText}
 						/>
 					)}
-
 					<div className="card-body">
 						<figure
 							style={{
@@ -173,6 +174,12 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 						background: data.color,
 					}}
 				>
+					<canvas
+						ref={textCanvas}
+						width="1360"
+						height="768"
+						style={{ display: 'none' }}
+					/>
 					{viewCode && (
 						<CodeSnippnets
 							data={data}
