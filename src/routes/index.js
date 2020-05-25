@@ -7,6 +7,9 @@ import styled from 'styled-components';
 import ErrorBoundary from 'components/error-boundary';
 import NavLayout from 'components/navbar';
 import Explore from 'pages/explore';
+import SavedColors from 'pages/saved';
+import DataProvider from 'context/provider';
+import Footer from 'components/footer';
 
 const routes = ({ location }) => (
 	<Wrapper>
@@ -19,11 +22,15 @@ const routes = ({ location }) => (
 					classNames="fade"
 				>
 					<Switch location={location}>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/explore" component={Explore} />
+						<DataProvider>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/explore" component={Explore} />
+							<Route exact path="/saved" component={SavedColors} />
+						</DataProvider>
 					</Switch>
 				</CSSTransition>
 			</TransitionGroup>
+			<Footer />
 		</ErrorBoundary>
 	</Wrapper>
 );

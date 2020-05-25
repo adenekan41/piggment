@@ -54,17 +54,28 @@ export const get_random = (list) => {
  * @param {Number|String} immediate
  */
 export function debounce(func, wait, immediate) {
-	var timeout;
+	let timeout;
 	return function() {
-		var context = this,
-			args = arguments;
-		var later = function() {
+		const context = this;
+		const args = arguments;
+		const later = function() {
 			timeout = null;
 			if (!immediate) func.apply(context, args);
 		};
-		var callNow = immediate && !timeout;
+		const callNow = immediate && !timeout;
 		clearTimeout(timeout);
 		timeout = setTimeout(later, wait);
 		if (callNow) func.apply(context, args);
 	};
 }
+
+/**
+ * create a unique ID for the data object
+ * @returns {String}
+ */
+export const guidGenerator = () => {
+	const S4 = () => {
+		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+	};
+	return `${S4() + S4()}-${S4()}-${S4()}-${S4()}-${S4()}${S4()}${S4()}`;
+};
