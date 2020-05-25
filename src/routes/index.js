@@ -15,7 +15,7 @@ import Generate from 'pages/generate';
 const routes = ({ location }) => (
 	<Wrapper>
 		<ErrorBoundary>
-			<NavLayout />
+			{location.pathname !== '/generate' && <NavLayout />}
 			<TransitionGroup>
 				<CSSTransition
 					key={location.key}

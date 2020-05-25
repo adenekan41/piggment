@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
+import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 	return (
@@ -14,7 +16,7 @@ const Footer = () => {
 							place
 							<br />
 							<br />
-							@pigmented
+							Copyright © {new Date().getFullYear()}, Pigment.
 						</h6>
 					</div>
 					<div className="col-xs-12 col-md ">
@@ -22,24 +24,24 @@ const Footer = () => {
 
 						<ul className="list-unstyled quick-links">
 							<li>
-								<a href="#0" aria-label="Navigate To About us Page">
+								<Link to="/explore" aria-label="Navigate To Explore Page">
 									Explore
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To FAQ Page">
+								<Link to="/generate" aria-label="Navigate To Generate Page">
 									Generate
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Privacy Policy Page">
+								<Link to="/explore" aria-label="Navigate To Search Page">
 									Search
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Terms & Condition Page">
+								<Link to="/saved" aria-label="Navigate To Pocket Page">
 									Saved
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -47,19 +49,31 @@ const Footer = () => {
 						<h5>Creator</h5>
 						<ul className="list-unstyled quick-links">
 							<li>
-								<a href="#0" aria-label="Navigate To Search for doctors Page">
+								<a
+									href="https://codewonders.dev"
+									aria-label="Navigate To Codewonders Page"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									@codewonders
 								</a>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Search for hospitals Page">
+								<a
+									href="https://codewonders.dev/about"
+									aria-label="Navigate To Codewonders Page"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									About Codewonders
 								</a>
 							</li>
 							<li>
 								<a
-									href="#0"
-									aria-label="Navigate To Cancel an appointment Page"
+									href="https://codewonders.dev/projects"
+									aria-label="Navigate To Codewonders Page"
+									target="_blank"
+									rel="noopener noreferrer"
 								>
 									Codewonders Projects
 								</a>
@@ -71,24 +85,24 @@ const Footer = () => {
 						<h5>Top Colors</h5>
 						<ul className="list-unstyled quick-links">
 							<li>
-								<a href="#0" aria-label="Navigate To Lagos Page">
+								<Link to="/generate" aria-label="Navigate To Generate Page">
 									#0000
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Ibadan Page">
+								<Link to="/generate" aria-label="Navigate To Generate Page">
 									#fff34
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Abuja Page">
+								<Link to="/generate" aria-label="Navigate To Generate Page">
 									#44555
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Portharcourt Page">
+								<Link to="/generate" aria-label="Navigate To Generate Page">
 									#445353
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -96,22 +110,42 @@ const Footer = () => {
 						<h5>Connect</h5>
 						<ul className="list-unstyled quick-links">
 							<li>
-								<a href="#0" aria-label="Navigate To Twitter Page">
+								<a
+									href="https://twitter.com/code_wonders"
+									aria-label="Navigate To Codewonders Twitter"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Twitter
 								</a>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Facebook Page">
-									Facebook
+								<a
+									href="https://github.com/adenekan41"
+									aria-label="Navigate To Github"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Github
 								</a>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Instagram Page">
+								<a
+									href="https://instagram.com/code_wonders"
+									aria-label="Navigate To Instagram"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Instagram
 								</a>
 							</li>
 							<li>
-								<a href="#0" aria-label="Navigate To Linkedin Page">
+								<a
+									href="https://linkedin.com/in/codewonders"
+									aria-label="Navigate To Linkedin"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Linkedin
 								</a>
 							</li>
@@ -119,7 +153,7 @@ const Footer = () => {
 					</div>
 				</div>
 				<p className="text-center">
-					Copyright © {new Date().getFullYear()}, Pigment. All rights reserved
+					Created with <Love /> by Adenekan Wonderful
 				</p>
 			</div>
 		</FooterWrapper>
@@ -153,6 +187,12 @@ const FooterWrapper = styled.footer`
 
 		color: #787878;
 		margin-top: 2rem;
+		svg {
+			display: inline;
+			height: 12px;
+			fill: red;
+			margin: 0 2px;
+		}
 	}
 	h6 {
 		font-weight: 400;

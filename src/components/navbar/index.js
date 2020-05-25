@@ -1,13 +1,14 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
-import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
+import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
+
 const NavLayout = () => {
 	return (
-		<NavWrapper fixed="top">
+		<NavWrapper collapseOnSelect expand="md" fixed="top">
 			<div className="container">
 				<Navbar.Brand as={Link} to="/">
 					<Logo />

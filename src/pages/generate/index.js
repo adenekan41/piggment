@@ -1,30 +1,36 @@
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { GradientContext } from 'context';
 import styled from 'styled-components';
 import Card from 'components/card';
+import { Link } from 'react-router-dom';
+
+import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
 
 const Generate = () => {
-	const { state, loadGradients, clearGradient } = useContext(GradientContext);
+	const { state, loadGradients } = useContext(GradientContext);
+	const [index, setIndex] = useState(0);
 
 	const handleSpaceBar = useCallback(
-		(e) => {
-			e.preventDefault();
+		async (e) => {
 			if (e.keyCode === 32) {
-				// Space
+				e.preventDefault();
 
-				clearGradient();
+				await loadGradients(1);
+				setIndex(index + 1);
 			} else if (e.keyCode === 39) {
-				// ->
+				e.preventDefault();
 
-				clearGradient();
+				await loadGradients(1);
+				setIndex(index + 1);
 			} else if (e.keyCode === 37) {
-				// <-
-				// if (index > 0) {
-				// 	// loadGradients(1)
-				// }
+				e.preventDefault();
+
+				if (index > 0) {
+					setIndex(index - 1);
+				}
 			}
 		},
-		[clearGradient]
+		[index, loadGradients]
 	);
 
 	useEffect(() => {
@@ -48,16 +54,61 @@ const Generate = () => {
 
 	return (
 		<GenerateWrapper>
-			{state.length > 0 && <Card data={state && state[0]} type="generate" />}
+			<header>
+				<Link to="/">
+					<Logo />
+				</Link>
+				<h3>Generate gradient.</h3>
+				<div className="buttons">
+					<Link to="/explore" className="mr-md-3">
+						Explore
+					</Link>
+					<Link to="/saved">Saved </Link>
+				</div>
+			</header>
+			{state.length > 0 && (
+				<Card
+					data={state && state[index]}
+					type="generate"
+					next={async () => {
+						await loadGradients(1);
+						setIndex(index + 1);
+					}}
+					prev={() => index > 0 && setIndex(index - 1)}
+				/>
+			)}
 		</GenerateWrapper>
 	);
 };
 const GenerateWrapper = styled.main`
 	header {
-		height: 8em;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 99;
 		display: flex;
-		align-items: flex-end;
-		justify-content: center;
+		justify-content: space-between;
+		padding: 14px 25px;
+		background: #fff8f0;
+		align-items: center;
+		svg {
+			height: 20px;
+			width: auto;
+		}
+		h3 {
+			font-weight: 900;
+			font-size: 1.42em;
+			color: var(--black);
+			margin: 0;
+			letter-spacing: -1.3px;
+		}
+		.buttons {
+			a {
+				font-size: 14px;
+				color: var(--accent);
+			}
+		}
 	}
 	height: 100vh;
 	width: 100vw;

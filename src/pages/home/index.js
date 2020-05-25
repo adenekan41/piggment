@@ -131,7 +131,7 @@ const Header = styled.header`
 		font-size: 17px;
 		font-weight: 400;
 	}
-	a {
+	a.btn {
 		padding: 12px 40px;
 		border: none;
 		font-size: 15px;
