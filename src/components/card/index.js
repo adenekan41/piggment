@@ -221,6 +221,7 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 						background: data.color,
 					}}
 					color={{ one: rgbToHex(data.color, 1), two: rgbToHex(data.color, 0) }}
+					className="fadeIn"
 				>
 					<canvas
 						ref={textCanvas}
@@ -298,7 +299,7 @@ const Card = React.memo(({ data, mode, layout, type = 'small' }) => {
 
 const CodeSnippnets = ({ copyText, setViewCode, data }) => {
 	return (
-		<Snippet className="snippet">
+		<Snippet className="snippet fadeIn">
 			<div className="css_code">
 				<Close className="ml-auto d-block" onClick={() => setViewCode(false)} />
 				<h4>CSS Code.</h4>
@@ -341,9 +342,6 @@ const Snippet = styled.div`
 	width: 100%;
 	max-height: 100%;
 	overflow: overlay;
-	animation: loadUp;
-	animation-fill-mode: both;
-	animation-duration: 0.5s;
 
 	padding: 24px;
 	article {
@@ -374,16 +372,6 @@ const Snippet = styled.div`
 		font-size: 13px;
 		margin-top: 5px;
 		padding: 6px 14px;
-	}
-
-	@keyframes loadUp {
-		0% {
-			opacity: 0;
-		}
-
-		to {
-			opacity: 1;
-		}
 	}
 `;
 /* ----------------------------- end codsnipped ----------------------------- */
