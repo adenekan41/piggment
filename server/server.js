@@ -6,7 +6,7 @@ import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 
 import App from '../src/App';
-import { BrowserRouter, StaticRouter, Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import history from '../src/utils/history';
 
 const PORT = process.env.PORT || 3006;
