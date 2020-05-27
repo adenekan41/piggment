@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { GradientContext } from '.';
+import GradientContext from '.';
 import randomWords from 'random-words';
 
 import { generateGradient, guidGenerator } from '../utils';

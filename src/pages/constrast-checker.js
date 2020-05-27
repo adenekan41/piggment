@@ -6,8 +6,6 @@ import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { calculateContrast, ratioStatus } from 'utils';
 
 const ContrastChecker = () => {
-	// const [state, setState] = useState([]);
-
 	const [formstate, setState] = useState({
 		background: '#fff5e0',
 		text: '#0e0a38',

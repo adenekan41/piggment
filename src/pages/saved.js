@@ -55,11 +55,7 @@ const SavedColors = () => {
 							<p>
 								Click <Love className="small__svg" /> to save a gradient
 							</p>
-							<Link
-								className="btn btn-pigment mt-4"
-								type="button"
-								to="/explore"
-							>
+							<Link className="btn btn-pigment mt-4" to="/explore">
 								Explore Gradients
 							</Link>
 						</div>

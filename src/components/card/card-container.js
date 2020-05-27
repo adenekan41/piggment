@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import { clearState, setState as saveState } from 'codewonders-helpers';
 
-import { Link } from 'react-router-dom';
-import { GradientContext } from '../../context';
+import GradientContext from '../../context';
+import Card from '.';
 
 import { ReactComponent as Reload } from '../../assets/icons/icon-refresh.svg';
 import { ReactComponent as Circle } from '../../assets/icons/icon-circle.svg';
 import { ReactComponent as Layout } from '../../assets/icons/icon-layout.svg';
-import Card from '.';
 
 const GradientLayout = React.memo(
 	({ header, noRefresh = false, state, mode }) => {
