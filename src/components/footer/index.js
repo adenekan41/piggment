@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
+import { rgbToHex } from 'utils';
 import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 
 const Footer = ({ explore }) => {
+	const [state, setState] = useState([]);
+
+	useEffect(() => {
+		setState(getState('SAVED'));
+	}, []);
+
 	return (
 		<FooterWrapper explore={explore}>
 			<div className="container">
@@ -41,7 +49,10 @@ const Footer = ({ explore }) => {
 								</Link>
 							</li>
 							<li>
-								<Link to="/generate" aria-label="Navigate To Generate Page">
+								<Link
+									to="/contrast-checker"
+									aria-label="Navigate To Generate Page"
+								>
 									Contrast Checker
 								</Link>
 							</li>
@@ -91,28 +102,54 @@ const Footer = ({ explore }) => {
 
 					<div className="col-xs-12 col-md ">
 						<h5>Top Colors</h5>
-						<ul className="list-unstyled quick-links">
-							<li>
-								<Link to="/generate" aria-label="Navigate To Generate Page">
-									#0000
-								</Link>
-							</li>
-							<li>
-								<Link to="/generate" aria-label="Navigate To Generate Page">
-									#fff34
-								</Link>
-							</li>
-							<li>
-								<Link to="/generate" aria-label="Navigate To Generate Page">
-									#44555
-								</Link>
-							</li>
-							<li>
-								<Link to="/generate" aria-label="Navigate To Generate Page">
-									#445353
-								</Link>
-							</li>
-						</ul>
+						{!getState('SAVED') && (
+							<ul className="list-unstyled quick-links">
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										#36368e
+									</Link>
+								</li>
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										#00000e
+									</Link>
+								</li>
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										#fff8f0
+									</Link>
+								</li>
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										#152ba2
+									</Link>
+								</li>
+							</ul>
+						)}
+						{getState('SAVED') && (
+							<ul className="list-unstyled quick-links">
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										{state[0] && rgbToHex(state[0].color, 1)}
+									</Link>
+								</li>
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										{state[0] && rgbToHex(state[0].color, 0)}
+									</Link>
+								</li>
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										#fff8f0
+									</Link>
+								</li>
+								<li>
+									<Link to="/generate" aria-label="Navigate To Generate Page">
+										#152ba2
+									</Link>
+								</li>
+							</ul>
+						)}
 					</div>
 					<div className="col-xs-12 col-md ">
 						<h5>Connect</h5>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { ReactComponent as Banner } from '../assets/icons/banner-contrast.svg';
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
-import { calculateContrast, ratioStatus } from 'utils';
+import { calculateContrast, ratioStatus, isColor } from 'utils';
 
 const ContrastChecker = () => {
 	const [formstate, setState] = useState({
@@ -13,7 +13,9 @@ const ContrastChecker = () => {
 	const [result, setResult] = useState('0.00');
 
 	useEffect(() => {
-		setResult(calculateContrast(formstate.background, formstate.text));
+		if (isColor(formstate.text) && isColor(formstate.background)) {
+			setResult(calculateContrast(formstate.background, formstate.text));
+		}
 	}, [formstate.text, formstate.background]);
 
 	const handleChange = (e, name) => {
@@ -41,7 +43,7 @@ const ContrastChecker = () => {
 			</Header>
 			<Section>
 				<div className="container">
-					<div className="row align-items-center justify-content-center pos-sticky">
+					<div className="row align-items-center justify-content-center">
 						<div className="col-md-9">
 							<article>
 								<div className="row align-items-center">
@@ -163,25 +165,29 @@ const ContrastChecker = () => {
 											<span
 												style={{
 													color:
-														(result.AA_level_large_text === 'PASS' &&
+														(result &&
+															result.AA_level_large_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AA_level_large_text === 'PASS' &&
+														(result &&
+															result.AA_level_large_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}
 											>
-												{result.AA_level_large_text} ~ 4.5:1
+												{result && result.AA_level_large_text} ~ 4.5:1
 											</span>
 											<h4
 												style={{
 													color:
-														(result.AA_level_large_text === 'PASS' &&
+														(result &&
+															result.AA_level_large_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AA_level_large_text === 'PASS' &&
+														(result &&
+															result.AA_level_large_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}
@@ -196,25 +202,29 @@ const ContrastChecker = () => {
 											<span
 												style={{
 													color:
-														(result.AA_level_small_text === 'PASS' &&
+														(result &&
+															result.AA_level_small_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AA_level_small_text === 'PASS' &&
+														(result &&
+															result.AA_level_small_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}
 											>
-												{result.AA_level_small_text} ~ 3:1
+												{result && result.AA_level_small_text} ~ 3:1
 											</span>
 											<h4
 												style={{
 													color:
-														(result.AA_level_small_text === 'PASS' &&
+														(result &&
+															result.AA_level_small_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AA_level_small_text === 'PASS' &&
+														(result &&
+															result.AA_level_small_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}
@@ -229,25 +239,29 @@ const ContrastChecker = () => {
 											<span
 												style={{
 													color:
-														(result.AAA_level_large_text === 'PASS' &&
+														(result &&
+															result.AAA_level_large_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AAA_level_large_text === 'PASS' &&
+														(result &&
+															result.AAA_level_large_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}
 											>
-												{result.AAA_level_large_text} ~ 4.5:1
+												{result && result.AAA_level_large_text} ~ 4.5:1
 											</span>
 											<h4
 												style={{
 													color:
-														(result.AAA_level_large_text === 'PASS' &&
+														(result &&
+															result.AAA_level_large_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AAA_level_large_text === 'PASS' &&
+														(result &&
+															result.AAA_level_large_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}
@@ -262,25 +276,29 @@ const ContrastChecker = () => {
 											<span
 												style={{
 													color:
-														(result.AAA_level_small_text === 'PASS' &&
+														(result &&
+															result.AAA_level_small_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AAA_level_small_text === 'PASS' &&
+														(result &&
+															result.AAA_level_small_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}
 											>
-												{result.AAA_level_small_text} ~ 7:1
+												{result && result.AAA_level_small_text} ~ 7:1
 											</span>
 											<h4
 												style={{
 													color:
-														(result.AAA_level_small_text === 'PASS' &&
+														(result &&
+															result.AAA_level_small_text === 'PASS' &&
 															'rgb(16, 136, 15)') ||
 														'rgb(177, 8, 8)',
 													background:
-														(result.AAA_level_small_text === 'PASS' &&
+														(result &&
+															result.AAA_level_small_text === 'PASS' &&
 															'rgb(190, 255, 189)') ||
 														'rgb(255, 181, 180)',
 												}}

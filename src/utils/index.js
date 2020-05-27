@@ -112,11 +112,11 @@ export const hexToRgb = (hex) => {
  * @private
  * @param {String} strColor
  */
-const isColor = (strColor) => {
+export const isColor = (strColor) => {
 	const s = new Option().style;
 	s.color = strColor;
 	const test1 = s.color === strColor;
-	const test2 = /^#[0-9A-F]{6}$/i.test(strColor);
+	const test2 = /^#[0-9A-F]{3}$|^#[0-9A-F]{6}/i.test(strColor);
 	if (test1 === true || test2 === true) {
 		return true;
 	}
@@ -125,7 +125,7 @@ const isColor = (strColor) => {
 
 export const calculateContrast = (color1, color2) => {
 	const splittedRgb = (rgb) => rgb.match(/\d+/g);
-	if (!color1 && !color2) return '0';
+	if (!color1 && !color2) return;
 	if (isColor(color1) && isColor(color2)) {
 		const $color1$ =
 			color1.trim().indexOf('#') === 0
@@ -156,6 +156,7 @@ export const calculateContrast = (color1, color2) => {
 			(Math.max($color1$, $color2$) + 0.05) /
 			(Math.min($color1$, $color2$) + 0.05);
 
+		// eslint-disable-next-line consistent-return
 		return ratio
 			? {
 					ratio: ratioObj.toFixed(2),
@@ -171,6 +172,7 @@ export const calculateContrast = (color1, color2) => {
 export const ratioStatus = (ratio) => {
 	if (!ratio) return;
 	if (ratio) {
+		// eslint-disable-next-line consistent-return
 		return {
 			color: ratio < 4.5 ? '#b10808' : ratio <= 7 ? '#ce6f02' : '#10880f',
 			status: ratio < 4.5 ? 'Poor' : ratio <= 7 ? 'Fair' : 'Good',
