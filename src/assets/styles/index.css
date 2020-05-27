@@ -140,3 +140,19 @@ html {
 .navbar-toggler {
 	border: none !important;
 }
+
+@media (max-width: 990px) {
+	:root {
+		--font-lg: 1.84em;
+		--font-x-lg: 1.92em;
+		--font-x-md: 1.24em;
+		--font-md: 1em;
+		--font-sm: 0.8375em;
+		--font-x-sm: 0.92em;
+	}
+	header {
+		display: block !important;
+		padding-top: 8rem !important;
+		height: 34em !important;
+	}
+}

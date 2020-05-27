@@ -121,6 +121,9 @@ const Section = styled.section`
 			}
 			&.large__svg {
 				height: 250px;
+
+				width: auto;
+
 				margin-top: 2rem;
 			}
 		}

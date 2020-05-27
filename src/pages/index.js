@@ -108,19 +108,12 @@ const Header = styled.header`
 	justify-content: center;
 	text-align: center;
 	display: flex;
-	@media (max-width: 990px) {
-		display: block;
-		padding-top: 8rem;
-		height: 34em;
-	}
+
 	h1 {
 		font-weight: 900;
-		font-size: 3.82em;
+		font-size: var(--font-x-lg);
 		color: var(--black);
 		letter-spacing: -1.3px;
-		@media (max-width: 990px) {
-			font-size: 2.3em;
-		}
 	}
 	.pos-rel {
 		position: relative;
@@ -130,9 +123,6 @@ const Header = styled.header`
 		margin: 6px 0;
 		font-size: calc(var(--font-sm) + 1.1px);
 		font-weight: 400;
-		@media (max-width: 990px) {
-			font-size: calc(var(--font-sm) - 1px);
-		}
 	}
 	a.btn {
 		padding: 12px 40px;

@@ -29,7 +29,7 @@ const Explore = () => {
 	}, 100);
 
 	useEffect(() => {
-		if (state.length < 0) {
+		if (state.length === 0) {
 			loadGradients(10);
 		}
 	}, [loadGradients, state]);

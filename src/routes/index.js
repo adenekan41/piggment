@@ -45,7 +45,9 @@ const routes = ({ location }) => (
 					</Suspense>
 				</CSSTransition>
 			</TransitionGroup>
-			{location.pathname !== '/generate' && <Footer />}
+			{location.pathname !== '/generate' && (
+				<Footer explore={location.pathname === '/explore'} />
+			)}
 		</ErrorBoundary>
 	</Wrapper>
 );

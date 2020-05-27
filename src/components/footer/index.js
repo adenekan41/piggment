@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
-import { Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({ explore }) => {
 	return (
-		<FooterWrapper>
+		<FooterWrapper explore={explore}>
 			<div className="container">
 				<div className="row">
 					<div className="col-xs-12 col-md-3">
@@ -169,7 +171,9 @@ const FooterWrapper = styled.footer`
 	border-top: 1px solid #e2e2e2;
 
 	padding: 3rem 0 1rem;
-
+	@media (max-width: 990px) {
+		display: ${(props) => props.explore && 'none'};
+	}
 	svg {
 		height: 30px;
 		width: auto;
@@ -222,4 +226,7 @@ const FooterWrapper = styled.footer`
 		}
 	}
 `;
+Footer.propTypes = {
+	explore: PropTypes.bool,
+};
 export default Footer;

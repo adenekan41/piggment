@@ -244,7 +244,13 @@ export const GenerateWrapper = styled.div`
 
 		text-align: left;
 		height: 110px;
-
+		@media (max-width: 990px) {
+			min-height: 264px;
+			padding: 30px 24px;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
 		h4 {
 			font-size: 18px;
 			text-transform: capitalize;
