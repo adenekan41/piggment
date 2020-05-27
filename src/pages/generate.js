@@ -64,6 +64,7 @@ const Generate = () => {
 		</GenerateWrapper>
 	);
 };
+
 const GenerateWrapper = styled.main`
 	header {
 		position: fixed;

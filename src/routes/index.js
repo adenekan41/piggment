@@ -9,7 +9,6 @@ import NavLayout from '../components/navbar';
 import DataProvider from '../context/provider';
 import Footer from '../components/footer';
 
-import ContrastChecker from 'pages/constrast-checker';
 import LogoPrimary from 'components/logo-primary';
 
 const Explore = lazy(() => import('../pages/explore'));
@@ -18,6 +17,7 @@ const Home = lazy(() => import('../pages'));
 const Generate = lazy(() => import('../pages/generate'));
 const Terms = lazy(() => import('../pages/terms'));
 const Privacy = lazy(() => import('../pages/privacy'));
+const ContrastChecker = lazy(() => import('../pages/constrast-checker'));
 
 const routes = ({ location }) => (
 	<Wrapper>

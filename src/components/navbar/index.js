@@ -57,7 +57,9 @@ const NavWrapper = styled(Navbar)`
 		}
 	}
 `;
+
 NavLayout.propTypes = {
 	generate: PropTypes.bool,
 };
+
 export default NavLayout;
