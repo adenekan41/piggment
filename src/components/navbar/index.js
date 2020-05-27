@@ -41,6 +41,9 @@ const NavWrapper = styled(Navbar)`
 	svg {
 		height: 28px;
 		width: auto;
+		@media (max-width: 990px) {
+			height: 21px;
+		}
 	}
 	.nav-link {
 		color: #717171;

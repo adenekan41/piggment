@@ -16,6 +16,8 @@ const Explore = lazy(() => import('../pages/explore'));
 const SavedColors = lazy(() => import('../pages/saved'));
 const Home = lazy(() => import('../pages'));
 const Generate = lazy(() => import('../pages/generate'));
+const Terms = lazy(() => import('../pages/terms'));
+const Privacy = lazy(() => import('../pages/privacy'));
 
 const routes = ({ location }) => (
 	<Wrapper>
@@ -35,6 +37,8 @@ const routes = ({ location }) => (
 								<Route exact path="/saved" component={SavedColors} />
 
 								<Route exact path="/generate" component={Generate} />
+								<Route exact path="/terms" component={Terms} />
+								<Route exact path="/privacy" component={Privacy} />
 								<Route
 									exact
 									path="/contrast-checker"

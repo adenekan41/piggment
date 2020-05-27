@@ -34,11 +34,6 @@ const Footer = ({ explore }) => {
 
 						<ul className="list-unstyled quick-links">
 							<li>
-								<Link to="/explore" aria-label="Navigate To Search Page">
-									Search
-								</Link>
-							</li>
-							<li>
 								<Link to="/explore" aria-label="Navigate To Explore Page">
 									Explore Gradients
 								</Link>
@@ -60,6 +55,22 @@ const Footer = ({ explore }) => {
 							<li>
 								<Link to="/saved" aria-label="Navigate To Pocket Page">
 									Saved Gradients
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/terms"
+									aria-label="Navigate To Terms and conditon page"
+								>
+									Terms and conditons
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/privacy"
+									aria-label="Navigate To Privacy policy page"
+								>
+									Privacy Policy
 								</Link>
 							</li>
 						</ul>

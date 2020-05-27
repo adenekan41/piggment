@@ -152,7 +152,11 @@ html {
 	}
 	header {
 		display: block !important;
-		padding-top: 8rem !important;
-		height: 34em !important;
+		padding: 7rem 0 !important;
+		min-height: auto !important;
+	}
+	header h1,
+	header p {
+		text-align: center;
 	}
 }

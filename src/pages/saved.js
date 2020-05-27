@@ -35,7 +35,7 @@ const SavedColors = () => {
 								</p>
 							</article>
 						</div>
-						<div className="col-md-5">
+						<div className="col-md-5 d-none d-md-block">
 							<Banner className="w-100 h-100" />
 						</div>
 					</div>

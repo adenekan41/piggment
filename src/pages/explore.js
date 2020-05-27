@@ -146,7 +146,7 @@ const Explore = () => {
 
 const Header = styled.header`
 	background: #fff8f0;
-	height: 32em;
+	min-height: 32em;
 	align-items: center;
 	justify-content: center;
 	background-size: calc(20 * 0.5px) calc(20 * 0.5px);

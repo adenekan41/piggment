@@ -101,7 +101,7 @@ const Home = () => {
 
 const Header = styled.header`
 	background: #fff8f0;
-	height: 42em;
+	min-height: 42em;
 	align-items: center;
 	background-size: calc(20 * 0.5px) calc(20 * 0.5px);
 	background-image: radial-gradient(#0a113e47 0.5px, transparent 0.5px);

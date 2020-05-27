@@ -35,7 +35,7 @@ const ContrastChecker = () => {
 								<p>Get the contrast ratio of text and colors for your app.</p>
 							</article>
 						</div>
-						<div className="col-md-5">
+						<div className="col-md-5 d-none d-md-block">
 							<Banner className="w-100 h-100" />
 						</div>
 					</div>
