@@ -14,7 +14,7 @@ export const Snippet = styled.div`
 		text-align: left !important;
 	}
 	h4 {
-		font-size: 15px;
+		font-size: var(--font-sm);
 		font-weight: 600;
 		color: var(--black);
 		letter-spacing: -0.5px;
@@ -136,7 +136,7 @@ export const CardWrapper = styled.div`
 			`}
 		h4 {
 			text-transform: capitalize;
-			font-size: 1.15em;
+			font-size: var(--font-md);
 			font-weight: 500;
 
 			color: #0a0a0a;
@@ -180,7 +180,7 @@ export const GenerateWrapper = styled.div`
 	}
 	.control__panel {
 		span {
-			font-size: 15px;
+			font-size: var(--font-sm);
 			color: #676767;
 			cursor: pointer;
 
@@ -190,7 +190,7 @@ export const GenerateWrapper = styled.div`
 			}
 		}
 		h6 {
-			font-size: 17px;
+			font-size: calc(var(--font-sm) + 1.1px);
 			font-weight: 600;
 			letter-spacing: -0.4px;
 			margin-bottom: 9px;
@@ -257,7 +257,7 @@ export const GenerateWrapper = styled.div`
 			color: #8c8c8c;
 			margin: 5px 0;
 			svg {
-				width: 17px;
+				width: calc(var(--font-sm) + 1.1px);
 				height: auto;
 				fill: #8c8c8c;
 			}
@@ -308,7 +308,7 @@ export const LargeCardWrapper = styled.div`
 		height: 80px;
 
 		h4 {
-			font-size: 17px;
+			font-size: calc(var(--font-sm) + 1.1px);
 			text-transform: capitalize;
 			font-weight: 500;
 			color: #ececec;
@@ -319,7 +319,7 @@ export const LargeCardWrapper = styled.div`
 			color: #dedede;
 		}
 		svg {
-			width: 17px;
+			width: calc(var(--font-sm) + 1.1px);
 			fill: #dedede;
 		}
 	}

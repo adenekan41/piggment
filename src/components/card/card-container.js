@@ -88,7 +88,7 @@ const CardWrapper = styled.nav`
 			cursor: pointer;
 			color: var(--accent);
 			border-bottom: 2px solid var(--theme-primary);
-			font-size: 15px;
+			font-size: var(--font-sm);
 			svg {
 				fill: var(--accent) !important;
         width: 15px;
@@ -98,7 +98,7 @@ const CardWrapper = styled.nav`
     a {
       border: none;
       color: var(--accent);
-      font-size: 15px;
+      font-size: 15px !important;
       font-weight:400;
       letter-spacing: 0px;
     }
@@ -115,13 +115,13 @@ const CardWrapper = styled.nav`
 	}
 	h2 {
 		font-weight: 600;
-		font-size: 1.62em;
+		font-size: var(--font-x-md);
 		color: var(--black);
 		margin-bottom: 1.4rem;
     letter-spacing: -1.3px;
     @media (max-width: 990px) {
-      font-size: 1.3em;
-	}
+        font-size: 1.3em;
+    }
 	}
 `;
 

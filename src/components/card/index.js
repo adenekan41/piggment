@@ -41,17 +41,12 @@ const Card = React.memo(
 		useEffect(() => {
 			const canvasObj = textCanvas.current;
 			const ctx = canvasObj.getContext('2d');
-			const dataAngle = data.color
-				.split('deg')
-				.shift()
-				.replace(/\/$/, '')
-				.split('(')
-				.pop();
+			const dataAngle = data.color.match(/\d+/g).shift();
 
 			// console.log(dataAngle);
 			const angle = (dataAngle * Math.PI) / 360;
-			const x2 = Math.cos(angle) * canvasObj.width;
-			const y2 = Math.sin(angle) * canvasObj.height;
+			const x2 = Math.cos(angle) * 1360;
+			const y2 = Math.sin(angle) * 768;
 
 			const grd = ctx.createLinearGradient(0, 0, x2, y2);
 			// light blue
@@ -59,31 +54,19 @@ const Card = React.memo(
 			grd.addColorStop(
 				parseInt(
 					data.color
-						.split('rgb')
-						.slice(1)
-						.join('')
-						.split(' ')
-
-						.filter((fl) => fl.includes('%'))[0],
+						.substring(data.color.indexOf('rgb'), data.color.indexOf('%'))
+						.match(/\d+/g)
+						.pop(),
 					10
 				) / 100,
 				rgbToHex(data.color, 0)
 			);
 			grd.addColorStop(
-				parseInt(
-					data.color
-						.split('rgb')
-						.slice(1)
-						.join('')
-						.split(' ')
-
-						.filter((fl) => fl.includes('%'))[1],
-					10
-				) / 100,
+				parseInt(data.color.match(/\d+/g).pop(), 10) / 100,
 				rgbToHex(data.color, 1)
 			);
 			ctx.fillStyle = grd;
-			ctx.fillRect(0, 0, canvasObj.width, canvasObj.height);
+			ctx.fillRect(0, 0, 1360, 768);
 			setUrl(ctx.canvas.toDataURL());
 		}, [data]);
 

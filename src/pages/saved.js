@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 
 import { Link } from 'react-router-dom';
+import { clearState } from 'codewonders-helpers';
 import GradientLayout from '../components/card/card-container';
 
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
@@ -15,6 +16,9 @@ const SavedColors = () => {
 
 	useEffect(() => {
 		setState(getState('SAVED'));
+		if (getState('SAVED').length === 0) {
+			clearState('SAVED');
+		}
 	}, []);
 
 	return (
@@ -44,7 +48,7 @@ const SavedColors = () => {
 						mode="delete"
 						state={state}
 					/>
-					{!state && state.length === 0 && (
+					{!getState('SAVED') && (
 						<div className="text-center empty">
 							<Empty className="large__svg" />
 							<h3>You dont have any saved gradient yet</h3>
@@ -78,7 +82,7 @@ const Header = styled.header`
 	display: flex;
 	h1 {
 		font-weight: 900;
-		font-size: 3.02em;
+		font-size: var(--font-lg);
 		color: var(--black);
 		margin-bottom: 1.3rem;
 		letter-spacing: -1.3px;
@@ -86,7 +90,7 @@ const Header = styled.header`
 	p {
 		color: #717171;
 		margin: 0px 0;
-		font-size: 17px;
+		font-size: calc(var(--font-sm) + 1.1px);
 		font-weight: 400;
 	}
 `;
@@ -99,7 +103,7 @@ const Section = styled.section`
 		margin-top: 2rem;
 		h3 {
 			font-weight: 600;
-			font-size: 1.72em;
+			font-size: var(--font-x-md);
 			color: var(--black);
 			margin-bottom: 1rem;
 			letter-spacing: -1.3px;
@@ -107,12 +111,12 @@ const Section = styled.section`
 		p {
 			color: #717171;
 			margin: 0px 0;
-			font-size: 18px;
+			font-size: calc(var(--font-sm) + 1.1px);
 			font-weight: 400;
 		}
 		svg {
 			&.small__svg {
-				width: 18px;
+				width: calc(var(--font-sm) + 1.1px);
 				fill: red;
 			}
 			&.large__svg {
@@ -122,7 +126,7 @@ const Section = styled.section`
 		}
 		a {
 			padding: 11px 35px;
-			font-size: 14px;
+			font-size: calc(var(--font-sm) - 1px);
 		}
 	}
 `;

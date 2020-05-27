@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useContext } from 'react';
+import React, { useCallback, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import { debounce } from 'utils';
@@ -11,7 +11,10 @@ import { ReactComponent as Search } from '../assets/icons/icon-search.svg';
 
 const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);
-
+	const [formstate, setState] = useState({
+		from: '',
+		to: '',
+	});
 	const scrollWindow = useCallback(() => {
 		const d = document.documentElement;
 		const offset = d.scrollTop + window.innerHeight;
@@ -26,7 +29,7 @@ const Explore = () => {
 	}, 100);
 
 	useEffect(() => {
-		if (state.length < 10) {
+		if (state.length < 0) {
 			loadGradients(10);
 		}
 	}, [loadGradients, state]);
@@ -41,7 +44,17 @@ const Explore = () => {
 		},
 		[handleScroll]
 	);
-
+	const handleSearchChange = (e) => {
+		// const val = e.target.value.toLowerCase();
+		// setFilteredGradients(
+		// 	filteredGradients.filter((gradient) => {
+		// 		return (
+		// 			gradient.name.toLowerCase().includes(val) ||
+		// 			gradient.color.toLowerCase().includes(val)
+		// 		);
+		// 	})
+		// );
+	};
 	return (
 		<main>
 			<Header>
@@ -61,29 +74,67 @@ const Explore = () => {
 											</div>
 											<input
 												className="form-control"
+												onKeyUp={(e) => handleSearchChange(e)}
 												placeholder="Search by gradient name or color"
 											/>
 										</div>
 									</div>
 									<div className="col-md-3">
-										<label htmlFor="input">From color</label>
-										<input
-											type="text"
-											id="input"
-											className="form-control"
-											placeholder="Enter color code"
-										/>
+										<label htmlFor="from">From color</label>
+										<div className="input-group">
+											<div className="input-group-prepend">
+												<span className="input-group-text">
+													<div
+														style={{ background: formstate.from }}
+														className="color-picker-wrapper"
+													>
+														<input
+															type="color"
+															value={formstate.from}
+															onChange={(e) =>
+																setState({ from: e.target.value })
+															}
+														/>
+													</div>
+												</span>
+											</div>
+											<input
+												className="form-control"
+												placeholder="#000"
+												name="from"
+												value={formstate.from}
+												onChange={(e) => setState({ from: e.target.value })}
+											/>
+										</div>
 									</div>
 									<div className="col">
 										<ArrowRight className="mt-4" />
 									</div>
 									<div className="col-md-3">
 										<label htmlFor="input">To color</label>
-										<input
-											type="text"
-											className="form-control"
-											placeholder="Enter color code"
-										/>
+										<div className="input-group">
+											<div className="input-group-prepend">
+												<span className="input-group-text">
+													<div
+														style={{ background: formstate.to }}
+														className="color-picker-wrapper"
+													>
+														<input
+															type="color"
+															value={formstate.to}
+															onChange={(e) => setState({ to: e.target.value })}
+														/>
+													</div>
+												</span>
+											</div>
+											<input
+												className="form-control"
+												placeholder="#000"
+												name="to"
+												value={formstate.to}
+												onChange={(e) => setState({ to: e.target.value })}
+											/>
+										</div>
 									</div>
 								</div>
 							</article>
@@ -113,25 +164,39 @@ const Header = styled.header`
 	display: flex;
 	h1 {
 		font-weight: 900;
-		font-size: 3.02em;
+		font-size: var(--font-lg);
 		text-align: center;
 		color: var(--black);
 		letter-spacing: -1.3px;
 	}
 	label {
-		font-size: 14px;
+		font-size: calc(var(--font-sm) - 1px);
 		color: #929292;
 		font-weight: 400;
 	}
 
-	input {
+	input.form-control {
 		padding: 27px 21px;
 		border: none;
-		font-size: 15px;
+		font-size: var(--font-sm);
 		box-shadow: none !important;
 		&::-webkit-input-placeholder {
 			color: #b1b1b1;
 		}
+	}
+	input[type='color'] {
+		opacity: 0;
+		display: block;
+		width: 28px;
+		height: 28px;
+		border: none;
+	}
+	.color-picker-wrapper {
+		background: rgb(0, 0, 0);
+		height: 28px;
+		border-radius: 6px;
+		border: 1px solid #fff8f0;
+		width: 28px;
 	}
 	span.input-group-text {
 		background: #fff;

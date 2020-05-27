@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { GradientContext } from 'context';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import Card from '../components/card';
-
-import { ReactComponent as Logo } from '../assets/icons/logo_.svg';
 
 const Generate = () => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -53,18 +50,6 @@ const Generate = () => {
 
 	return (
 		<GenerateWrapper>
-			<header>
-				<Link to="/">
-					<Logo />
-				</Link>
-				<h3>Generate gradient.</h3>
-				<div className="buttons">
-					<Link to="/explore" className="mr-md-3">
-						Explore
-					</Link>
-					<Link to="/saved">Saved </Link>
-				</div>
-			</header>
 			{state.length > 0 && (
 				<Card
 					data={state && state[index]}
@@ -104,7 +89,7 @@ const GenerateWrapper = styled.main`
 		}
 		.buttons {
 			a {
-				font-size: 14px;
+				font-size: calc(var(--font-sm) - 1px);
 				color: var(--accent);
 			}
 		}

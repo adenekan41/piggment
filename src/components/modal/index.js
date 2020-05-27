@@ -24,12 +24,7 @@ const ModalLayout = ({ show, setShow, data }) => {
 		<ModalWrapper
 			show={show}
 			onHide={setShow}
-			// onShow={() => {
-			// 	if (window.document.getElementsByClassName('modal').length > 1) {
-			// 		window.document.getElementsByClassName('modal')[0].remove();
-			// 	}
-			// }}
-			aria-labelledby="example-modal-sizes-title-sm"
+			aria-labelledby={data.name}
 			size="lg"
 			onEscapeKeyDown={setShow}
 		>
@@ -49,13 +44,7 @@ const ModalLayout = ({ show, setShow, data }) => {
 					<span>{rgbToHex(data.color, 0)}</span>
 				</p>
 				<p>
-					Angle <ArrowRight />{' '}
-					{data.color
-						.split('deg')
-						.shift()
-						.replace(/\/$/, '')
-						.split('(')
-						.pop()}
+					Angle <ArrowRight /> {data.color.match(/\d+/g).shift()}
 					deg
 				</p>
 				<div className="hexes__sections d-flex align-items-center">
@@ -66,13 +55,10 @@ const ModalLayout = ({ show, setShow, data }) => {
 					<p className="d-block">{rgbToHex(data.color, 1)}</p>{' '}
 					<ArrowRight className="mr-2" />
 					{data.color
-						.split('rgb')
-						.slice(1)
-						.join('')
-						.split(' ')
-
-						.filter((fl) => fl.includes('%'))[0]
-						.slice(0, -1)}
+						.substring(data.color.indexOf('rgb'), data.color.indexOf('%'))
+						.match(/\d+/g)
+						.pop()}
+					%
 				</div>
 				<br />
 				<div className="hexes__sections d-flex align-items-center">
@@ -82,14 +68,7 @@ const ModalLayout = ({ show, setShow, data }) => {
 					/>{' '}
 					<p className="d-block">{rgbToHex(data.color, 0)}</p>{' '}
 					<ArrowRight className="mr-2" />
-					{data.color
-						.split('rgb')
-						.slice(1)
-						.join('')
-						.split(' ')
-
-						.filter((fl) => fl.includes('%'))[1]
-						.slice(0, -1)}
+					{data.color.match(/\d+/g).pop()}%
 				</div>
 			</div>
 
@@ -128,6 +107,7 @@ const ModalWrapper = styled(Modal)`
 		background-color: #fff8f0 !important;
 		.headers {
 			margin-bottom: 5rem;
+			font-size: var(--font-sm);
 			h2 {
 				font-size: 36px;
 				text-transform: capitalize;

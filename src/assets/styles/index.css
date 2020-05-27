@@ -16,6 +16,12 @@
 	--gray: #8f9bb3;
 	--font-primary: 'Pigment GT';
 	--font-secondary: 'Abril Fatface';
+	--font-lg: 2.84em;
+	--font-x-lg: 3.82em;
+	--font-x-md: 1.32em;
+	--font-md: 1.11em;
+	--font-sm: 0.9375em;
+	--font-x-sm: 0.97em;
 }
 
 ::selection {
@@ -132,5 +138,5 @@ html {
 }
 
 .navbar-toggler {
-	border: none !important ;
+	border: none !important;
 }

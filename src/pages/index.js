@@ -30,7 +30,7 @@ const Home = () => {
 									place
 								</p>
 
-								<Link className="btn btn-pigment" to="/generate" type="button">
+								<Link className="btn btn-pigment" to="/generate">
 									Generate Gradients
 								</Link>
 							</article>
@@ -76,22 +76,14 @@ const Home = () => {
 								Create the perfect gradient palette and get inspired to make
 								something beautiful.
 							</p>
-							<Link
-								className="btn btn-pigment mr-md-3"
-								to="/generate"
-								type="button"
-							>
+							<Link className="btn btn-pigment mr-3" to="/generate">
 								Start Generating
 							</Link>
-							<Link
-								className="btn btn-outline-pigment"
-								type="button"
-								to="/explore"
-							>
+							<Link className="btn btn-outline-pigment" to="/explore">
 								Explore Gradients
 							</Link>
 						</div>
-						<div className="col-md-7">
+						<div className="col-md-7 d-none d-md-block">
 							<Banner />
 						</div>
 					</div>
@@ -136,20 +128,20 @@ const Header = styled.header`
 	p {
 		color: #717171;
 		margin: 6px 0;
-		font-size: 17px;
+		font-size: calc(var(--font-sm) + 1.1px);
 		font-weight: 400;
 		@media (max-width: 990px) {
-			font-size: 14px;
+			font-size: calc(var(--font-sm) - 1px);
 		}
 	}
 	a.btn {
 		padding: 12px 40px;
 		border: none;
-		font-size: 15px;
+		font-size: var(--font-sm);
 		font-weight: 500;
 		margin-top: 2rem;
 		@media (max-width: 990px) {
-			font-size: 14px;
+			font-size: calc(var(--font-sm) - 1px);
 		}
 	}
 	.large__sum-card {
@@ -180,7 +172,7 @@ const Section = styled.section`
 		a {
 			padding: 12px 40px;
 			border: none;
-			font-size: 15px;
+			font-size: var(--font-sm);
 
 			font-weight: 500;
 		}
@@ -197,20 +189,20 @@ const SectionMore = styled.section`
 
 	h3 {
 		font-weight: 900;
-		font-size: 2.82em;
+		font-size: var(--font-lg);
 		color: var(--black);
 		letter-spacing: -1.3px;
 		margin-bottom: 1.4rem;
 	}
 	p {
 		color: #717171;
-		font-size: 15px;
+		font-size: var(--font-x-sm);
 		font-weight: 400;
 	}
 	a {
 		padding: 10px 30px;
 		border: none;
-		font-size: 15px;
+		font-size: var(--font-sm);
 		color: var(--accent);
 		font-weight: 500;
 		margin-top: 1rem;
@@ -227,14 +219,14 @@ const SectionTrusted = styled.section`
 	align-items: center;
 	h2 {
 		font-weight: 900;
-		font-size: 2.52em;
+		font-size: var(--font-lg);
 		text-align: center;
 		color: var(--black);
 		letter-spacing: -1.3px;
 	}
 	p {
 		color: #717171;
-		font-size: 20px;
+		font-size: var(--font-x-sm) + 1px;
 		font-weight: 400;
 	}
 `;

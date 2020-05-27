@@ -24,23 +24,29 @@ const Footer = () => {
 
 						<ul className="list-unstyled quick-links">
 							<li>
-								<Link to="/explore" aria-label="Navigate To Explore Page">
-									Explore
-								</Link>
-							</li>
-							<li>
-								<Link to="/generate" aria-label="Navigate To Generate Page">
-									Generate
-								</Link>
-							</li>
-							<li>
 								<Link to="/explore" aria-label="Navigate To Search Page">
 									Search
 								</Link>
 							</li>
 							<li>
+								<Link to="/explore" aria-label="Navigate To Explore Page">
+									Explore Gradients
+								</Link>
+							</li>
+							<li>
+								<Link to="/generate" aria-label="Navigate To Generate Page">
+									Generate Gradients
+								</Link>
+							</li>
+							<li>
+								<Link to="/generate" aria-label="Navigate To Generate Page">
+									Contrast Checker
+								</Link>
+							</li>
+
+							<li>
 								<Link to="/saved" aria-label="Navigate To Pocket Page">
-									Saved
+									Saved Gradients
 								</Link>
 							</li>
 						</ul>
@@ -172,7 +178,7 @@ const FooterWrapper = styled.footer`
 	}
 	h5 {
 		font-weight: 600;
-		font-size: 15px;
+		font-size: var(--font-sm);
 		line-height: 22px;
 		/* identical to box height, or 183% */
 
