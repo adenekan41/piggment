@@ -11,6 +11,7 @@ import history from 'utils/history';
 import { BorderWrap, PaletteCardWrapper } from './style';
 
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
+import { ReactComponent as Eye } from '../../assets/icons/icon-eye.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as Delete } from '../../assets/icons/icon-delete.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
@@ -99,7 +100,12 @@ const PaletteCard = ({
 										copyText();
 									}}
 								/>
-
+								<Eye
+									className="ml-2"
+									onClick={() => {
+										setShow(true);
+									}}
+								/>
 								{mode !== 'delete' && (
 									<Love
 										onClick={() => saveGradient(data)}
@@ -114,13 +120,6 @@ const PaletteCard = ({
 								)}
 							</BorderWrap>
 						</div>
-						{show && (
-							<ModalPalette
-								show={show}
-								data={data}
-								setShow={() => setShow(false)}
-							/>
-						)}
 					</>
 				) : (
 					<>
@@ -144,13 +143,18 @@ const PaletteCard = ({
 
 							<BorderWrap className="float-right border-wrap">
 								<Code
-									className="mr-2"
+									className=""
 									onClick={() => {
 										setViewCode(true);
 										copyText();
 									}}
 								/>
-
+								<Eye
+									className="ml-2"
+									onClick={() => {
+										setShow(true);
+									}}
+								/>
 								<Love
 									onClick={() => saveGradient(data)}
 									className={`${loved && 'active_love'} ml-2`}
@@ -158,6 +162,13 @@ const PaletteCard = ({
 							</BorderWrap>
 						</div>
 					</>
+				)}
+				{show && (
+					<ModalPalette
+						show={show}
+						data={data}
+						setShow={() => setShow(false)}
+					/>
 				)}
 			</PaletteCardWrapper>
 		</>

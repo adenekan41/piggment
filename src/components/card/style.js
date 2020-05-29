@@ -407,6 +407,12 @@ export const PaletteCardWrapper = styled.div`
 	}
 
 	article {
+		${(props) =>
+			props.layout &&
+			css`
+				text-align: center;
+				margin-top: 2rem;
+			`}
 		h4 {
 			text-transform: capitalize;
 			font-size: var(--font-md);
@@ -428,10 +434,15 @@ export const PaletteCardWrapper = styled.div`
 		margin-bottom: 1rem;
 		flex-direction: row-reverse;
 		transition: all 0.4s ease;
+
 		${(props) =>
 			props.layout &&
 			css`
 				flex-direction: column-reverse;
+				width: 220px;
+				height: 220px;
+				border-radius: 50% !important;
+				margin: auto;
 			`}
 		${(props) =>
 			props.mode === 'large' &&

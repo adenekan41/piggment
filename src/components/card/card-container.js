@@ -12,7 +12,6 @@ import Card from '.';
 import { ReactComponent as Reload } from '../../assets/icons/icon-refresh.svg';
 import { ReactComponent as Circle } from '../../assets/icons/icon-circle.svg';
 import { ReactComponent as Box } from '../../assets/icons/icon-box.svg';
-import { ReactComponent as Layout } from '../../assets/icons/icon-layout.svg';
 
 const GradientLayout = React.memo(
 	({ header, noRefresh = false, state, mode, palette = false }) => {
@@ -43,15 +42,9 @@ const GradientLayout = React.memo(
 							}}
 							className="mr-4"
 						>
-							{!palette ? (
-								<Circle
-									className={getState('LAYOUT') || layout ? 'active' : null}
-								/>
-							) : (
-								<Box
-									className={getState('LAYOUT') || layout ? 'active' : null}
-								/>
-							)}
+							<Circle
+								className={getState('LAYOUT') || layout ? 'active' : null}
+							/>
 						</div>
 						<div
 							className="mr-4"
@@ -60,7 +53,7 @@ const GradientLayout = React.memo(
 								setLayout(false);
 							}}
 						>
-							<Layout
+							<Box
 								className={!getState('LAYOUT') || !layout ? 'active' : null}
 							/>
 						</div>
