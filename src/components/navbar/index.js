@@ -23,7 +23,9 @@ const NavLayout = ({ generate }) => {
 						<Nav.Link as={Link} to="/generate">
 							Generate
 						</Nav.Link>
-
+						<Nav.Link as={Link} to="/palette">
+							Palette
+						</Nav.Link>
 						<Nav.Link as={Link} to="/contrast-checker">
 							Contrast Checker
 						</Nav.Link>

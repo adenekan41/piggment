@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import SEO from 'components/seo';
+
 import { ReactComponent as Banner } from '../assets/icons/banner-contrast.svg';
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { calculateContrast, ratioStatus, isColor } from 'utils';
@@ -14,7 +16,12 @@ const ContrastChecker = () => {
 
 	useEffect(() => {
 		if (isColor(formstate.text) && isColor(formstate.background)) {
-			setResult(calculateContrast(formstate.background, formstate.text));
+			setResult(
+				calculateContrast(
+					formstate.background || '#fff5e0',
+					formstate.text || '#0e0a38'
+				)
+			);
 		}
 	}, [formstate.text, formstate.background]);
 
@@ -26,6 +33,10 @@ const ContrastChecker = () => {
 	};
 	return (
 		<>
+			<SEO
+				title="Contrast Checker"
+				description="Get the contrast ratio of text and colors for your app"
+			/>
 			<Header>
 				<div className="container">
 					<div className="row align-items-center">
@@ -58,7 +69,7 @@ const ContrastChecker = () => {
 													>
 														<input
 															type="color"
-															value={formstate.background || '#fff5e0'}
+															value={formstate.background}
 															onChange={(e) => handleChange(e, 'background')}
 														/>
 													</div>
@@ -67,8 +78,9 @@ const ContrastChecker = () => {
 											<input
 												className="form-control"
 												placeholder="#fff5e0"
+												maxLength="7"
 												type="text"
-												value={formstate.background || '#fff5e0'}
+												value={formstate.background}
 												onChange={(e) => handleChange(e, 'background')}
 											/>
 										</div>
@@ -87,7 +99,7 @@ const ContrastChecker = () => {
 													>
 														<input
 															type="color"
-															value={formstate.text || '#0e0a38'}
+															value={formstate.text}
 															onChange={(e) => handleChange(e, 'text')}
 														/>
 													</div>
@@ -97,7 +109,8 @@ const ContrastChecker = () => {
 												className="form-control"
 												placeholder="#0e0a38"
 												type="text"
-												value={formstate.text || '#0e0a38'}
+												maxLength="7"
+												value={formstate.text}
 												onChange={(e) => handleChange(e, 'text')}
 											/>
 										</div>

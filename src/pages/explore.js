@@ -8,6 +8,7 @@ import GradientContext from '../context';
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';
 import { ReactComponent as Search } from '../assets/icons/icon-search.svg';
+import SEO from 'components/seo';
 
 const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -47,6 +48,10 @@ const Explore = () => {
 	const handleSearchChange = (e) => {};
 	return (
 		<main>
+			<SEO
+				title="Explore"
+				description="Explore fresh gradients. Find new gradients Inspiring Gradients"
+			/>
 			<Header>
 				<div className="container">
 					<div className="row align-items-center justify-content-center  pos-rel">

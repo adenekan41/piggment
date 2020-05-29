@@ -4,12 +4,14 @@
  * @returns {Number}
  */
 
+import { getRandomColors } from 'codewonders-helpers';
+
 export const hexConverter = (rgb) => {
-	let hex = Number(rgb).toString(16);
-	if (hex.length < 2) {
-		hex = `0${hex}`;
-	}
-	return hex;
+	const s = '0123456789abcdef';
+	let i = parseInt(rgb, 10);
+	if (i === 0 || isNaN(rgb)) return '00';
+	i = Math.round(Math.min(Math.max(0, i), 255));
+	return s.charAt((i - (i % 16)) / 16) + s.charAt(i % 16);
 };
 
 /**
@@ -81,11 +83,6 @@ export const guidGenerator = () => {
  * @param {String} b
  */
 export const luminanace = (r, g, b) => {
-	// const a = [r, g, b].map((v) => {
-	// 	v /= 255;
-	// 	return v <= 0.03928 ? v / 12.92 : (v + 0.055) / 1.055 ** 2.4;
-	// });
-	// return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 	return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 };
 
@@ -94,19 +91,21 @@ export const luminanace = (r, g, b) => {
  * @param {String} hex
  */
 export const hexToRgb = (hex) => {
-	const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-	hex = hex.replace(shorthandRegex, (m, r, g, b) => {
-		return r + r + g + g + b + b;
-	});
+	if (hex) {
+		const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+		hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+			return r + r + g + g + b + b;
+		});
 
-	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	return result
-		? {
-				r: parseInt(result[1], 16),
-				g: parseInt(result[2], 16),
-				b: parseInt(result[3], 16),
-		  }
-		: null;
+		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+		return result
+			? {
+					r: parseInt(result[1], 16),
+					g: parseInt(result[2], 16),
+					b: parseInt(result[3], 16),
+			  }
+			: null;
+	}
 };
 
 /**
@@ -170,6 +169,11 @@ export const calculateContrast = (color1, color2) => {
 	}
 };
 
+/**
+ * Get Ratio Token
+ * @param {String} ratio
+ */
+
 export const ratioStatus = (ratio) => {
 	if (!ratio) return;
 	if (ratio) {
@@ -180,4 +184,47 @@ export const ratioStatus = (ratio) => {
 			background: ratio < 4.5 ? '#ffb5b4' : ratio <= 7 ? '#ffce97' : '#beffbd',
 		};
 	}
+};
+
+const validateHexCode = (hex) => {
+	if (hex && hex.length < 7) {
+		return validateHexCode(getRandomColors());
+	}
+	return hex;
+};
+export const generatepalette = (
+	colorStart = validateHexCode(getRandomColors()),
+	colorEnd = validateHexCode(getRandomColors()),
+	colorCount = 6
+) => {
+	const start = hexToRgb(colorStart);
+	const end = hexToRgb(colorEnd);
+	const len = colorCount;
+
+	let alpha = 0.0;
+
+	const palette = [];
+
+	for (let i = 0; i < len; i++) {
+		const colors = {};
+		alpha += 1.0 / len;
+
+		colors.r = parseInt(start.r * alpha + (1 - alpha) * end.r, 10);
+		colors.g = parseInt(start.g * alpha + (1 - alpha) * end.g, 10);
+		colors.b = parseInt(start.b * alpha + (1 - alpha) * end.b, 10);
+
+		palette.push(
+			`#${hexConverter(colors.r)}${hexConverter(colors.g)}${hexConverter(
+				colors.b
+			)}`
+		);
+	}
+
+	return {
+		id: guidGenerator(),
+		name: `#Palette${guidGenerator().slice(0, 4)}`,
+		colors: palette,
+		start: colorStart,
+		end: colorEnd,
+	};
 };

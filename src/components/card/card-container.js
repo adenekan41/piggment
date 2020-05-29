@@ -11,10 +11,11 @@ import Card from '.';
 
 import { ReactComponent as Reload } from '../../assets/icons/icon-refresh.svg';
 import { ReactComponent as Circle } from '../../assets/icons/icon-circle.svg';
+import { ReactComponent as Box } from '../../assets/icons/icon-box.svg';
 import { ReactComponent as Layout } from '../../assets/icons/icon-layout.svg';
 
 const GradientLayout = React.memo(
-	({ header, noRefresh = false, state, mode }) => {
+	({ header, noRefresh = false, state, mode, palette = false }) => {
 		const [layout, setLayout] = useState(false);
 		const { clearGradient } = useContext(GradientContext);
 		useEffect(() => {
@@ -42,9 +43,15 @@ const GradientLayout = React.memo(
 							}}
 							className="mr-4"
 						>
-							<Circle
-								className={getState('LAYOUT') || layout ? 'active' : null}
-							/>
+							{!palette ? (
+								<Circle
+									className={getState('LAYOUT') || layout ? 'active' : null}
+								/>
+							) : (
+								<Box
+									className={getState('LAYOUT') || layout ? 'active' : null}
+								/>
+							)}
 						</div>
 						<div
 							className="mr-4"
@@ -72,6 +79,7 @@ const GradientLayout = React.memo(
 								data={bg_gradient}
 								key={index + bg_gradient.name}
 								mode={mode}
+								palette={palette}
 								layout={getState('LAYOUT') || layout ? 'circle' : null}
 							/>
 						))}
@@ -82,46 +90,44 @@ const GradientLayout = React.memo(
 );
 
 const CardWrapper = styled.nav`
-
-		align-items: center;
-		span {
+	align-items: center;
+	span {
+		cursor: pointer;
+		color: var(--accent);
+		border-bottom: 2px solid var(--theme-primary);
+		font-size: var(--font-sm);
+		svg {
+			fill: var(--accent) !important;
+			width: 15px;
+		}
+	}
+	a {
+		border: none;
+		color: var(--accent);
+		font-size: 15px !important;
+		font-weight: 400;
+		letter-spacing: 0px;
+	}
+	div {
+		svg {
+			fill: #adadad;
+			width: 18px;
 			cursor: pointer;
-			color: var(--accent);
-			border-bottom: 2px solid var(--theme-primary);
-			font-size: var(--font-sm);
-			svg {
+			&.active {
 				fill: var(--accent) !important;
-        width: 15px;
-        
-			}
-    }
-    a {
-      border: none;
-      color: var(--accent);
-      font-size: 15px !important;
-      font-weight:400;
-      letter-spacing: 0px;
-    }
-		div {
-			svg {
-				fill: #adadad;
-				width: 18px;
-				cursor: pointer;
-				&.active {
-					fill: var(--accent) !important;
-				}
 			}
 		}
 	}
+
 	h2 {
 		font-weight: 600;
 		font-size: var(--font-x-md);
 		color: var(--black);
 		margin-bottom: 1.4rem;
-    letter-spacing: -1.3px;
-    @media (max-width: 990px) {
-        font-size: 1.3em;
-    }
+		letter-spacing: -1.3px;
+		@media (max-width: 990px) {
+			font-size: 1.3em;
+		}
 	}
 `;
 
@@ -135,8 +141,10 @@ const Grid = styled.div`
 
 GradientLayout.propTypes = {
 	header: PropTypes.string,
-	noRefresh: PropTypes.bool,
-	state: PropTypes.array,
 	mode: PropTypes.string,
+	noRefresh: PropTypes.bool,
+	palette: PropTypes.bool,
+	state: PropTypes.array,
 };
+
 export default GradientLayout;

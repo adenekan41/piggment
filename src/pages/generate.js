@@ -3,6 +3,7 @@ import GradientContext from 'context';
 import styled from 'styled-components';
 
 import Card from '../components/card';
+import SEO from 'components/seo';
 
 const Generate = () => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -49,19 +50,22 @@ const Generate = () => {
 	);
 
 	return (
-		<GenerateWrapper>
-			{state.length > 0 && (
-				<Card
-					data={state && state[index]}
-					type="generate"
-					next={async () => {
-						await loadGradients(1);
-						setIndex(index + 1);
-					}}
-					prev={() => index > 0 && setIndex(index - 1)}
-				/>
-			)}
-		</GenerateWrapper>
+		<>
+			<SEO title="Generate Gradients" />
+			<GenerateWrapper>
+				{state.length > 0 && (
+					<Card
+						data={state && state[index]}
+						type="generate"
+						next={async () => {
+							await loadGradients(1);
+							setIndex(index + 1);
+						}}
+						prev={() => index > 0 && setIndex(index - 1)}
+					/>
+				)}
+			</GenerateWrapper>
+		</>
 	);
 };
 

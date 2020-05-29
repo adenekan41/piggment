@@ -12,6 +12,7 @@ import Footer from '../components/footer';
 import LogoPrimary from 'components/logo-primary';
 
 const Explore = lazy(() => import('../pages/explore'));
+const Palette = lazy(() => import('../pages/gradient-palette'));
 const SavedColors = lazy(() => import('../pages/saved'));
 const Home = lazy(() => import('../pages'));
 const Generate = lazy(() => import('../pages/generate'));
@@ -39,6 +40,7 @@ const routes = ({ location }) => (
 								<Route exact path="/generate" component={Generate} />
 								<Route exact path="/terms" component={Terms} />
 								<Route exact path="/privacy" component={Privacy} />
+								<Route exact path="/palette" component={Palette} />
 								<Route
 									exact
 									path="/contrast-checker"

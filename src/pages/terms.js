@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ReactComponent as Banner } from '../assets/icons/icon-terms.svg';
 import { Link } from 'react-router-dom';
+import SEO from 'components/seo';
+
+import { ReactComponent as Banner } from '../assets/icons/icon-terms.svg';
 
 const Terms = () => {
 	return (
 		<>
+			<SEO title="Terms and conditions" />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center">

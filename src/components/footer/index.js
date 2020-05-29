@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
-import { rgbToHex } from 'utils';
+import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
+
 import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 
 const Footer = ({ explore }) => {
-	const [state, setState] = useState([]);
-
-	useEffect(() => {
-		setState(getState('SAVED'));
-	}, []);
-
 	return (
 		<FooterWrapper explore={explore}>
 			<div className="container">
@@ -36,6 +30,11 @@ const Footer = ({ explore }) => {
 							<li>
 								<Link to="/explore" aria-label="Navigate To Explore Page">
 									Explore Gradients
+								</Link>
+							</li>
+							<li>
+								<Link to="/palette" aria-label="Navigate To Generate Page">
+									Gradient Palette
 								</Link>
 							</li>
 							<li>
@@ -113,54 +112,29 @@ const Footer = ({ explore }) => {
 
 					<div className="col-xs-12 col-md ">
 						<h5>Top Colors</h5>
-						{!getState('SAVED') && (
-							<ul className="list-unstyled quick-links">
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										#36368e
-									</Link>
-								</li>
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										#00000e
-									</Link>
-								</li>
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										#fff8f0
-									</Link>
-								</li>
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										#152ba2
-									</Link>
-								</li>
-							</ul>
-						)}
-						{getState('SAVED') && (
-							<ul className="list-unstyled quick-links">
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										{state[0] && rgbToHex(state[0].color, 1)}
-									</Link>
-								</li>
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										{state[0] && rgbToHex(state[0].color, 0)}
-									</Link>
-								</li>
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										#fff8f0
-									</Link>
-								</li>
-								<li>
-									<Link to="/generate" aria-label="Navigate To Generate Page">
-										#152ba2
-									</Link>
-								</li>
-							</ul>
-						)}
+
+						<ul className="list-unstyled quick-links">
+							<li>
+								<Link to="/palette" aria-label="Navigate To Generate Page">
+									{getRandomColors()}
+								</Link>
+							</li>
+							<li>
+								<Link to="/palette" aria-label="Navigate To Generate Page">
+									{getRandomColors()}
+								</Link>
+							</li>
+							<li>
+								<Link to="/palette" aria-label="Navigate To Generate Page">
+									{getRandomColors()}
+								</Link>
+							</li>
+							<li>
+								<Link to="/palette" aria-label="Navigate To Generate Page">
+									{getRandomColors()}
+								</Link>
+							</li>
+						</ul>
 					</div>
 					<div className="col-xs-12 col-md ">
 						<h5>Connect</h5>
@@ -274,7 +248,9 @@ const FooterWrapper = styled.footer`
 		}
 	}
 `;
+
 Footer.propTypes = {
 	explore: PropTypes.bool,
 };
+
 export default Footer;

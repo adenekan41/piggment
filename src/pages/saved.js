@@ -10,6 +10,7 @@ import GradientLayout from '../components/card/card-container';
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
 import { ReactComponent as Love } from '../assets/icons/icon-love.svg';
 import { ReactComponent as Empty } from '../assets/icons/icon-empty.svg';
+import SEO from 'components/seo';
 
 const SavedColors = () => {
 	const [state, setState] = useState([]);
@@ -23,6 +24,7 @@ const SavedColors = () => {
 
 	return (
 		<>
+			<SEO title="Saved Gradients" />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center">
