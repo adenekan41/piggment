@@ -39,7 +39,7 @@ const NavLayout = ({ generate }) => {
 const NavWrapper = styled(Navbar)`
 	background: #fff8f0;
 	svg {
-		height: 28px;
+		height: 24px;
 		width: auto;
 		@media (max-width: 990px) {
 			height: 21px;
