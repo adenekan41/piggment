@@ -85,28 +85,39 @@ export const BorderWrap = styled.div`
 	padding: 1px 7px;
 	margin: 0;
 	border-radius: 50px;
-	svg {
+
+	button {
 		cursor: pointer;
-		transition: all 0.3s ease;
-		&:nth-child(3) {
+
+		svg {
+			transition: all 0.3s ease;
 			&.active_love {
 				fill: #e83630 !important;
 			}
-			&:hover {
-				fill: #e83630 !important;
-				transform: scale(1.14);
+		}
+
+		&:nth-child(3) {
+			svg {
+				&:hover {
+					fill: #e83630 !important;
+					transform: scale(1.14);
+				}
 			}
 		}
 		&:nth-child(2) {
-			&:hover {
-				fill: var(--theme-primary) !important;
-				transform: scale(1.14);
+			svg {
+				&:hover {
+					fill: var(--theme-primary) !important;
+					transform: scale(1.14);
+				}
 			}
 		}
 		&:nth-child(1) {
-			&:hover {
-				fill: var(--accent) !important;
-				transform: scale(1.14);
+			svg {
+				&:hover {
+					fill: var(--accent) !important;
+					transform: scale(1.14);
+				}
 			}
 		}
 	}

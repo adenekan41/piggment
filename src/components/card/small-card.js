@@ -95,9 +95,16 @@ const SmallCard = ({
 							<Code tabIndex="-1" />
 						</button>
 
-						<a download={`Piggment-${data.name}`} href={url} title={data.name}>
-							<Save tabIndex="-1" />
-						</a>
+						<button type="button" className="none-button" tabIndex="-1">
+							<a
+								download={`Piggment-${data.name}`}
+								href={url}
+								title={data.name}
+								tabIndex="0"
+							>
+								<Save tabIndex="-1" />
+							</a>
+						</button>
 						{mode !== 'delete' && (
 							<button
 								onClick={() => saveGradient(data)}

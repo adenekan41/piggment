@@ -82,20 +82,33 @@ const GeneratorPaletteCard = ({
 					</div>
 
 					<BorderWrap className="float-right border-wrap">
-						<Code
-							className="mr-2"
+						<button
 							onClick={() => {
 								setViewCode(true);
 								copyText();
 							}}
-						/>
+							type="button"
+							className="none-button"
+						>
+							<Code tabIndex="-1" />
+						</button>
+						<button
+							onClick={() => {
+								setShow(true);
+							}}
+							type="button"
+							className="none-button ml-2"
+						>
+							<Eye />
+						</button>
 
-						<Eye onClick={() => setShow(true)} />
-
-						<Love
+						<button
 							onClick={() => saveGradient(data)}
-							className={`${loved && 'active_love'} ml-2`}
-						/>
+							type="button"
+							className="none-button ml-2"
+						>
+							<Love tabIndex="-1" className={`${loved && 'active_love'}`} />
+						</button>
 					</BorderWrap>
 				</div>
 				{show && (

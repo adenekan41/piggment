@@ -76,21 +76,35 @@ const GeneratorCard = ({
 					</div>
 
 					<BorderWrap className="float-right border-wrap">
-						<Code
-							className="mr-2"
+						<button
 							onClick={() => {
 								setViewCode(true);
 								copyText();
 							}}
-						/>
-						<a download={`Piggment-${data.name}`} href={url} title={data.name}>
-							<Save />
-						</a>
+							type="button"
+							className="none-button mr-2"
+						>
+							<Code tabIndex="-1" />
+						</button>
 
-						<Love
+						<button type="button" className="none-button" tabIndex="-1">
+							<a
+								download={`Piggment-${data.name}`}
+								href={url}
+								title={data.name}
+								tabIndex="0"
+							>
+								<Save tabIndex="-1" />
+							</a>
+						</button>
+
+						<button
 							onClick={() => saveGradient(data)}
-							className={`${loved && 'active_love'} ml-2`}
-						/>
+							type="button"
+							className="none-button ml-2"
+						>
+							<Love tabIndex="-1" className={`${loved && 'active_love'}`} />
+						</button>
 					</BorderWrap>
 				</div>
 			</GenerateWrapper>

@@ -12,6 +12,7 @@ import Footer from '../components/footer';
 import LogoPrimary from 'components/logo-primary';
 
 const Explore = lazy(() => import('../pages/explore'));
+const About = lazy(() => import('../pages/about'));
 const GeneratePalette = lazy(() => import('../pages/generate-palette'));
 const Palette = lazy(() => import('../pages/palette'));
 const SavedColors = lazy(() => import('../pages/saved'));
@@ -42,6 +43,7 @@ const routes = ({ location }) => (
 								<Route exact path="/terms" component={Terms} />
 								<Route exact path="/privacy" component={Privacy} />
 								<Route exact path="/palette" component={Palette} />
+								<Route exact path="/about" component={About} />
 								<Route
 									exact
 									path="/generate-palette"

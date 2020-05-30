@@ -160,23 +160,33 @@ const PaletteCard = ({
 							</article>
 
 							<BorderWrap className="float-right border-wrap">
-								<Code
-									className=""
+								<button
 									onClick={() => {
 										setViewCode(true);
 										copyText();
 									}}
-								/>
-								<Eye
-									className="ml-2"
+									type="button"
+									className="none-button"
+								>
+									<Code tabIndex="-1" />
+								</button>
+								<button
 									onClick={() => {
 										setShow(true);
 									}}
-								/>
-								<Love
+									type="button"
+									className="none-button ml-2"
+								>
+									<Eye />
+								</button>
+
+								<button
 									onClick={() => saveGradient(data)}
-									className={`${loved && 'active_love'} ml-2`}
-								/>
+									type="button"
+									className="none-button ml-2"
+								>
+									<Love tabIndex="-1" className={`${loved && 'active_love'}`} />
+								</button>
 							</BorderWrap>
 						</div>
 					</>

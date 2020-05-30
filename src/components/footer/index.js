@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
-
 import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 
@@ -64,22 +62,6 @@ const Footer = ({ explore }) => {
 									Saved Gradients
 								</Link>
 							</li>
-							<li>
-								<Link
-									to="/terms"
-									aria-label="Navigate To Terms and conditon page"
-								>
-									Terms and conditons
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/privacy"
-									aria-label="Navigate To Privacy policy page"
-								>
-									Privacy Policy
-								</Link>
-							</li>
 						</ul>
 					</div>
 					<div className="col-xs-12 col-md ">
@@ -119,27 +101,31 @@ const Footer = ({ explore }) => {
 					</div>
 
 					<div className="col-xs-12 col-md ">
-						<h5>Top Colors</h5>
+						<h5>Company</h5>
 
 						<ul className="list-unstyled quick-links">
 							<li>
-								<Link to="/palette" aria-label="Navigate To Generate Page">
-									{getRandomColors()}
+								<Link
+									to="/privacy"
+									aria-label="Navigate To Privacy policy page"
+								>
+									About
 								</Link>
 							</li>
 							<li>
-								<Link to="/palette" aria-label="Navigate To Generate Page">
-									{getRandomColors()}
+								<Link
+									to="/terms"
+									aria-label="Navigate To Terms and conditon page"
+								>
+									Terms and conditons
 								</Link>
 							</li>
 							<li>
-								<Link to="/palette" aria-label="Navigate To Generate Page">
-									{getRandomColors()}
-								</Link>
-							</li>
-							<li>
-								<Link to="/palette" aria-label="Navigate To Generate Page">
-									{getRandomColors()}
+								<Link
+									to="/privacy"
+									aria-label="Navigate To Privacy policy page"
+								>
+									Privacy Policy
 								</Link>
 							</li>
 						</ul>
