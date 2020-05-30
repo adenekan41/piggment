@@ -103,7 +103,10 @@ const NavWrapper = styled(Navbar)`
 	.navbar-brand {
 		svg {
 			width: auto;
-			height: 33px;
+			height: 30px;
+			@media (max-width: 990px) {
+				height: 24px !important;
+			}
 		}
 	}
 	.navbar-toggler {

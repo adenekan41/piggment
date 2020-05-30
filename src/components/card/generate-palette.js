@@ -98,8 +98,12 @@ const GeneratorPaletteCard = ({
 						/>
 					</BorderWrap>
 				</div>
-				show && (
-				<ModalPalette show={show} data={data} setShow={() => setShow(false)} />
+				{show && (
+					<ModalPalette
+						show={show}
+						data={data}
+						setShow={() => setShow(false)}
+					/>
 				)}
 			</GenerateWrapper>
 		</>
