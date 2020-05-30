@@ -1,6 +1,7 @@
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/github"
+  to = "https://github.com/adenekan41"
   status = 200
-  force = true
- 
+  force = true # COMMENT: ensure that we always redirect
+  headers = {X-From = "Netlify"}
+  signed = "API_SIGNATURE_TOKEN"
