@@ -16,15 +16,15 @@ const Footer = ({ explore }) => {
 					<div className="col-xs-12 col-md-3">
 						<Logo />
 						<h6>
-							Generate, explore, easy CSS copy crossbrowser code all in one
-							place
+							A curated collection of amazingly colored gradients for designers,
+							developers and art makers over the world.
 							<br />
 							<br />
-							Copyright © {new Date().getFullYear()}, Pigment.
+							Copyright © {new Date().getFullYear()}, Piggment.
 						</h6>
 					</div>
 					<div className="col-xs-12 col-md ">
-						<h5>Pigment</h5>
+						<h5>Piggment</h5>
 
 						<ul className="list-unstyled quick-links">
 							<li>
@@ -34,12 +34,20 @@ const Footer = ({ explore }) => {
 							</li>
 							<li>
 								<Link to="/palette" aria-label="Navigate To Generate Page">
-									Gradient Palette
+									Gradient Palettes
 								</Link>
 							</li>
 							<li>
 								<Link to="/generate" aria-label="Navigate To Generate Page">
 									Generate Gradients
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/generate-palette"
+									aria-label="Navigate To Generate Palette Page"
+								>
+									Generate Palettes
 								</Link>
 							</li>
 							<li>

@@ -31,7 +31,7 @@ const ModalLayout = ({ show, setShow, data }) => {
 				className="d-block ml-auto mb-5 close_modal"
 				onClick={() => setShow(false)}
 			/>
-			<h4 className="mb-4">About Gradient.</h4>
+			<h4 className="mb-4 header__modal">About Gradient.</h4>
 			<div id="wite_up">
 				<Card type="large" data={data} />
 			</div>

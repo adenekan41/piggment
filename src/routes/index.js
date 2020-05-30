@@ -12,7 +12,8 @@ import Footer from '../components/footer';
 import LogoPrimary from 'components/logo-primary';
 
 const Explore = lazy(() => import('../pages/explore'));
-const Palette = lazy(() => import('../pages/gradient-palette'));
+const GeneratePalette = lazy(() => import('../pages/generate-palette'));
+const Palette = lazy(() => import('../pages/palette'));
 const SavedColors = lazy(() => import('../pages/saved'));
 const Home = lazy(() => import('../pages'));
 const Generate = lazy(() => import('../pages/generate'));
@@ -23,7 +24,7 @@ const ContrastChecker = lazy(() => import('../pages/constrast-checker'));
 const routes = ({ location }) => (
 	<Wrapper>
 		<ErrorBoundary>
-			<NavLayout generate={location.pathname === '/generate'} />
+			<NavLayout />
 			<TransitionGroup>
 				<CSSTransition
 					key={location.key}
@@ -43,6 +44,11 @@ const routes = ({ location }) => (
 								<Route exact path="/palette" component={Palette} />
 								<Route
 									exact
+									path="/generate-palette"
+									component={GeneratePalette}
+								/>
+								<Route
+									exact
 									path="/contrast-checker"
 									component={ContrastChecker}
 								/>
@@ -51,7 +57,7 @@ const routes = ({ location }) => (
 					</Suspense>
 				</CSSTransition>
 			</TransitionGroup>
-			{location.pathname !== '/generate' && (
+			{!location.pathname.includes('generate') && (
 				<Footer explore={location.pathname === '/explore'} />
 			)}
 		</ErrorBoundary>

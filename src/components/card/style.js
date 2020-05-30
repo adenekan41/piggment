@@ -1,5 +1,43 @@
 import styled, { css } from 'styled-components';
 
+const figure = css`
+	width: 100%;
+	margin: 0;
+	display: flex;
+	align-items: flex-end;
+	flex-grow: 1;
+	transition: all 0.1s ease-in-out;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	flex-basis: 1px;
+	justify-content: center;
+	transition: all 500ms ease-in-out;
+	span {
+		visibility: hidden;
+		height: 0;
+		font-size: 0px;
+		transition: all 300ms ease;
+	}
+	&:hover {
+		color: var(--black);
+		flex-basis: 3rem;
+		span {
+			background: #00000042;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			visibility: visible;
+			font-size: 15px;
+			font-weight: 500;
+			justify-content: center;
+			color: #fff;
+			text-align: center;
+			padding: 10px;
+			height: 100%;
+		}
+	}
+`;
 export const Snippet = styled.div`
 	background: #fffffff2;
 	position: absolute;
@@ -83,6 +121,24 @@ export const GenerateWrapper = styled.div`
 			text-align: center !important;
 		}
 	}
+	.bordered {
+		border-radius: 1px;
+		overflow: hidden;
+		margin-bottom: 1rem;
+		flex-direction: row-reverse;
+		transition: all 0.4s ease;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		figure {
+			${figure}
+			span {
+				&:hover {
+					font-size: 1.5em;
+				}
+			}
+		}
+	}
 	.small__colors {
 		height: 18px;
 		width: 18px;
@@ -143,12 +199,16 @@ export const GenerateWrapper = styled.div`
 		article {
 			text-align: left !important;
 		}
+		@media (max-width: 787px) {
+			width: 98%;
+		}
 	}
 	.write__up {
 		padding: 0 30px;
 		background: #fff8f0;
 		border-radius: 6px;
-
+		background-size: calc(20 * 0.5px) calc(20 * 0.5px);
+		background-image: radial-gradient(#0a113e30 0.5px, transparent 0.5px);
 		display: flex;
 		width: 97.5%;
 		position: fixed;
@@ -253,7 +313,7 @@ export const CardWrapper = styled.div`
 	cursor: pointer;
 	transition: all 0.4s ease;
 	figure {
-		min-height: 15em;
+		min-height: 13em;
 		border-radius: 8px;
 		transition: all 0.4s ease;
 		${(props) =>
@@ -336,56 +396,22 @@ export const PaletteCardWrapper = styled.div`
 	box-shadow: 0 2px 15px #0d14420d;
 	cursor: pointer;
 	transition: all 0.4s ease;
+
 	figure {
+		${figure}
 		min-height: 11em;
-		width: 100%;
-		margin: 0;
-		display: flex;
-		align-items: flex-end;
-		flex-grow: 1;
-		transition: all 0.1s ease-in-out;
-		cursor: pointer;
-		position: relative;
-		overflow: hidden;
-		flex-basis: 1px;
 		${(props) =>
-			props.mode === 'large' &&
+			props.cardMode === 'large' &&
 			css`
 				min-height: 23em;
 			`}
-		justify-content: center;
-		transition: all 500ms ease-in-out;
+
 		${(props) =>
 			props.layout &&
 			css`
 				min-height: 2.2em;
 			`}
-		span {
-			visibility: hidden;
-			height: 0;
-			font-size: 0px;
-			transition: all 300ms ease;
-		}
-		&:hover {
-			color: var(--black);
-			flex-basis: 3rem;
-			span {
-				background: #00000042;
-				display: flex;
-				align-items: center;
-				width: 100%;
-				visibility: visible;
-				font-size: 15px;
-				font-weight: 500;
-				justify-content: center;
-				color: #fff;
-				text-align: center;
-				padding: 10px;
-				height: 100%;
-			}
-		}
 	}
-
 	svg {
 		width: 1.06em;
 		fill: #717171;
@@ -445,7 +471,7 @@ export const PaletteCardWrapper = styled.div`
 				margin: auto;
 			`}
 		${(props) =>
-			props.mode === 'large' &&
+			props.cardMode === 'large' &&
 			css`
 				margin: 0;
 			`}

@@ -162,7 +162,9 @@ const Gradientpalette = () => {
 							</article>
 							<br />
 							<br />
-							{!isEmpty(result) && <Card palette mode="large" data={result} />}
+							{!isEmpty(result) && (
+								<Card palette cardMode="large" data={result} />
+							)}
 						</div>
 					</div>
 				</div>

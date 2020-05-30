@@ -5,20 +5,27 @@ import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 
 import { Link } from 'react-router-dom';
 import { clearState } from 'codewonders-helpers';
+import SEO from 'components/seo';
 import GradientLayout from '../components/card/card-container';
 
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
 import { ReactComponent as Love } from '../assets/icons/icon-love.svg';
 import { ReactComponent as Empty } from '../assets/icons/icon-empty.svg';
-import SEO from 'components/seo';
 
 const SavedColors = () => {
 	const [state, setState] = useState([]);
+	const [palette, setPalette] = useState([]);
+	const [nav, setNav] = useState('gradients');
 
 	useEffect(() => {
-		setState(getState('SAVED'));
-		if (getState('SAVED').length === 0) {
-			clearState('SAVED');
+		setState(getState('SAVED_GRADIENTS'));
+		setPalette(getState('SAVED_PALETTE'));
+
+		if (getState('SAVED_GRADIENTS').length === 0) {
+			clearState('SAVED_GRADIENTS');
+		}
+		if (getState('SAVED_PALETTE').length === 0) {
+			clearState('SAVED_PALETTE');
 		}
 	}, []);
 
@@ -32,7 +39,8 @@ const SavedColors = () => {
 							<article>
 								<h1>Your gradient pocket.</h1>
 								<p>
-									You currently have <b>({state.length || 0})</b> gradients in
+									You currently have{' '}
+									<b>({state.length + palette.length || 0})</b> gradients in
 									your pocket.
 								</p>
 							</article>
@@ -45,22 +53,65 @@ const SavedColors = () => {
 			</Header>
 			<Section>
 				<div className="container">
-					<GradientLayout
-						header={`Saved (${state.length || 0})`}
-						mode="delete"
-						state={state}
-					/>
-					{!getState('SAVED') && (
-						<div className="text-center empty">
-							<Empty className="large__svg" />
-							<h3>You dont have any saved gradient yet</h3>
-							<p>
-								Click <Love className="small__svg" /> to save a gradient
-							</p>
-							<Link className="btn btn-pigment mt-4" to="/explore">
-								Explore Gradients
-							</Link>
-						</div>
+					<div className="d-flex  justify-content-center tab__nav">
+						<button
+							onClick={() => setNav('gradients')}
+							className={`btn ${nav === 'gradients' && 'active'}`}
+							type="button"
+						>
+							Gradients <span>{state.length || 0}</span>
+						</button>
+						<button
+							onClick={() => setNav('palette')}
+							className={`btn ${nav === 'palette' && 'active'}`}
+							type="button"
+						>
+							Palettes <span>{palette.length || 0}</span>
+						</button>
+					</div>
+					{nav === 'gradients' ? (
+						<>
+							<div className="fadeIn">
+								<GradientLayout
+									header={`Saved Gradients (${state.length || 0})`}
+									mode="delete"
+									state={state}
+								/>
+								{!getState('SAVED_GRADIENTS') && (
+									<div className="text-center empty">
+										<Empty className="large__svg" />
+										<h3>You dont have any saved gradient yet</h3>
+										<p>
+											Click <Love className="small__svg" /> to save a gradient
+										</p>
+										<Link className="btn btn-piggment mt-4" to="/explore">
+											Explore Gradients
+										</Link>
+									</div>
+								)}
+							</div>
+						</>
+					) : (
+						<>
+							<GradientLayout
+								header={`Saved Palettes (${palette.length || 0})`}
+								mode="delete"
+								state={palette}
+							/>
+							{!getState('SAVED_PALETTE') && (
+								<div className="text-center empty">
+									<Empty className="large__svg" />
+									<h3>You dont have any saved gradient palettes yet</h3>
+									<p>
+										Click <Love className="small__svg" /> to save a gradient
+										palette
+									</p>
+									<Link className="btn btn-piggment mt-4" to="/palette">
+										Explore Palettes
+									</Link>
+								</div>
+							)}
+						</>
 					)}
 				</div>
 				<br />
@@ -72,7 +123,7 @@ const SavedColors = () => {
 
 const Header = styled.header`
 	background: #fff8f0;
-	min-height: 30em;
+	min-height: 28em;
 	align-items: center;
 	justify-content: center;
 	background-size: calc(20 * 0.5px) calc(20 * 0.5px);
@@ -94,9 +145,37 @@ const Header = styled.header`
 `;
 
 const Section = styled.section`
-	padding-top: 5rem;
+	padding-top: 2rem;
 	background: #fff8f0;
 	min-height: 100vh;
+	.tab__nav {
+		margin: 1.5rem 0;
+		button {
+			border: none;
+			border-radius: 0px;
+			margin: 0 5px;
+			font-size: 15px;
+			color: var(--black);
+			background: transparent;
+			padding: 11px 30px;
+			span {
+				background: #d0d0d0;
+				padding: 2px 10px;
+				border-radius: 50px;
+				margin-left: 8px;
+				font-size: 12px;
+				color: var(--black);
+			}
+			&.active {
+				border-bottom: 3px solid var(--accent);
+				color: var(--accent);
+				span {
+					background: var(--accent);
+					color: #fff;
+				}
+			}
+		}
+	}
 	.empty {
 		margin-top: 2rem;
 		h3 {

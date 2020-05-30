@@ -23,15 +23,16 @@ const PaletteCard = ({
 	loved,
 	saveGradient,
 	layout,
-	mode = 'card',
+	cardMode = 'card',
+	mode,
 }) => {
 	const [viewCode, setViewCode] = useState(false);
 	const [show, setShow] = useState(false);
 
 	const deleteGradient = (datas) => {
 		setState(
-			'SAVED',
-			getState('SAVED').filter((item) => item.id !== datas.id)
+			'SAVED_PALETTE',
+			getState('SAVED_PALETTE').filter((item) => item.id !== datas.id)
 		);
 		history.go();
 	};
@@ -40,7 +41,7 @@ const PaletteCard = ({
 			<PaletteCardWrapper
 				className="card"
 				layout={layout}
-				mode={mode}
+				cardMode={cardMode}
 				color={{
 					one: data.start,
 					two: data.end,
@@ -55,7 +56,7 @@ const PaletteCard = ({
 						palette
 					/>
 				)}
-				{mode === 'card' ? (
+				{cardMode === 'card' ? (
 					<>
 						<div className="card-body">
 							<div onClick={() => setShow(!show)}>
@@ -92,31 +93,48 @@ const PaletteCard = ({
 									background: data.end,
 								}}
 							/>
+
 							<BorderWrap className="float-right border-wrap">
-								<Code
-									className=""
+								<button
 									onClick={() => {
 										setViewCode(true);
 										copyText();
 									}}
-								/>
-								<Eye
-									className="ml-2"
+									type="button"
+									className="none-button"
+								>
+									<Code tabIndex="-1" />
+								</button>
+								<button
 									onClick={() => {
 										setShow(true);
 									}}
-								/>
+									type="button"
+									className="none-button ml-2"
+								>
+									<Eye />
+								</button>
+
 								{mode !== 'delete' && (
-									<Love
+									<button
 										onClick={() => saveGradient(data)}
-										className={`${loved && 'active_love'} ml-2`}
-									/>
+										type="button"
+										className="none-button ml-2"
+									>
+										<Love
+											tabIndex="-1"
+											className={`${loved && 'active_love'}`}
+										/>
+									</button>
 								)}
 								{mode === 'delete' && (
-									<Delete
+									<button
 										onClick={() => deleteGradient(data)}
-										className="ml-2"
-									/>
+										type="button"
+										className="none-button ml-2"
+									>
+										<Delete tabIndex="-1" />
+									</button>
 								)}
 							</BorderWrap>
 						</div>
@@ -138,7 +156,7 @@ const PaletteCard = ({
 						<div className="write__up">
 							<article>
 								<h4>{data.name}</h4>
-								<p>By Pigment Gradients</p>
+								<p>By Piggment Gradients</p>
 							</article>
 
 							<BorderWrap className="float-right border-wrap">
@@ -182,7 +200,7 @@ PaletteCard.propTypes = {
 	loved: PropTypes.bool,
 	saveGradient: PropTypes.func,
 	layout: PropTypes.bool,
-	mode: PropTypes.string,
+	cardMode: PropTypes.string,
 };
 
 export default PaletteCard;

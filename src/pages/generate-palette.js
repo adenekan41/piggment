@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import Card from '../components/card';
 import SEO from 'components/seo';
 
-const GeneratePalette = () => {
-	const { state, loadGradients } = useContext(GradientContext);
+const Generate = () => {
+	const { palette, loadpalettes } = useContext(GradientContext);
 	const [index, setIndex] = useState(0);
 
 	const handleSpaceBar = useCallback(
@@ -14,12 +14,12 @@ const GeneratePalette = () => {
 			if (e.keyCode === 32) {
 				e.preventDefault();
 
-				await loadGradients(1);
+				await loadpalettes(1);
 				setIndex(index + 1);
 			} else if (e.keyCode === 39) {
 				e.preventDefault();
 
-				await loadGradients(1);
+				await loadpalettes(1);
 				setIndex(index + 1);
 			} else if (e.keyCode === 37) {
 				e.preventDefault();
@@ -29,14 +29,14 @@ const GeneratePalette = () => {
 				}
 			}
 		},
-		[index, loadGradients]
+		[index, loadpalettes]
 	);
 
 	useEffect(() => {
-		if (state.length < 1) {
-			loadGradients(1);
+		if (palette.length < 1) {
+			loadpalettes(1);
 		}
-	}, [loadGradients, state]);
+	}, [loadpalettes, palette]);
 
 	useEffect(
 		function setupListener() {
@@ -53,14 +53,15 @@ const GeneratePalette = () => {
 		<>
 			<SEO title="Generate Gradients" />
 			<GenerateWrapper>
-				{state.length > 0 && (
+				{palette.length > 0 && (
 					<Card
-						data={state && state[index]}
+						data={palette && palette[index]}
 						type="generate"
 						next={async () => {
-							await loadGradients(1);
+							await loadpalettes(1);
 							setIndex(index + 1);
 						}}
+						palette
 						prev={() => index > 0 && setIndex(index - 1)}
 					/>
 				)}
@@ -102,4 +103,4 @@ const GenerateWrapper = styled.main`
 	height: 100vh;
 	width: 100vw;
 `;
-export default GeneratePalette;
+export default Generate;

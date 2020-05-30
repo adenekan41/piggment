@@ -30,7 +30,7 @@ const LargeCard = ({ children, copyText, data, loved, saveGradient, url }) => {
 				<div className="write__up">
 					<article>
 						<h4>{data.name}</h4>
-						<p>By Pigment Gradients</p>
+						<p>By Piggment Gradients</p>
 					</article>
 
 					<BorderWrap className="float-right border-wrap">
@@ -41,7 +41,7 @@ const LargeCard = ({ children, copyText, data, loved, saveGradient, url }) => {
 								copyText();
 							}}
 						/>
-						<a download={`Pigment-${data.name}`} href={url} title={data.name}>
+						<a download={`Piggment-${data.name}`} href={url} title={data.name}>
 							<Save />
 						</a>
 

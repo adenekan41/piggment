@@ -30,7 +30,7 @@ class DataProvider extends React.PureComponent {
 		}
 	};
 
-	clearGradient = () => this.setState({ gradient: [] });
+	clearGradient = () => this.setState({ gradient: [], palette: [] });
 
 	loadpalettes = (amount) => {
 		for (let i = 0; i < amount; i++) {

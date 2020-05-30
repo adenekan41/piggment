@@ -28,7 +28,7 @@ const CodeSnippnets = ({ copyText, setViewCode, data, palette = false }) => {
 							</code>
 						</article>
 						<button
-							className="btn btn-pigment"
+							className="btn btn-piggment"
 							onClick={() => copyText()}
 							type="button"
 						>
@@ -52,7 +52,7 @@ const CodeSnippnets = ({ copyText, setViewCode, data, palette = false }) => {
 							</code>
 						</article>
 						<button
-							className="btn btn-pigment"
+							className="btn btn-piggment"
 							onClick={() => copyText()}
 							type="button"
 						>

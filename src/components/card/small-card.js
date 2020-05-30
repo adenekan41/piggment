@@ -33,8 +33,8 @@ const SmallCard = ({
 
 	const deleteGradient = (datas) => {
 		setState(
-			'SAVED',
-			getState('SAVED').filter((item) => item.id !== datas.id)
+			'SAVED_GRADIENTS',
+			getState('SAVED_GRADIENTS').filter((item) => item.id !== datas.id)
 		);
 		history.go();
 	};
@@ -84,24 +84,37 @@ const SmallCard = ({
 						}}
 					/>
 					<BorderWrap className="float-right border-wrap">
-						<Code
-							className="mr-2"
+						<button
 							onClick={() => {
 								setViewCode(true);
 								copyText();
 							}}
-						/>
-						<a download={`Pigment-${data.name}`} href={url} title={data.name}>
-							<Save />
+							type="button"
+							className="none-button mr-2"
+						>
+							<Code tabIndex="-1" />
+						</button>
+
+						<a download={`Piggment-${data.name}`} href={url} title={data.name}>
+							<Save tabIndex="-1" />
 						</a>
 						{mode !== 'delete' && (
-							<Love
+							<button
 								onClick={() => saveGradient(data)}
-								className={`${loved && 'active_love'} ml-2`}
-							/>
+								type="button"
+								className="none-button ml-2"
+							>
+								<Love tabIndex="-1" className={`${loved && 'active_love'}`} />
+							</button>
 						)}
 						{mode === 'delete' && (
-							<Delete onClick={() => deleteGradient(data)} className="ml-2" />
+							<button
+								onClick={() => deleteGradient(data)}
+								type="button"
+								className="none-button ml-2"
+							>
+								<Delete tabIndex="-1" />
+							</button>
 						)}
 					</BorderWrap>
 				</div>

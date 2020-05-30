@@ -35,28 +35,31 @@ const GradientLayout = React.memo(
 						)}
 					</h2>
 					<div className="d-flex mb-md-0 mb-3">
-						<div
+						<button
 							onClick={() => {
 								saveState('LAYOUT', 1);
 								setLayout(true);
 							}}
-							className="mr-4"
+							className="mr-4 none-button"
+							type="button"
 						>
 							<Circle
 								className={getState('LAYOUT') || layout ? 'active' : null}
 							/>
-						</div>
-						<div
-							className="mr-4"
+						</button>
+
+						<button
+							className="mr-4 none-button"
 							onClick={() => {
 								clearState('LAYOUT');
 								setLayout(false);
 							}}
+							type="button"
 						>
 							<Box
 								className={!getState('LAYOUT') || !layout ? 'active' : null}
 							/>
-						</div>
+						</button>
 						{noRefresh && (
 							<span onClick={() => clearGradient()}>
 								<Reload className="mr-1" />
@@ -72,7 +75,11 @@ const GradientLayout = React.memo(
 								data={bg_gradient}
 								key={index + bg_gradient.name}
 								mode={mode}
-								palette={palette}
+								palette={
+									bg_gradient.colors && bg_gradient.colors.length > 0
+										? true
+										: palette
+								}
 								layout={getState('LAYOUT') || layout ? 'circle' : null}
 							/>
 						))}

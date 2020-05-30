@@ -32,7 +32,7 @@ const ModalPalette = ({ show, setShow, data }) => {
 			/>
 			<h4 className="mb-4 header__modal">About Palette.</h4>
 			<div id="wite_up">
-				<Card palette mode="large" data={data} />
+				<Card palette cardMode="large" data={data} />
 			</div>
 			<div className="headers">
 				<h2>{data.name}</h2>

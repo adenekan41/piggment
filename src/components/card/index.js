@@ -9,6 +9,7 @@ import LargeCard from './large-card';
 import GeneratorCard from './generator-card';
 import SmallCard from './small-card';
 import PaletteCard from './palette-card';
+import GeneratorPaletteCard from './generate-palette';
 
 const Card = React.memo(
 	({
@@ -16,6 +17,7 @@ const Card = React.memo(
 		mode,
 		layout,
 		palette = false,
+		cardMode,
 		type = 'small',
 		next = () => {},
 		prev = () => {},
@@ -61,10 +63,17 @@ const Card = React.memo(
 		}, [data, palette]);
 
 		const saveGradient = (datas) => {
-			if (!getState('SAVED')) {
-				setState('SAVED', []);
+			if (!getState('SAVED_GRADIENTS')) {
+				setState('SAVED_GRADIENTS', []);
 			}
-			setState('SAVED', [...getState('SAVED'), datas]);
+			setState('SAVED_GRADIENTS', [...getState('SAVED_GRADIENTS'), datas]);
+			setLoved(true);
+		};
+		const savePalette = (datas) => {
+			if (!getState('SAVED_PALETTE')) {
+				setState('SAVED_PALETTE', []);
+			}
+			setState('SAVED_PALETTE', [...getState('SAVED_PALETTE'), datas]);
 			setLoved(true);
 		};
 
@@ -147,14 +156,23 @@ const Card = React.memo(
 							</GeneratorCard>
 						)}
 					</>
+				) : type === 'generate' ? (
+					<GeneratorPaletteCard
+						copyText={copyText}
+						data={data}
+						loved={loved}
+						saveGradient={savePalette}
+						next={next}
+						prev={prev}
+					/>
 				) : (
 					<PaletteCard
 						copyText={copyText}
 						data={data}
 						loved={loved}
-						saveGradient={saveGradient}
-						url={url}
+						saveGradient={savePalette}
 						layout={layout}
+						cardMode={cardMode}
 						mode={mode}
 					/>
 				)}
@@ -170,6 +188,7 @@ Card.propTypes = {
 	type: PropTypes.string,
 	palette: PropTypes.bool,
 	next: PropTypes.func,
+	cardMode: PropTypes.string,
 	prev: PropTypes.func,
 };
 

@@ -2,69 +2,75 @@ import React, { useState } from 'react';
 import CodeSnippnets from 'components/snippet';
 import PropTypes from 'prop-types';
 
-import { rgbToHex } from 'utils';
 import { BorderWrap, GenerateWrapper } from './style';
 
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
-import { ReactComponent as Save } from '../../assets/icons/icon-save.svg';
+import { ReactComponent as Eye } from '../../assets/icons/icon-eye.svg';
+import ModalPalette from 'components/modal/palette';
 
-const GeneratorCard = ({
-	children,
+const GeneratorPaletteCard = ({
 	copyText,
 	data,
 	loved,
 	saveGradient,
-	url,
 	next,
 	prev,
 }) => {
 	const [viewCode, setViewCode] = useState(false);
+	const [show, setShow] = useState(false);
 	return (
 		<>
 			<GenerateWrapper
-				style={{
-					background: data.color,
-				}}
 				color={{
-					one: rgbToHex(data.color, 1),
-					two: rgbToHex(data.color, 0),
+					one: data.start,
+					two: data.end,
 				}}
 				className="fadeIn"
 			>
-				{children}
 				{viewCode && (
 					<CodeSnippnets
 						data={data}
 						setViewCode={setViewCode}
 						copyText={copyText}
+						palette
 					/>
 				)}
-
+				<div className="d-flex bordered">
+					{data.colors.map((color, index) => (
+						<figure
+							key={index * Date.now()}
+							style={{
+								background: color,
+							}}
+						>
+							<span>{color}</span>
+						</figure>
+					))}
+				</div>
 				<div className="write__up">
 					<article>
 						<h4>{data.name}</h4>
 						<p className="hex__section">
-							<span>{rgbToHex(data.color, 1)}</span> <ArrowRight />{' '}
-							<span>{rgbToHex(data.color, 0)}</span>
+							<span>{data.start}</span> <ArrowRight /> <span>{data.end}</span>
 						</p>{' '}
 						<div
 							className="small__colors"
 							style={{
-								background: `${rgbToHex(data.color, 1)}`,
+								background: `${data.start}`,
 							}}
 						/>
 						<div
 							className="small__colors"
 							style={{
-								background: `${rgbToHex(data.color, 0)}`,
+								background: `${data.end}`,
 							}}
 						/>
 					</article>
 
 					<div className="control__panel">
-						<h6>Tap space bar to generate new gradients</h6>
+						<h6>Tap space bar to generate new gradient palettes</h6>
 						<div className="d-flex justify-content-between">
 							<span onClick={prev}>
 								<ArrowRight style={{ transform: 'rotate(180deg)' }} /> Previous
@@ -83,9 +89,8 @@ const GeneratorCard = ({
 								copyText();
 							}}
 						/>
-						<a download={`Piggment-${data.name}`} href={url} title={data.name}>
-							<Save />
-						</a>
+
+						<Eye onClick={() => setShow(true)} />
 
 						<Love
 							onClick={() => saveGradient(data)}
@@ -93,20 +98,21 @@ const GeneratorCard = ({
 						/>
 					</BorderWrap>
 				</div>
+				show && (
+				<ModalPalette show={show} data={data} setShow={() => setShow(false)} />
+				)}
 			</GenerateWrapper>
 		</>
 	);
 };
 
-GeneratorCard.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
+GeneratorPaletteCard.propTypes = {
 	copyText: PropTypes.func,
 	data: PropTypes.object,
 	loved: PropTypes.bool,
 	saveGradient: PropTypes.func,
-	url: PropTypes.string,
 	next: PropTypes.func,
 	prev: PropTypes.func,
 };
 
-export default GeneratorCard;
+export default GeneratorPaletteCard;

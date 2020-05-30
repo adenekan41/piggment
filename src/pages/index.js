@@ -30,8 +30,11 @@ const Home = () => {
 									place
 								</p>
 
-								<Link className="btn btn-pigment" to="/generate">
-									Generate Gradients
+								<Link className="btn btn-piggment mr-md-3" to="/generate">
+									Start Generating
+								</Link>
+								<Link className="btn btn-outline-piggment" to="/explore">
+									Explore Gradients
 								</Link>
 							</article>
 						</div>
@@ -61,7 +64,7 @@ const Home = () => {
 
 					<div className="m-auto text-center more__cards">
 						<p>Need more gradients?</p>
-						<Link className="btn btn-pigment" to="/explore">
+						<Link className="btn btn-piggment" to="/explore">
 							See All Gradient
 						</Link>
 					</div>
@@ -76,11 +79,11 @@ const Home = () => {
 								Create the perfect gradient palette and get inspired to make
 								something beautiful.
 							</p>
-							<Link className="btn btn-pigment mr-3" to="/generate">
+							<Link className="btn btn-piggment mr-3" to="/generate-palette">
 								Start Generating
 							</Link>
-							<Link className="btn btn-outline-pigment" to="/explore">
-								Explore Gradients
+							<Link className="btn btn-outline-piggment" to="/palette">
+								Explore Palettes
 							</Link>
 						</div>
 						<div className="col-md-7 d-none d-md-block">
