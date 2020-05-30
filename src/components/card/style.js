@@ -439,8 +439,8 @@ export const PaletteCardWrapper = styled.div`
 			props.layout &&
 			css`
 				flex-direction: column-reverse;
-				width: 220px;
-				height: 220px;
+				width: 13.2em;
+				height: 13.2em;
 				border-radius: 50% !important;
 				margin: auto;
 			`}
