@@ -1,6 +1,6 @@
 import React from 'react';
-import Routes from './routes';
 import SEO from 'components/seo';
+import Routes from './routes';
 
 const App = () => {
 	return (

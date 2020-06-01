@@ -105,10 +105,7 @@ const Footer = ({ explore }) => {
 
 						<ul className="list-unstyled quick-links">
 							<li>
-								<Link
-									to="/privacy"
-									aria-label="Navigate To Privacy policy page"
-								>
+								<Link to="/about" aria-label="Navigate To About page">
 									About
 								</Link>
 							</li>

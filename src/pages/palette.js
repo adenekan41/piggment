@@ -162,6 +162,8 @@ const Gradientpalette = () => {
 							</article>
 							<br />
 							<br />
+						</div>
+						<div className="col-md-12 mb-4">
 							{!isEmpty(result) && (
 								<Card palette cardMode="large" data={result} />
 							)}

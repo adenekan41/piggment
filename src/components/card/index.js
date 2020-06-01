@@ -66,14 +66,14 @@ const Card = React.memo(
 			if (!getState('SAVED_GRADIENTS')) {
 				setState('SAVED_GRADIENTS', []);
 			}
-			setState('SAVED_GRADIENTS', [...getState('SAVED_GRADIENTS'), datas]);
+			setState('SAVED_GRADIENTS', [datas, ...getState('SAVED_GRADIENTS')]);
 			setLoved(true);
 		};
 		const savePalette = (datas) => {
 			if (!getState('SAVED_PALETTE')) {
 				setState('SAVED_PALETTE', []);
 			}
-			setState('SAVED_PALETTE', [...getState('SAVED_PALETTE'), datas]);
+			setState('SAVED_PALETTE', [datas, ...getState('SAVED_PALETTE')]);
 			setLoved(true);
 		};
 

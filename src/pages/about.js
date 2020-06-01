@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Banner } from '../assets/icons/banner-pallet.svg';
 import { ReactComponent as BannerMore } from '../assets/icons/banner-contrast.svg';
 
-const ContrastChecker = () => {
+const AboutPage = () => {
 	return (
 		<>
 			<SEO
-				title="Contrast Checker"
-				description="Get the contrast ratio of text and colors for your app"
+				title="About Piggment"
+				description="	We are a one man team trying to deliver the best experience."
 			/>
 			<Header>
 				<div className="container">
@@ -316,4 +316,4 @@ const SectionTrusted = styled.section`
 	}
 `;
 
-export default ContrastChecker;
+export default AboutPage;

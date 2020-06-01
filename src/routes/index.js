@@ -12,6 +12,7 @@ import Footer from '../components/footer';
 import LogoPrimary from 'components/logo-primary';
 
 const Explore = lazy(() => import('../pages/explore'));
+// const NotFound = lazy(() => import('../pages/404'));
 const About = lazy(() => import('../pages/about'));
 const GeneratePalette = lazy(() => import('../pages/generate-palette'));
 const Palette = lazy(() => import('../pages/palette'));
@@ -49,6 +50,7 @@ const routes = ({ location }) => (
 									path="/generate-palette"
 									component={GeneratePalette}
 								/>
+
 								<Route
 									exact
 									path="/contrast-checker"
