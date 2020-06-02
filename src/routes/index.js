@@ -10,6 +10,7 @@ import DataProvider from '../context/provider';
 import Footer from '../components/footer';
 
 import LogoPrimary from 'components/logo-primary';
+import AddToHomeScreen from 'components/add-to-homescreen';
 
 const Explore = lazy(() => import('../pages/explore'));
 // const NotFound = lazy(() => import('../pages/404'));
@@ -27,6 +28,7 @@ const routes = ({ location }) => (
 	<Wrapper>
 		<ErrorBoundary>
 			<NavLayout />
+			<AddToHomeScreen />
 			<TransitionGroup>
 				<CSSTransition
 					key={location.key}
