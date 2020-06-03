@@ -9,6 +9,7 @@ import {
 } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import history from 'utils/history';
 import { BorderWrap, PaletteCardWrapper } from './style';
+import ShareDropdown from './share-dropdown';
 
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Eye } from '../../assets/icons/icon-eye.svg';
@@ -105,6 +106,7 @@ const PaletteCard = ({
 								>
 									<Code tabIndex="-1" />
 								</button>
+								<ShareDropdown palette data={data} />
 								<button
 									onClick={() => {
 										setShow(true);
@@ -170,6 +172,7 @@ const PaletteCard = ({
 								>
 									<Code tabIndex="-1" />
 								</button>
+								<ShareDropdown palette data={data} />
 								<button
 									onClick={() => {
 										setShow(true);
@@ -210,6 +213,7 @@ PaletteCard.propTypes = {
 	loved: PropTypes.bool,
 	saveGradient: PropTypes.func,
 	layout: PropTypes.bool,
+	mode: PropTypes.string,
 	cardMode: PropTypes.string,
 };
 

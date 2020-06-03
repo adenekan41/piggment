@@ -6,6 +6,7 @@ import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import { Link } from 'react-router-dom';
 import { clearState } from 'codewonders-helpers';
 import SEO from 'components/seo';
+import AddToHomeScreen from 'components/add-to-homescreen';
 import GradientLayout from '../components/card/card-container';
 
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
@@ -32,6 +33,7 @@ const SavedColors = () => {
 	return (
 		<>
 			<SEO title="Saved Gradients" />
+			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center">

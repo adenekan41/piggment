@@ -2,13 +2,14 @@ import React, { useCallback, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import { debounce } from 'utils';
+import SEO from 'components/seo';
+import AddToHomeScreen from 'components/add-to-homescreen';
 import GradientLayout from '../components/card/card-container';
 import GradientContext from '../context';
 
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';
 import { ReactComponent as Search } from '../assets/icons/icon-search.svg';
-import SEO from 'components/seo';
 
 const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -52,6 +53,7 @@ const Explore = () => {
 				title="Explore"
 				description="Explore fresh gradients. Find new gradients Inspiring Gradients"
 			/>
+			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center justify-content-center  pos-rel">

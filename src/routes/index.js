@@ -10,9 +10,9 @@ import DataProvider from '../context/provider';
 import Footer from '../components/footer';
 
 import LogoPrimary from 'components/logo-primary';
-import AddToHomeScreen from 'components/add-to-homescreen';
 
 const Explore = lazy(() => import('../pages/explore'));
+const SinglePallete = lazy(() => import('../pages/single-pallete'));
 // const NotFound = lazy(() => import('../pages/404'));
 const About = lazy(() => import('../pages/about'));
 const GeneratePalette = lazy(() => import('../pages/generate-palette'));
@@ -28,7 +28,6 @@ const routes = ({ location }) => (
 	<Wrapper>
 		<ErrorBoundary>
 			<NavLayout />
-			<AddToHomeScreen />
 			<TransitionGroup>
 				<CSSTransition
 					key={location.key}
@@ -46,6 +45,11 @@ const routes = ({ location }) => (
 								<Route exact path="/terms" component={Terms} />
 								<Route exact path="/privacy" component={Privacy} />
 								<Route exact path="/palette" component={Palette} />
+								<Route
+									exact
+									path="/palette/:color1/:color2/:name"
+									component={SinglePallete}
+								/>
 								<Route exact path="/about" component={About} />
 								<Route
 									exact

@@ -86,6 +86,26 @@ export const BorderWrap = styled.div`
 	margin: 0;
 	border-radius: 50px;
 
+	.dropdown-menu.show {
+		font-size: calc(var(--font-sm) - 1px);
+		border: none;
+		box-shadow: 0 2px 15px #00000030;
+		background: #fff8f0;
+
+		a {
+			color: var(--black);
+			font-weight: 100 !important;
+		}
+	}
+	.share__button {
+		svg {
+			transition: all 0.3s ease;
+			&:hover {
+				fill: var(--black) !important;
+				transform: scale(1.14);
+			}
+		}
+	}
 	button {
 		cursor: pointer;
 
@@ -96,7 +116,7 @@ export const BorderWrap = styled.div`
 			}
 		}
 
-		&:nth-child(3) {
+		&:last-child {
 			svg {
 				&:hover {
 					fill: #e83630 !important;
@@ -104,7 +124,7 @@ export const BorderWrap = styled.div`
 				}
 			}
 		}
-		&:nth-child(2) {
+		&:nth-child(3) {
 			svg {
 				&:hover {
 					fill: var(--theme-primary) !important;

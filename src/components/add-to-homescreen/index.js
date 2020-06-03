@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import useAddToHomeScreen from './use-add-tohomescreen';
 import styled from 'styled-components';
+import useAddToHomeScreen from './use-add-tohomescreen';
 
 const AddToHomeScreen = () => {
 	const [prompt, promptToInstall] = useAddToHomeScreen();
