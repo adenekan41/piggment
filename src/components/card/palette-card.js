@@ -106,7 +106,7 @@ const PaletteCard = ({
 								>
 									<Code tabIndex="-1" />
 								</button>
-								<ShareDropdown palette data={data} />
+
 								<button
 									onClick={() => {
 										setShow(true);
@@ -138,6 +138,7 @@ const PaletteCard = ({
 										<Delete tabIndex="-1" />
 									</button>
 								)}
+								<ShareDropdown palette data={data} />
 							</BorderWrap>
 						</div>
 					</>
@@ -172,7 +173,7 @@ const PaletteCard = ({
 								>
 									<Code tabIndex="-1" />
 								</button>
-								<ShareDropdown palette data={data} />
+
 								<button
 									onClick={() => {
 										setShow(true);
@@ -190,6 +191,7 @@ const PaletteCard = ({
 								>
 									<Love tabIndex="-1" className={`${loved && 'active_love'}`} />
 								</button>
+								<ShareDropdown palette data={data} />
 							</BorderWrap>
 						</div>
 					</>

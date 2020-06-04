@@ -16,6 +16,7 @@ import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as Save } from '../../assets/icons/icon-save.svg';
 import { ReactComponent as Delete } from '../../assets/icons/icon-delete.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
+import ShareDropdown from './share-dropdown';
 
 const SmallCard = ({
 	children,
@@ -90,12 +91,12 @@ const SmallCard = ({
 								copyText();
 							}}
 							type="button"
-							className="none-button mr-2"
+							className="none-button"
 						>
 							<Code tabIndex="-1" />
 						</button>
 
-						<button type="button" className="none-button" tabIndex="-1">
+						<button type="button" className="none-button ml-2" tabIndex="-1">
 							<a
 								download={`Piggment-${data.name}`}
 								href={url}
@@ -123,6 +124,7 @@ const SmallCard = ({
 								<Delete tabIndex="-1" />
 							</button>
 						)}
+						<ShareDropdown data={data} save={() => saveGradient(data)} />
 					</BorderWrap>
 				</div>
 				{show && (

@@ -49,7 +49,7 @@ export const Snippet = styled.div`
 
 	padding: 24px;
 	article {
-		text-align: left !important;
+		text-align: left;
 	}
 	h4 {
 		font-size: var(--font-sm);
@@ -63,7 +63,7 @@ export const Snippet = styled.div`
 		margin-bottom: 2px;
 	}
 	svg {
-		width: 20px;
+		width: var(--font-md);
 	}
 	code {
 		font-size: 12px;
@@ -81,10 +81,13 @@ export const Snippet = styled.div`
 /* ----------------------------- end codsnipped ----------------------------- */
 
 export const BorderWrap = styled.div`
-	border: 1px solid #e4e4e4;
-	padding: 1px 7px;
+	border: 1px solid #efefef;
+	padding: 2px 4px 2px 7px;
 	margin: 0;
 	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	.dropdown-menu.show {
 		font-size: calc(var(--font-sm) - 1px);
@@ -94,29 +97,42 @@ export const BorderWrap = styled.div`
 
 		a {
 			color: var(--black);
+			padding: 6px 16px;
 			font-weight: 100 !important;
 		}
 	}
 	.share__button {
-		svg {
+		svg.dropdown-toggle {
 			transition: all 0.3s ease;
+			background: #e2e2e2ad;
+			border-radius: 50px;
+			width: 1.238em;
+
+			height: 1.238em;
+			padding: 0.28em;
+			display: block;
 			&:hover {
 				fill: var(--black) !important;
 				transform: scale(1.14);
 			}
 		}
 	}
-	button {
+	button,
+	a {
 		cursor: pointer;
-
+		height: auto;
+		width: auto;
+		display: flex;
 		svg {
 			transition: all 0.3s ease;
+			width: calc(var(--font-sm) + -1px);
+			height: calc(var(--font-sm) + -1px);
 			&.active_love {
 				fill: #e83630 !important;
 			}
 		}
 
-		&:last-child {
+		&:nth-child(3) {
 			svg {
 				&:hover {
 					fill: #e83630 !important;
@@ -124,7 +140,7 @@ export const BorderWrap = styled.div`
 				}
 			}
 		}
-		&:nth-child(3) {
+		&:nth-child(2) {
 			svg {
 				&:hover {
 					fill: var(--theme-primary) !important;
@@ -149,7 +165,7 @@ export const GenerateWrapper = styled.div`
 
 	.css_code {
 		article {
-			text-align: center !important;
+			text-align: center;
 		}
 	}
 	.bordered {
@@ -270,14 +286,13 @@ export const GenerateWrapper = styled.div`
 			color: #8c8c8c;
 			margin: 5px 0;
 			svg {
-				width: calc(var(--font-sm) + 1.1px);
+				/* width: calc(var(--font-sm) + 1.1px); */
 				height: auto;
 				fill: #8c8c8c;
 			}
 		}
 		svg {
-			width: 23px;
-			height: 33px;
+			font-size: 1.45em;
 			fill: #a7a7a7;
 		}
 	}
@@ -290,7 +305,7 @@ export const LargeCardWrapper = styled.div`
 	border-radius: 7px;
 	.css_code {
 		article {
-			text-align: center !important;
+			text-align: left;
 		}
 	}
 
@@ -306,6 +321,7 @@ export const LargeCardWrapper = styled.div`
 		top: 0;
 		border-radius: 0;
 	}
+
 	.write__up {
 		padding: 0 25px;
 		background: #0a113e30;
@@ -332,8 +348,8 @@ export const LargeCardWrapper = styled.div`
 			color: #dedede;
 		}
 		svg {
-			width: calc(var(--font-sm) + 1.1px);
-			fill: #dedede;
+			/* width: calc(var(--font-sm) + 1.1px); */
+			fill: #efefef;
 		}
 	}
 `;
@@ -415,7 +431,7 @@ export const CardWrapper = styled.div`
 
 	svg {
 		width: 1.06em;
-		fill: #717171;
+		fill: #9a9a9a;
 	}
 	.card-body {
 		padding: 13px;
@@ -548,7 +564,7 @@ export const PaletteCardWrapper = styled.div`
 			color: #dedede;
 		}
 		svg {
-			width: calc(var(--font-sm) + 1.1px);
+			/* width: calc(var(--font-sm) + 1.1px); */
 			fill: #dedede;
 		}
 	}

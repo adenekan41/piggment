@@ -10,6 +10,7 @@ import DataProvider from '../context/provider';
 import Footer from '../components/footer';
 
 import LogoPrimary from 'components/logo-primary';
+import SingleGradient from 'pages/single-gradient';
 
 const Explore = lazy(() => import('../pages/explore'));
 const SinglePallete = lazy(() => import('../pages/single-pallete'));
@@ -47,8 +48,13 @@ const routes = ({ location }) => (
 								<Route exact path="/palette" component={Palette} />
 								<Route
 									exact
-									path="/palette/:color1/:color2/:name"
+									path="/palette/:color1/:color2/:name/:count"
 									component={SinglePallete}
+								/>
+								<Route
+									exact
+									path="/gradient/:color/:name"
+									component={SingleGradient}
 								/>
 								<Route exact path="/about" component={About} />
 								<Route

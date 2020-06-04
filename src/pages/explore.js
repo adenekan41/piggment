@@ -1,22 +1,43 @@
 import React, { useCallback, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
+import randomWords from 'random-words';
 
-import { debounce } from 'utils';
+import {
+	debounce,
+	isColor,
+	hexToRgb,
+	guidGenerator,
+	validateHexCode,
+} from 'utils';
 import SEO from 'components/seo';
 import AddToHomeScreen from 'components/add-to-homescreen';
+import Card from 'components/card';
+import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 import GradientLayout from '../components/card/card-container';
 import GradientContext from '../context';
 
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';
-import { ReactComponent as Search } from '../assets/icons/icon-search.svg';
+import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
 
 const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);
+
 	const [formstate, setState] = useState({
-		from: '',
-		to: '',
+		color:
+			'linear-gradient(58deg, rgb(182, 108, 208) 21%, rgb(12, 30, 39) 100%)',
+		from: validateHexCode(getRandomColors()) || '#a9c3d0',
+		to: validateHexCode(getRandomColors()) || '#f0c7ff',
+		angle: Math.floor(Math.random() * (100 - 58 + 1)) + 58,
 	});
+
+	const handleChange = (e, name_value) => {
+		setState({
+			...formstate,
+			[name_value]: e.target.value,
+		});
+	};
+
 	const scrollWindow = useCallback(() => {
 		const d = document.documentElement;
 		const offset = d.scrollTop + window.innerHeight;
@@ -46,7 +67,29 @@ const Explore = () => {
 		},
 		[handleScroll]
 	);
-	const handleSearchChange = (e) => {};
+
+	const [result, setResult] = useState({});
+
+	const [name] = useState(randomWords({ exactly: 2, join: ' ' }));
+	useEffect(() => {
+		if (isColor(formstate.from) && isColor(formstate.to)) {
+			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
+				formstate.from,
+				true
+			)} ${formstate.color
+				.substring(formstate.color.indexOf('rgb'), formstate.color.indexOf('%'))
+				.match(/\d+/g)
+				.pop()}%, ${hexToRgb(formstate.to, true)} ${formstate.color
+				.match(/\d+/g)
+				.pop()}%)`;
+			setResult({
+				id: guidGenerator(),
+				color: newColor,
+				name,
+			});
+		}
+	}, [formstate.from, formstate.to, formstate.angle, formstate.color, name]);
+
 	return (
 		<main>
 			<SEO
@@ -61,23 +104,8 @@ const Explore = () => {
 							<article>
 								<h1>Explore fresh gradients.</h1>
 								<div className="row align-items-center">
-									<div className="col-md-5">
-										<label htmlFor="input">Search by name / color</label>
-										<div className="input-group">
-											<div className="input-group-prepend">
-												<span className="input-group-text">
-													<Search />
-												</span>
-											</div>
-											<input
-												className="form-control"
-												onKeyUp={(e) => handleSearchChange(e)}
-												placeholder="Search by gradient name or color"
-											/>
-										</div>
-									</div>
-									<div className="col-md-3">
-										<label htmlFor="from">From color</label>
+									<div className="col-md-4">
+										<label htmlFor="background">From</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -88,27 +116,25 @@ const Explore = () => {
 														<input
 															type="color"
 															value={formstate.from}
-															onChange={(e) =>
-																setState({ from: e.target.value })
-															}
+															onChange={(e) => handleChange(e, 'from')}
 														/>
 													</div>
 												</span>
 											</div>
 											<input
 												className="form-control"
-												placeholder="#000"
-												name="from"
+												placeholder="#fff5e0"
+												type="text"
 												value={formstate.from}
-												onChange={(e) => setState({ from: e.target.value })}
+												onChange={(e) => handleChange(e, 'from')}
 											/>
 										</div>
 									</div>
-									<div className="col">
+									<div className="col-md-1 d-flex justify-content-center">
 										<ArrowRight className="mt-4" />
 									</div>
-									<div className="col-md-3">
-										<label htmlFor="input">To color</label>
+									<div className="col-md-4">
+										<label htmlFor="input">To</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -119,19 +145,29 @@ const Explore = () => {
 														<input
 															type="color"
 															value={formstate.to}
-															onChange={(e) => setState({ to: e.target.value })}
+															onChange={(e) => handleChange(e, 'to')}
 														/>
 													</div>
 												</span>
 											</div>
 											<input
 												className="form-control"
-												placeholder="#000"
-												name="to"
+												placeholder="#0e0a38"
+												type="text"
 												value={formstate.to}
-												onChange={(e) => setState({ to: e.target.value })}
+												onChange={(e) => handleChange(e, 'to')}
 											/>
 										</div>
+									</div>
+									<div className="col-md">
+										<label htmlFor="background">Angle (deg)</label>
+										<input
+											type="number"
+											className="form-control"
+											placeholder="Count"
+											value={formstate.angle}
+											onChange={(e) => handleChange(e, 'angle')}
+										/>
 									</div>
 								</div>
 							</article>
@@ -141,6 +177,9 @@ const Explore = () => {
 			</Header>
 			<Section>
 				<div className="container">
+					<div className="card__wrapper">
+						{!isEmpty(result) && <Card type="large" data={result} />}
+					</div>
 					<br />
 					<GradientLayout noRefresh header="Discover." state={state} />
 
@@ -153,7 +192,7 @@ const Explore = () => {
 
 const Header = styled.header`
 	background: #fff8f0;
-	min-height: 32em;
+	min-height: 28em;
 	align-items: center;
 	justify-content: center;
 	background-size: calc(20 * 0.5px) calc(20 * 0.5px);
@@ -211,6 +250,9 @@ const Section = styled.section`
 	.w-70 {
 		width: 70px;
 		height: 120px;
+	}
+	.card__wrapper {
+		margin: -10rem 0px 2rem;
 	}
 `;
 

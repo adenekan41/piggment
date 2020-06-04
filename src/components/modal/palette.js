@@ -8,6 +8,7 @@ import ModalWrapper from './style';
 
 import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
+import { Link } from 'react-router-dom';
 
 const ModalPalette = ({ show, setShow, data }) => {
 	const { palette, loadpalettes } = useContext(GradientContext);
@@ -36,7 +37,6 @@ const ModalPalette = ({ show, setShow, data }) => {
 			</div>
 			<div className="headers">
 				<h2>{data.name}</h2>
-
 				<div className="hexes__sections d-flex align-items-center">
 					<div className="d-flex align-items-center">
 						{' '}
@@ -48,7 +48,15 @@ const ModalPalette = ({ show, setShow, data }) => {
 						<span style={{ background: data.end }} className="mr-2" />{' '}
 						<p className="d-block">{data.end}</p>{' '}
 					</div>
-				</div>
+				</div>{' '}
+				<Link
+					className="btn btn-outline-piggment mt-4"
+					to={`/palette/${data.start.slice(1)}/${data.end.slice(
+						1
+					)}/${data.name.slice(1)}/${data.count}`}
+				>
+					Edit Palette
+				</Link>
 				<br />
 			</div>
 

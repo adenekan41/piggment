@@ -26,6 +26,7 @@ const Gradientpalette = () => {
 			[name]: e.target.value,
 		});
 	};
+
 	const { palette, loadpalettes } = useContext(GradientContext);
 
 	const scrollWindow = useCallback(() => {
@@ -211,7 +212,7 @@ const Header = styled.header`
 	}
 `;
 
-const Section = styled.section`
+export const Section = styled.section`
 	padding: 1rem 0;
 	background: #fff8f0;
 	min-height: 100vh;

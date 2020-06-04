@@ -41,8 +41,9 @@ const SavedColors = () => {
 							<article>
 								<h1>Your gradient pocket.</h1>
 								<p>
-									You currently have <b>({state.length + palette.length})</b>{' '}
-									gradients in your pocket.
+									You currently have{' '}
+									<b>({state.length || 0 + palette.length || 0})</b> gradients
+									in your pocket.
 								</p>
 							</article>
 						</div>

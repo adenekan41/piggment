@@ -90,7 +90,7 @@ export const luminanace = (r, g, b) => {
  * Hex to RGB
  * @param {String} hex
  */
-export const hexToRgb = (hex) => {
+export const hexToRgb = (hex, rgbStr = false) => {
 	if (hex) {
 		const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
 		hex = hex.replace(shorthandRegex, (m, r, g, b) => {
@@ -98,13 +98,17 @@ export const hexToRgb = (hex) => {
 		});
 
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-		return result
+		return !rgbStr && result
 			? {
 					r: parseInt(result[1], 16),
 					g: parseInt(result[2], 16),
 					b: parseInt(result[3], 16),
 			  }
-			: null;
+			: null ||
+					`rgb(${parseInt(result[1], 16)}, ${parseInt(
+						result[2],
+						16
+					)}, ${parseInt(result[3], 16)})`;
 	}
 };
 
@@ -186,7 +190,7 @@ export const ratioStatus = (ratio) => {
 	}
 };
 
-const validateHexCode = (hex) => {
+export const validateHexCode = (hex) => {
 	if (hex && hex.length < 7) {
 		return validateHexCode(getRandomColors());
 	}
@@ -225,6 +229,7 @@ export const generatepalette = (
 		name: `#Palette${guidGenerator().slice(0, 4)}`,
 		colors: palette,
 		start: colorStart,
+		count: colorCount,
 		end: colorEnd,
 	};
 };

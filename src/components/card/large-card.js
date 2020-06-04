@@ -7,6 +7,7 @@ import { LargeCardWrapper, BorderWrap } from './style';
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as Save } from '../../assets/icons/icon-save.svg';
+import ShareDropdown from './share-dropdown';
 
 const LargeCard = ({ children, copyText, data, loved, saveGradient, url }) => {
 	const [viewCode, setViewCode] = useState(false);
@@ -40,12 +41,12 @@ const LargeCard = ({ children, copyText, data, loved, saveGradient, url }) => {
 								copyText();
 							}}
 							type="button"
-							className="none-button mr-2"
+							className="none-button"
 						>
 							<Code tabIndex="-1" />
 						</button>
 
-						<button type="button" className="none-button" tabIndex="-1">
+						<button type="button" className="none-button ml-2" tabIndex="-1">
 							<a
 								download={`Piggment-${data.name}`}
 								href={url}
@@ -63,6 +64,7 @@ const LargeCard = ({ children, copyText, data, loved, saveGradient, url }) => {
 						>
 							<Love tabIndex="-1" className={`${loved && 'active_love'}`} />
 						</button>
+						<ShareDropdown data={data} save={() => saveGradient(data)} />
 					</BorderWrap>
 				</div>
 			</LargeCardWrapper>

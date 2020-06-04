@@ -9,6 +9,7 @@ import GradientContext from '../../context';
 import ModalWrapper from './style';
 import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
+import { Link } from 'react-router-dom';
 
 const ModalLayout = ({ show, setShow, data }) => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -69,6 +70,12 @@ const ModalLayout = ({ show, setShow, data }) => {
 					<ArrowRight className="mr-2" />
 					{data.color.match(/\d+/g).pop()}%
 				</div>
+				<Link
+					className="btn btn-outline-piggment mt-4"
+					to={`/gradient/${window.btoa(data.color)}/${data.name}`}
+				>
+					Edit Palette
+				</Link>
 			</div>
 
 			<GradientLayout

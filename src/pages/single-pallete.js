@@ -10,24 +10,42 @@ import { generatepalette, isColor } from 'utils';
 import Card from 'components/card';
 import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 
+import { Section as SectionPalette } from './palette';
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 
 const SinglePallete = () => {
-	const { color1, color2, name } = useParams();
+	const { color1, color2, name, count } = useParams();
+
+	const [formstate, setState] = useState({
+		start: `#${color1}`,
+		end: `#${color2}`,
+		count: (parseInt(count, 10) && count) || 6,
+	});
 
 	const { palette, loadpalettes } = useContext(GradientContext);
 	const [result, setResult] = useState({});
 
+	const handleChange = (e, name_value) => {
+		setState({
+			...formstate,
+			[name_value]: e.target.value,
+		});
+	};
+
 	useEffect(() => {
-		if (isColor(`#${color1}`) && isColor(`#${color2}`)) {
-			setResult(generatepalette(`#${color1}`, `#${color2}`));
+		if (isColor(formstate.start) && isColor(formstate.end)) {
+			setResult(
+				generatepalette(formstate.start, formstate.end, formstate.count)
+			);
 		}
-	}, [color2, color1]);
+	}, [formstate.start, formstate.end, formstate.count]);
+
 	useEffect(() => {
 		if (palette.length < 6) {
 			loadpalettes(6);
 		}
 	}, [loadpalettes, palette]);
+
 	return (
 		<>
 			<SEO title={`About pallete ${name}`} />
@@ -55,16 +73,82 @@ const SinglePallete = () => {
 			)}
 			<Section>
 				<div className="container">
+					<div className="row justify-content-center">
+						<div className="col-md-9">
+							<article className="mb-5">
+								<div className="row align-items-center">
+									<div className="col-md-4">
+										<label htmlFor="background">Start Color</label>
+										<div className="input-group">
+											<div className="input-group-prepend">
+												<span className="input-group-text">
+													<div
+														style={{ background: formstate.start }}
+														className="color-picker-wrapper"
+													>
+														<input
+															type="color"
+															value={formstate.start}
+															onChange={(e) => handleChange(e, 'start')}
+														/>
+													</div>
+												</span>
+											</div>
+											<input
+												className="form-control"
+												placeholder="#fff5e0"
+												type="text"
+												value={formstate.start}
+												onChange={(e) => handleChange(e, 'start')}
+											/>
+										</div>
+									</div>
+									<div className="col-md-1 d-flex justify-content-center">
+										<ArrowRight className="mt-4" />
+									</div>
+									<div className="col-md-4">
+										<label htmlFor="input">End Color</label>
+										<div className="input-group">
+											<div className="input-group-prepend">
+												<span className="input-group-text">
+													<div
+														style={{ background: formstate.end }}
+														className="color-picker-wrapper"
+													>
+														<input
+															type="color"
+															value={formstate.end}
+															onChange={(e) => handleChange(e, 'end')}
+														/>
+													</div>
+												</span>
+											</div>
+											<input
+												className="form-control"
+												placeholder="#0e0a38"
+												type="text"
+												value={formstate.end}
+												onChange={(e) => handleChange(e, 'end')}
+											/>
+										</div>
+									</div>
+									<div className="col-md">
+										<label htmlFor="background">Amount</label>
+										<input
+											type="number"
+											className="form-control"
+											placeholder="Count"
+											value={formstate.count}
+											onChange={(e) => handleChange(e, 'count')}
+										/>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
 					<div className="card__wrapper">
 						{!isEmpty(result) && (
-							<Card
-								palette
-								cardMode="large"
-								data={{
-									name: `#${name}`,
-									...result,
-								}}
-							/>
+							<Card palette cardMode="large" data={result} />
 						)}
 					</div>
 					{!isEmpty(result) && (
@@ -88,6 +172,8 @@ const SinglePallete = () => {
 					)}
 					<br />
 					<GradientLayout header="More Like This" state={palette} palette />
+					<br />
+					<br />
 				</div>
 			</Section>
 		</>
@@ -121,7 +207,7 @@ const Header = styled.header`
 	}
 `;
 
-const Section = styled.section`
+const Section = styled(SectionPalette)`
 	padding: 1rem 0;
 	background: #fff8f0;
 	min-height: 100vh;

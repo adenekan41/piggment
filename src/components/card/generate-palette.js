@@ -9,6 +9,7 @@ import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
 import { ReactComponent as Eye } from '../../assets/icons/icon-eye.svg';
 import ModalPalette from 'components/modal/palette';
+import ShareDropdown from './share-dropdown';
 
 const GeneratorPaletteCard = ({
 	copyText,
@@ -92,6 +93,7 @@ const GeneratorPaletteCard = ({
 						>
 							<Code tabIndex="-1" />
 						</button>
+
 						<button
 							onClick={() => {
 								setShow(true);
@@ -109,6 +111,7 @@ const GeneratorPaletteCard = ({
 						>
 							<Love tabIndex="-1" className={`${loved && 'active_love'}`} />
 						</button>
+						<ShareDropdown palette data={data} />
 					</BorderWrap>
 				</div>
 				{show && (
