@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import SEO from 'components/seo';
-import AddToHomeScreen from 'components/add-to-homescreen';
 
 import { ReactComponent as Banner } from '../assets/icons/banner-contrast.svg';
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
@@ -38,7 +37,6 @@ const ContrastChecker = () => {
 				title="Contrast Checker"
 				description="Get the contrast ratio of text and colors for your app"
 			/>
-			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center">

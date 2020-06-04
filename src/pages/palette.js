@@ -7,7 +7,6 @@ import GradientContext from 'context';
 import GradientLayout from 'components/card/card-container';
 import Card from 'components/card';
 import { isEmpty } from 'codewonders-helpers';
-import AddToHomeScreen from 'components/add-to-homescreen';
 
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';
@@ -77,7 +76,6 @@ const Gradientpalette = () => {
 				title="Gradient palette"
 				description="Get refreshing gradient palettes for your application"
 			/>
-			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center ">
@@ -117,6 +115,7 @@ const Gradientpalette = () => {
 												className="form-control"
 												placeholder="#fff5e0"
 												type="text"
+												maxLength="7"
 												value={formstate.start}
 												onChange={(e) => handleChange(e, 'start')}
 											/>
@@ -146,6 +145,7 @@ const Gradientpalette = () => {
 												className="form-control"
 												placeholder="#0e0a38"
 												type="text"
+												maxLength="7"
 												value={formstate.end}
 												onChange={(e) => handleChange(e, 'end')}
 											/>
@@ -157,6 +157,7 @@ const Gradientpalette = () => {
 											type="number"
 											className="form-control"
 											placeholder="Count"
+											maxLength="3"
 											value={formstate.count}
 											onChange={(e) => handleChange(e, 'count')}
 										/>

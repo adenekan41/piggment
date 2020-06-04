@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import SEO from 'components/seo';
-import AddToHomeScreen from 'components/add-to-homescreen';
 
 import { ReactComponent as Banner } from '../assets/icons/banner-pallet.svg';
 import { ReactComponent as BannerMore } from '../assets/icons/banner-contrast.svg';
@@ -15,7 +14,6 @@ const AboutPage = () => {
 				title="About Piggment"
 				description="	We are a one man team trying to deliver the best experience."
 			/>
-			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center">

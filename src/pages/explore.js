@@ -10,7 +10,6 @@ import {
 	validateHexCode,
 } from 'utils';
 import SEO from 'components/seo';
-import AddToHomeScreen from 'components/add-to-homescreen';
 import Card from 'components/card';
 import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 import GradientLayout from '../components/card/card-container';
@@ -96,7 +95,6 @@ const Explore = () => {
 				title="Explore"
 				description="Explore fresh gradients. Find new gradients Inspiring Gradients"
 			/>
-			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center justify-content-center  pos-rel">
@@ -125,6 +123,7 @@ const Explore = () => {
 												className="form-control"
 												placeholder="#fff5e0"
 												type="text"
+												maxLength="7"
 												value={formstate.from}
 												onChange={(e) => handleChange(e, 'from')}
 											/>
@@ -154,6 +153,7 @@ const Explore = () => {
 												className="form-control"
 												placeholder="#0e0a38"
 												type="text"
+												maxLength="7"
 												value={formstate.to}
 												onChange={(e) => handleChange(e, 'to')}
 											/>
@@ -164,7 +164,7 @@ const Explore = () => {
 										<input
 											type="number"
 											className="form-control"
-											placeholder="Count"
+											placeholder="Angle"
 											value={formstate.angle}
 											onChange={(e) => handleChange(e, 'angle')}
 										/>

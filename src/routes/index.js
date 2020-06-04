@@ -11,6 +11,7 @@ import Footer from '../components/footer';
 
 import LogoPrimary from 'components/logo-primary';
 import SingleGradient from 'pages/single-gradient';
+import AddToHomeScreen from 'components/add-to-homescreen';
 
 const Explore = lazy(() => import('../pages/explore'));
 const SinglePallete = lazy(() => import('../pages/single-pallete'));
@@ -29,6 +30,7 @@ const routes = ({ location }) => (
 	<Wrapper>
 		<ErrorBoundary>
 			<NavLayout />
+			{!location.pathname === '/' && <AddToHomeScreen />}
 			<TransitionGroup>
 				<CSSTransition
 					key={location.key}

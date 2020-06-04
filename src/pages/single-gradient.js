@@ -5,7 +5,6 @@ import SEO from 'components/seo';
 import GradientContext from 'context';
 import randomWords from 'random-words';
 
-import AddToHomeScreen from 'components/add-to-homescreen';
 import GradientLayout from 'components/card/card-container';
 import { isColor, rgbToHex, guidGenerator, hexToRgb } from 'utils';
 import Card from 'components/card';
@@ -69,7 +68,6 @@ const SingleGradient = () => {
 	return (
 		<>
 			<SEO title={`About pallete ${name}`} />
-			<AddToHomeScreen />
 			{!isEmpty(result) ? (
 				<Header>
 					<div className="container">
@@ -118,6 +116,7 @@ const SingleGradient = () => {
 												className="form-control"
 												placeholder="#fff5e0"
 												type="text"
+												maxLength="7"
 												value={formstate.from}
 												onChange={(e) => handleChange(e, 'from')}
 											/>
@@ -147,6 +146,7 @@ const SingleGradient = () => {
 												className="form-control"
 												placeholder="#0e0a38"
 												type="text"
+												maxLength="7"
 												value={formstate.to}
 												onChange={(e) => handleChange(e, 'to')}
 											/>
@@ -157,7 +157,7 @@ const SingleGradient = () => {
 										<input
 											type="number"
 											className="form-control"
-											placeholder="Count"
+											placeholder="Angle"
 											value={formstate.angle}
 											onChange={(e) => handleChange(e, 'angle')}
 										/>

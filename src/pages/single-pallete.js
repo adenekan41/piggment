@@ -4,7 +4,6 @@ import { useParams, Link } from 'react-router-dom';
 import SEO from 'components/seo';
 import GradientContext from 'context';
 
-import AddToHomeScreen from 'components/add-to-homescreen';
 import GradientLayout from 'components/card/card-container';
 import { generatepalette, isColor } from 'utils';
 import Card from 'components/card';
@@ -49,7 +48,6 @@ const SinglePallete = () => {
 	return (
 		<>
 			<SEO title={`About pallete ${name}`} />
-			<AddToHomeScreen />
 			{!isEmpty(result) ? (
 				<Header>
 					<div className="container">
