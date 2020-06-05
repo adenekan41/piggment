@@ -96,7 +96,7 @@ const Gradientpalette = () => {
 						<div className="col-md-9">
 							<article>
 								<div className="row align-items-center">
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="background">Start Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
@@ -123,10 +123,10 @@ const Gradientpalette = () => {
 											/>
 										</div>
 									</div>
-									<div className="col-md-1 d-flex justify-content-center">
+									<div className="col-md-1 d-none d-md-flex justify-content-center">
 										<ArrowRight className="mt-4" />
 									</div>
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="input">End Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
