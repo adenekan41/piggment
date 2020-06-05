@@ -10,7 +10,6 @@ import Footer from '../components/footer';
 
 import LogoPrimary from 'components/logo-primary';
 import SingleGradient from 'pages/single-gradient';
-import AddToHomeScreen from 'components/add-to-homescreen';
 
 const Explore = lazy(() => import('../pages/explore'));
 const SinglePallete = lazy(() => import('../pages/single-pallete'));
@@ -29,7 +28,6 @@ const routes = ({ location }) => (
 	<Wrapper>
 		<ErrorBoundary>
 			<NavLayout />
-			{location.pathname !== '/' && <AddToHomeScreen />}
 			<TransitionGroup>
 				<CSSTransition
 					key={location.key}
@@ -47,10 +45,15 @@ const routes = ({ location }) => (
 							<Route path="/privacy" component={Privacy} />
 							<Route path="/palette" component={Palette} />
 							<Route
+								exact
 								path="/palette/:color1/:color2/:name/:count"
 								component={SinglePallete}
 							/>
-							<Route path="/gradient/:color/:name" component={SingleGradient} />
+							<Route
+								exact
+								path="/gradient/:color/:name"
+								component={SingleGradient}
+							/>
 							<Route path="/about" component={About} />
 							<Route path="/generate-palette" component={GeneratePalette} />
 

@@ -8,6 +8,7 @@ import GradientLayout from 'components/card/card-container';
 import Card from 'components/card';
 import { isEmpty } from 'codewonders-helpers';
 
+import AddToHomeScreen from 'components/add-to-homescreen';
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';
 
@@ -76,6 +77,7 @@ const Gradientpalette = () => {
 				title="Gradient palette"
 				description="Get refreshing gradient palettes for your application"
 			/>
+			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center ">

@@ -13,6 +13,7 @@ import SEO from 'components/seo';
 import Card from 'components/card';
 import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
+import AddToHomeScreen from 'components/add-to-homescreen';
 import GradientLayout from '../components/card/card-container';
 import GradientContext from '../context';
 
@@ -95,6 +96,7 @@ const Explore = () => {
 				title="Explore"
 				description="Explore fresh gradients. Find new gradients Inspiring Gradients"
 			/>
+			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center justify-content-center  pos-rel">
