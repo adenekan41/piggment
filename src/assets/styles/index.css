@@ -111,6 +111,12 @@ html {
   }
 }
 
+@media (min-width: 767px) {
+  .w-md-auto {
+    width: auto !important;
+  }
+}
+
 .fadeIn {
   animation: loadUp;
   animation-fill-mode: both;
@@ -152,6 +158,10 @@ html {
   header p {
     text-align: center;
   }
+}
+
+.w-md-auto {
+  width: 100%;
 }
 
 .none-button {

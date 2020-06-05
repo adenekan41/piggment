@@ -104,7 +104,7 @@ const Explore = () => {
 							<article>
 								<h1>Explore fresh gradients.</h1>
 								<div className="row align-items-center">
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="background">From</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
@@ -131,10 +131,10 @@ const Explore = () => {
 											/>
 										</div>
 									</div>
-									<div className="col-md-1 d-flex justify-content-center">
+									<div className="col-md-1 d-none justify-content-center d-md-flex">
 										<ArrowRight className="mt-4" />
 									</div>
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="input">To</label>
 										<div className="input-group">
 											<div className="input-group-prepend">

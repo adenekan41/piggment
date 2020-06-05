@@ -44,6 +44,10 @@ const SingleGradient = () => {
 	const [result, setResult] = useState({});
 
 	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 		if (isColor(formstate.from) && isColor(formstate.to)) {
 			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
 				formstate.from,
@@ -95,7 +99,7 @@ const SingleGradient = () => {
 						<div className="col-md-9">
 							<article className="mb-5">
 								<div className="row align-items-center">
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="background">From</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
@@ -122,10 +126,10 @@ const SingleGradient = () => {
 											/>
 										</div>
 									</div>
-									<div className="col-md-1 d-flex justify-content-center">
+									<div className="col-md-1 d-none justify-content-center d-md-flex">
 										<ArrowRight className="mt-4" />
 									</div>
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="input">To</label>
 										<div className="input-group">
 											<div className="input-group-prepend">

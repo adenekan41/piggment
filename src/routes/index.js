@@ -43,9 +43,8 @@ const routes = ({ location }) => (
 							<Route path="/generate" component={Generate} />
 							<Route path="/terms" component={Terms} />
 							<Route path="/privacy" component={Privacy} />
-							<Route path="/palette" component={Palette} />
+							<Route exact path="/palette" component={Palette} />
 							<Route
-								exact
 								path="/palette/:color1/:color2/:name/:count"
 								component={SinglePallete}
 							/>

@@ -22,6 +22,7 @@ const GeneratorCard = ({
 	prev,
 }) => {
 	const [viewCode, setViewCode] = useState(false);
+
 	return (
 		<>
 			<GenerateWrapper
@@ -64,8 +65,10 @@ const GeneratorCard = ({
 						/>
 					</article>
 
-					<div className="control__panel">
-						<h6>Tap space bar to generate new gradients</h6>
+					<div className="control__panel w-md-auto">
+						<h6 className="d-none d-md-block">
+							Tap space bar to generate new gradients
+						</h6>
 						<div className="d-flex justify-content-between">
 							<span onClick={prev}>
 								<ArrowRight style={{ transform: 'rotate(180deg)' }} /> Previous

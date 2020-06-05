@@ -92,6 +92,9 @@ const NavWrapper = styled(Navbar)`
 		left: 50%;
 		border-radius: 8px;
 		transform: translate(-50%, 10px);
+		@media (max-width: 989px) {
+			width: calc(100% - 10px);
+		}
 	}
 	svg {
 		height: 24px;
@@ -112,6 +115,11 @@ const NavWrapper = styled(Navbar)`
 	.navbar-toggler {
 		border: none !important;
 		padding: 0;
+	}
+	.navbar-toggler-icon {
+		display: inline-block;
+		width: 1.2em;
+		height: 1.2em;
 	}
 	.dropdown-menu {
 		margin: 0px;

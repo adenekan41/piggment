@@ -40,6 +40,10 @@ const SinglePallete = () => {
 	}, [formstate.start, formstate.end, formstate.count]);
 
 	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 		if (palette.length < 6) {
 			loadpalettes(6);
 		}
@@ -75,7 +79,7 @@ const SinglePallete = () => {
 						<div className="col-md-9">
 							<article className="mb-5">
 								<div className="row align-items-center">
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="background">Start Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
@@ -101,10 +105,10 @@ const SinglePallete = () => {
 											/>
 										</div>
 									</div>
-									<div className="col-md-1 d-flex justify-content-center">
+									<div className="col-md-1 d-none justify-content-center d-md-flex">
 										<ArrowRight className="mt-4" />
 									</div>
-									<div className="col-md-4">
+									<div className="col-md-4 col-6">
 										<label htmlFor="input">End Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">

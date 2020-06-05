@@ -70,6 +70,7 @@ const GeneratePalette = () => {
 };
 
 const GenerateWrapper = styled.main`
+	overflow: hidden;
 	header {
 		position: fixed;
 		top: 0;

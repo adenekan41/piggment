@@ -268,11 +268,21 @@ export const GenerateWrapper = styled.div`
 		text-align: left;
 		height: 110px;
 		@media (max-width: 990px) {
-			min-height: 264px;
-			padding: 30px 24px;
+			min-height: 176px;
+			padding: 15px 24px;
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: flex-start;
+			article {
+				order: 2;
+			}
+			.control__panel {
+				order: 1;
+				margin-bottom: 0.8rem;
+			}
+			.border-wrap {
+				order: 3;
+			}
 		}
 		h4 {
 			font-size: 18px;

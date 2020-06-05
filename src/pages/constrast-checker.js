@@ -58,7 +58,7 @@ const ContrastChecker = () => {
 						<div className="col-md-9">
 							<article>
 								<div className="row align-items-center">
-									<div className="col-md-5">
+									<div className="col-md-5 col-6">
 										<label htmlFor="background">Background Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
@@ -85,10 +85,10 @@ const ContrastChecker = () => {
 											/>
 										</div>
 									</div>
-									<div className="col d-flex justify-content-center">
+									<div className="col  d-none justify-content-center d-md-flex">
 										<ArrowRight className="mt-4" />
 									</div>
-									<div className="col-md-5">
+									<div className="col-md-5 col-6">
 										<label htmlFor="input">Text Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
@@ -173,7 +173,7 @@ const ContrastChecker = () => {
 									</span>
 								</article>
 								<div className="row">
-									<div className="col-md-3">
+									<div className="col-md-3 col-6">
 										<div className="WCGA__status">
 											<span
 												style={{
@@ -210,7 +210,7 @@ const ContrastChecker = () => {
 											<p>Large Text</p>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-md-3 col-6">
 										<div className="WCGA__status">
 											<span
 												style={{
@@ -247,7 +247,7 @@ const ContrastChecker = () => {
 											<p>Small Text</p>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-md-3 col-6">
 										<div className="WCGA__status">
 											<span
 												style={{
@@ -284,7 +284,7 @@ const ContrastChecker = () => {
 											<p>Large Text</p>
 										</div>
 									</div>
-									<div className="col-md-3">
+									<div className="col-md-3 col-6">
 										<div className="WCGA__status">
 											<span
 												style={{
