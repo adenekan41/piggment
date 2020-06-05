@@ -18,7 +18,7 @@ const SinglePallete = () => {
 	const [formstate, setState] = useState({
 		start: `#${color1}`,
 		end: `#${color2}`,
-		count: (parseInt(count, 10) && count) || 6,
+		count: count && parseInt(count, 10),
 	});
 
 	const { palette, loadpalettes } = useContext(GradientContext);
@@ -34,7 +34,7 @@ const SinglePallete = () => {
 	useEffect(() => {
 		if (isColor(formstate.start) && isColor(formstate.end)) {
 			setResult(
-				generatepalette(formstate.start, formstate.end, formstate.count)
+				generatepalette(formstate.start, formstate.end, formstate.count || 6)
 			);
 		}
 	}, [formstate.start, formstate.end, formstate.count]);

@@ -11,7 +11,7 @@ const Footer = ({ explore }) => {
 		<FooterWrapper explore={explore}>
 			<div className="container">
 				<div className="row">
-					<div className="col-xs-12 col-md-3">
+					<div className="col-6 col-md-3">
 						<Logo />
 						<h6>
 							A curated collection of amazingly colored gradients for designers,
@@ -21,7 +21,7 @@ const Footer = ({ explore }) => {
 							Copyright © {new Date().getFullYear()}, Piggment.
 						</h6>
 					</div>
-					<div className="col-xs-12 col-md ">
+					<div className="col-6 col-md ">
 						<h5>Piggment</h5>
 
 						<ul className="list-unstyled quick-links">
@@ -64,7 +64,7 @@ const Footer = ({ explore }) => {
 							</li>
 						</ul>
 					</div>
-					<div className="col-xs-12 col-md ">
+					<div className="col-6 col-md ">
 						<h5>Creator</h5>
 						<ul className="list-unstyled quick-links">
 							<li>
@@ -100,7 +100,7 @@ const Footer = ({ explore }) => {
 						</ul>
 					</div>
 
-					<div className="col-xs-12 col-md ">
+					<div className="col-6 col-md ">
 						<h5>Company</h5>
 
 						<ul className="list-unstyled quick-links">
@@ -127,7 +127,7 @@ const Footer = ({ explore }) => {
 							</li>
 						</ul>
 					</div>
-					<div className="col-xs-12 col-md ">
+					<div className="col-6 col-md ">
 						<h5>Connect</h5>
 						<ul className="list-unstyled quick-links">
 							<li>
