@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useCallback, useState } from 'react';
 import GradientContext from 'context';
 import styled from 'styled-components';
 
-import Card from '../components/card';
 import SEO from 'components/seo';
+import Card from '../components/card';
 
 const Generate = () => {
 	const { palette, loadpalettes } = useContext(GradientContext);

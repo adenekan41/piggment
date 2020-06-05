@@ -12,12 +12,12 @@ import {
 import SEO from 'components/seo';
 import Card from 'components/card';
 import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
+import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
 import GradientLayout from '../components/card/card-container';
 import GradientContext from '../context';
 
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';
-import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
 
 const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);

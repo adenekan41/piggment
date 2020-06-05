@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import SEO from 'components/seo';
 import Card from '../components/card';
 import GradientContext from '../context';
 
@@ -18,87 +19,103 @@ const Home = () => {
 	}, [loadGradients, state]);
 
 	return (
-		<main>
-			<Header>
-				<div className="container">
-					<div className="row align-items-center justify-content-center  pos-rel">
-						<div className="col-md-7">
-							<article>
-								<h1>The gradient you have always wanted.</h1>
-								<p>
-									Generate, explore, easy CSS copy crossbrowser code all in one
-									place
-								</p>
+		<>
+			<SEO />
+			<main>
+				<Header>
+					<div className="container">
+						<div className="row align-items-center justify-content-center  pos-rel">
+							<div className="col-md-7">
+								<article>
+									<h1>The gradient you have always wanted.</h1>
+									<p>
+										Generate, explore, easy CSS copy crossbrowser code all in
+										one place
+									</p>
 
-								<Link className="btn btn-piggment mr-md-3" to="/generate">
+									<Link className="btn btn-piggment mr-md-3" to="/generate">
+										Start Generating
+									</Link>
+									<Link className="btn btn-outline-piggment" to="/explore">
+										Explore Gradients
+									</Link>
+								</article>
+							</div>
+							{state[6] && (
+								<Card
+									data={
+										state[6] || {
+											name: '1234',
+											color:
+												'linear-gradient(2deg, rgb(255,255,255,0.4) 3%, rgb(255,255,255,0.8) 30%)',
+										}
+									}
+									type="large"
+								/>
+							)}
+						</div>
+					</div>
+				</Header>
+				<Section>
+					<div className="container">
+						<GradientLayout
+							header="Explore gradients."
+							state={state.slice(0, -1)}
+							noRefresh
+							mode="see-more"
+						/>
+
+						<div className="m-auto text-center more__cards">
+							<p>Need more gradients?</p>
+							<Link className="btn btn-piggment" to="/explore">
+								See All Gradient
+							</Link>
+						</div>
+					</div>
+				</Section>
+				<SectionMore>
+					<div className="container">
+						<div className="row align-items-center">
+							<div className="col-md-5">
+								<h3>Create the perfect Gradient.</h3>
+								<p>
+									Create the perfect gradient palette and get inspired to make
+									something beautiful.
+								</p>
+								<Link className="btn btn-piggment mr-3" to="/generate-palette">
 									Start Generating
 								</Link>
-								<Link className="btn btn-outline-piggment" to="/explore">
-									Explore Gradients
+								<Link className="btn btn-outline-piggment" to="/palette">
+									Explore Palettes
 								</Link>
-							</article>
+							</div>
+							<div className="col-md-7 d-none d-md-block">
+								<Banner />
+							</div>
 						</div>
-						{state[6] && (
-							<Card
-								data={
-									state[6] || {
-										name: '1234',
-										color:
-											'linear-gradient(2deg, rgb(255,255,255,0.4) 3%, rgb(255,255,255,0.8) 30%)',
-									}
-								}
-								type="large"
+					</div>
+				</SectionMore>
+				<SectionTrusted>
+					<div>
+						<p>We are super fast and inspiring and open sourced.</p>
+						<h2>Trusted by smart expert creators.</h2>
+						<br />
+						<a
+							href="https://www.producthunt.com/posts/piggment?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-piggment"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=204989&theme=light"
+								alt="Piggment - Gradient and colors for the next smart creator | Product Hunt Embed"
+								width="250px"
+								height="54px"
 							/>
-						)}
+						</a>
 					</div>
-				</div>
-			</Header>
-			<Section>
-				<div className="container">
-					<GradientLayout
-						header="Explore gradients."
-						state={state.slice(0, -1)}
-						noRefresh
-						mode="see-more"
-					/>
-
-					<div className="m-auto text-center more__cards">
-						<p>Need more gradients?</p>
-						<Link className="btn btn-piggment" to="/explore">
-							See All Gradient
-						</Link>
-					</div>
-				</div>
-			</Section>
-			<SectionMore>
-				<div className="container">
-					<div className="row align-items-center">
-						<div className="col-md-5">
-							<h3>Create the perfect Gradient.</h3>
-							<p>
-								Create the perfect gradient palette and get inspired to make
-								something beautiful.
-							</p>
-							<Link className="btn btn-piggment mr-3" to="/generate-palette">
-								Start Generating
-							</Link>
-							<Link className="btn btn-outline-piggment" to="/palette">
-								Explore Palettes
-							</Link>
-						</div>
-						<div className="col-md-7 d-none d-md-block">
-							<Banner />
-						</div>
-					</div>
-				</div>
-			</SectionMore>
-			<SectionTrusted>
-				<div>
-					<p>We are super fast and inspiring and open sourced.</p>
-					<h2>Trusted by thousands of expert creators.</h2>
-				</div>
-			</SectionTrusted>
-		</main>
+				</SectionTrusted>
+			</main>
+		</>
 	);
 };
 

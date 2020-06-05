@@ -3,6 +3,7 @@ import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { logEvent } from 'utils/analytics';
 import { ReactComponent as Share } from '../../assets/icons/icon-share.svg';
 
 const ShareDropdown = ({ data, palette, save }) => {
@@ -51,6 +52,9 @@ const ShareDropdown = ({ data, palette, save }) => {
 				<Dropdown.Item
 					href={`http://twitter.com/share?text=${share.message}&url=${share.link}&hashtags=colors,gradiens,palettes`}
 					target="_blank"
+					onClick={() =>
+						logEvent('Share', 'User Shared To Twitter', 'Share To Twitter')
+					}
 				>
 					<span className="mr-2">
 						<svg
@@ -68,6 +72,10 @@ const ShareDropdown = ({ data, palette, save }) => {
 
 				<Dropdown.Item
 					href={`https://www.linkedin.com/shareArticle?mini=true&url=${share.link}&summary=${share.message}&source=LinkedIn`}
+					target="_blank"
+					onClick={() =>
+						logEvent('Share', 'User Shared To Linkedin', 'Share To Linkedin')
+					}
 				>
 					<span className="mr-2">
 						<svg
@@ -84,6 +92,10 @@ const ShareDropdown = ({ data, palette, save }) => {
 				</Dropdown.Item>
 				<Dropdown.Item
 					href={`https://www.facebook.com/sharer/sharer.php?u=${share.link}&t=${share.message}`}
+					target="_blank"
+					onClick={() =>
+						logEvent('Share', 'User Shared To Facebook', 'Share To Facebook')
+					}
 				>
 					<span className="mr-2">
 						<svg

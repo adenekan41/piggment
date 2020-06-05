@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { rgbToHex } from 'utils';
 import { setState, getState } from 'codewonders-helpers';
 
+import { logEvent } from 'utils/analytics';
 import LargeCard from './large-card';
 import GeneratorCard from './generator-card';
 import SmallCard from './small-card';
@@ -66,6 +67,7 @@ const Card = React.memo(
 			if (!getState('SAVED_GRADIENTS')) {
 				setState('SAVED_GRADIENTS', []);
 			}
+			logEvent('SAVE', 'Gradient added to pocket', 'SAVED GRADIENT');
 			setState('SAVED_GRADIENTS', [datas, ...getState('SAVED_GRADIENTS')]);
 			setLoved(true);
 		};
@@ -73,6 +75,7 @@ const Card = React.memo(
 			if (!getState('SAVED_PALETTE')) {
 				setState('SAVED_PALETTE', []);
 			}
+			logEvent('SAVE', 'Pallet added to pocket', 'SAVED PALETTE');
 			setState('SAVED_PALETTE', [datas, ...getState('SAVED_PALETTE')]);
 			setLoved(true);
 		};

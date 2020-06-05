@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { Helmet } from 'react-helmet-async';
+import { initGA, logPageView } from '../../utils/analytics';
 
 const SEO = ({ title, description }) => {
+	const logPage = useCallback(() => {
+		if (!window.GA_INITIALIZED) {
+			initGA();
+			window.GA_INITIALIZED = true;
+		}
+		logPageView();
+	}, []);
+
+	useEffect(() => {
+		logPage();
+	}, [logPage]);
+
 	return (
 		<Helmet>
 			<title>
