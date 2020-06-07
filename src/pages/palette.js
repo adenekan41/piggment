@@ -8,7 +8,7 @@ import GradientLayout from 'components/card/card-container';
 import Card from 'components/card';
 import { isEmpty } from 'codewonders-helpers';
 
-import AddToHomeScreen from 'components/add-to-homescreen';
+import AddToHomeScreen from 'components/a11y';
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { ReactComponent as Loader } from '../assets/icons/loader.svg';
 
@@ -83,8 +83,8 @@ const Gradientpalette = () => {
 					<div className="row align-items-center ">
 						<div className="col-md-8 m-auto text-center">
 							<article>
-								<h1>Gradient palette.</h1>
-								<p>Get amazing palette creator between colors.</p>
+								<h1>Discover gradient palettes.</h1>
+								<p>Get inspiring and amazing gradient palettes.</p>
 							</article>
 						</div>
 					</div>
@@ -97,7 +97,7 @@ const Gradientpalette = () => {
 							<article>
 								<div className="row align-items-center">
 									<div className="col-md-4 col-6">
-										<label htmlFor="background">Start Color</label>
+										<label>Start Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -127,7 +127,7 @@ const Gradientpalette = () => {
 										<ArrowRight className="mt-4" />
 									</div>
 									<div className="col-md-4 col-6">
-										<label htmlFor="input">End Color</label>
+										<label>End Color</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -154,7 +154,7 @@ const Gradientpalette = () => {
 										</div>
 									</div>
 									<div className="col-md">
-										<label htmlFor="background">Amount</label>
+										<label>Amount</label>
 										<input
 											type="number"
 											className="form-control"
@@ -267,6 +267,18 @@ export const Section = styled.section`
 	.w-70 {
 		width: 70px;
 		height: 120px;
+	}
+	.percentage__input {
+		padding: 0 10px 0 0 !important;
+		color: #ddd;
+		input {
+			width: 40px;
+			padding: 3px 0 3px 0;
+			border: none;
+			text-align: right;
+			color: #575e64;
+			outline: none !important;
+		}
 	}
 `;
 

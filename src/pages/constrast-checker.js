@@ -13,7 +13,12 @@ const ContrastChecker = () => {
 		text: '#0e0a38',
 	});
 	const [result, setResult] = useState('0.00');
-
+	const [status] = useState({
+		pass: 'rgb(16, 136, 15)',
+		fail: 'rgb(177, 8, 8)',
+		passBg: 'rgb(190, 255, 189)',
+		failBg: 'rgb(255, 181, 180)',
+	});
 	useEffect(() => {
 		if (isColor(formstate.text) && isColor(formstate.background)) {
 			setResult(
@@ -180,13 +185,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AA_level_large_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AA_level_large_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												{result && result.AA_level_large_text} ~ 4.5:1
@@ -196,13 +201,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AA_level_large_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AA_level_large_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												AA
@@ -217,13 +222,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AA_level_small_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AA_level_small_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												{result && result.AA_level_small_text} ~ 3:1
@@ -233,13 +238,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AA_level_small_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AA_level_small_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												AA
@@ -254,13 +259,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AAA_level_large_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AAA_level_large_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												{result && result.AAA_level_large_text} ~ 4.5:1
@@ -270,13 +275,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AAA_level_large_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AAA_level_large_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												AAA
@@ -291,13 +296,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AAA_level_small_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AAA_level_small_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												{result && result.AAA_level_small_text} ~ 7:1
@@ -307,13 +312,13 @@ const ContrastChecker = () => {
 													color:
 														(result &&
 															result.AAA_level_small_text === 'PASS' &&
-															'rgb(16, 136, 15)') ||
-														'rgb(177, 8, 8)',
+															status.pass) ||
+														status.fail,
 													background:
 														(result &&
 															result.AAA_level_small_text === 'PASS' &&
-															'rgb(190, 255, 189)') ||
-														'rgb(255, 181, 180)',
+															status.passBg) ||
+														status.failBg,
 												}}
 											>
 												AAA
@@ -341,7 +346,7 @@ const ContrastChecker = () => {
 							text
 							<br />
 							The level AAA requires a contrast ratio of at least 4.5:1 for
-							large text. (at least >=18pt) or larger.
+							large text. (at least {'>=18pt'}) or larger.
 						</p>
 						<a
 							href="https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines#WCAG_2.0"

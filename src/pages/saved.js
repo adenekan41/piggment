@@ -11,6 +11,7 @@ import GradientLayout from '../components/card/card-container';
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
 import { ReactComponent as Love } from '../assets/icons/icon-love.svg';
 import { ReactComponent as Empty } from '../assets/icons/icon-empty.svg';
+import AddToHomeScreen from 'components/a11y';
 
 const SavedColors = () => {
 	const [state, setState] = useState([]);
@@ -32,6 +33,7 @@ const SavedColors = () => {
 	return (
 		<>
 			<SEO title="Saved Gradients" />
+			<AddToHomeScreen />
 			<Header>
 				<div className="container">
 					<div className="row align-items-center">
@@ -80,7 +82,7 @@ const SavedColors = () => {
 								{!getState('SAVED_GRADIENTS') && (
 									<div className="text-center empty">
 										<Empty className="large__svg" />
-										<h3>You dont have any saved gradient yet</h3>
+										<h3>You don't have any saved gradient yet</h3>
 										<p>
 											Click <Love className="small__svg" /> to save a gradient
 										</p>
@@ -101,7 +103,7 @@ const SavedColors = () => {
 							{!getState('SAVED_PALETTE') && (
 								<div className="text-center empty">
 									<Empty className="large__svg" />
-									<h3>You dont have any saved gradient palettes yet</h3>
+									<h3>You don't have any saved gradient palettes yet</h3>
 									<p>
 										Click <Love className="small__svg" /> to save a gradient
 										palette

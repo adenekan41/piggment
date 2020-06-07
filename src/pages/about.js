@@ -21,12 +21,13 @@ const AboutPage = () => {
 							<article>
 								<h1>We are piggment.</h1>
 								<p>
-									We are a one man team trying to deliver the best experience.
+									We are working soley on delievering the best experiences with
+									gradients.
 								</p>
 							</article>
 						</div>
 						<div className="col-md-5 d-none d-md-block">
-							<Banner className="w-100 h-100" />
+							<Banner className="w-100 h-100" aria-label="About Us Image" />
 						</div>
 					</div>
 				</div>
@@ -37,15 +38,18 @@ const AboutPage = () => {
 						<div className="row align-items-center">
 							{' '}
 							<div className="col-md-5 d-none d-md-block">
-								<BannerMore className="w-100 h-100" />
+								<BannerMore
+									className="w-100 h-100"
+									aria-label="More About Us Image"
+								/>
 							</div>
 							<div className="col-md-7 text-md-left text-center">
 								<h3>We are more than just gradients.</h3>
 								<p>
-									We are a curated collection of amazingly colored gradients for
-									designers, developers and art makers over the world. now you
-									can generate, explore, save, easy CSS crossbrowser gradient
-									codes all in one place.
+									Piggment is curated collection of amazingly colored gradients
+									for designers, developers and smart creators over the world.
+									now you can generate, explore, save, easy CSS crossbrowser
+									gradient codes all in one place.
 								</p>
 								<Link className="btn btn-piggment mr-3" to="/generate-palette">
 									Start Generating
@@ -128,8 +132,8 @@ const AboutPage = () => {
 				</SectionTeam>
 				<SectionTrusted>
 					<div>
-						<p>Want to talk ?</p>
-						<h2>Send us a message.</h2>
+						<p>Want to talk about a new feature ?</p>
+						<h2>Send me a message.</h2>
 						<div className="container">
 							<div className="row align-items-center justify-content-center">
 								<div className="col-md-6">

@@ -27,6 +27,20 @@ const SingleGradient = () => {
 		color: window.atob(color),
 		from: rgbToHex(window.atob(color), 0) || '#000000',
 		to: rgbToHex(window.atob(color), 1) || '#ffffff',
+		fromPercent:
+			window
+				.atob(color)
+				.substring(
+					window.atob(color).indexOf('rgb'),
+					window.atob(color).indexOf('%')
+				)
+				.match(/\d+/g)
+				.pop() || 20,
+		toPercent:
+			window
+				.atob(color)
+				.match(/\d+/g)
+				.pop() || 100,
 		angle:
 			window
 				.atob(color)
@@ -42,32 +56,39 @@ const SingleGradient = () => {
 	};
 
 	const [result, setResult] = useState({});
+	const [newName] = useState(randomWords({ exactly: 2, join: ' ' }));
+
+	// TODO Refactor ( looks ugly )
+	useEffect(() => {
+		if (isColor(formstate.from) && isColor(formstate.to)) {
+			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
+				formstate.from,
+				true
+			)} ${(formstate.fromPercent <= 100 && formstate.fromPercent) ||
+				formstate.color
+					.substring(
+						formstate.color.indexOf('rgb'),
+						formstate.color.indexOf('%')
+					)
+					.match(/\d+/g)
+					.pop() ||
+				100}%, ${hexToRgb(formstate.to, true)} ${(formstate.toPercent <= 100 &&
+				formstate.toPercent) ||
+				formstate.color.match(/\d+/g).pop()}%)`;
+			setResult({
+				id: guidGenerator(),
+				color: newColor,
+				name: formstate.color !== newColor ? newName : name,
+			});
+		}
+	}, [formstate, name, newName]);
 
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		});
-		if (isColor(formstate.from) && isColor(formstate.to)) {
-			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
-				formstate.from,
-				true
-			)} ${formstate.color
-				.substring(formstate.color.indexOf('rgb'), formstate.color.indexOf('%'))
-				.match(/\d+/g)
-				.pop()}%, ${hexToRgb(formstate.to, true)} ${formstate.color
-				.match(/\d+/g)
-				.pop()}%)`;
-			setResult({
-				id: guidGenerator(),
-				color: newColor,
-				name:
-					formstate.color !== newColor
-						? randomWords({ exactly: 2, join: ' ' })
-						: name,
-			});
-		}
-	}, [formstate.from, formstate.to, formstate.angle, formstate.color, name]);
+	}, []);
 
 	return (
 		<>
@@ -124,6 +145,19 @@ const SingleGradient = () => {
 												value={formstate.from}
 												onChange={(e) => handleChange(e, 'from')}
 											/>
+											<div className="input-group-append">
+												<span className="input-group-text percentage__input">
+													<input
+														type="number"
+														placeholder="30"
+														value={formstate.fromPercent}
+														maxLength="3"
+														max="100"
+														onChange={(e) => handleChange(e, 'fromPercent')}
+													/>
+													%
+												</span>
+											</div>
 										</div>
 									</div>
 									<div className="col-md-1 d-none justify-content-center d-md-flex">
@@ -154,6 +188,19 @@ const SingleGradient = () => {
 												value={formstate.to}
 												onChange={(e) => handleChange(e, 'to')}
 											/>
+											<div className="input-group-append">
+												<span className="input-group-text percentage__input">
+													<input
+														type="number"
+														placeholder="100"
+														value={formstate.toPercent}
+														maxLength="3"
+														max="100"
+														onChange={(e) => handleChange(e, 'toPercent')}
+													/>
+													%
+												</span>
+											</div>
 										</div>
 									</div>
 									<div className="col-md">

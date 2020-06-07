@@ -40,14 +40,17 @@ const SinglePallete = () => {
 	}, [formstate.start, formstate.end, formstate.count]);
 
 	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
 		if (palette.length < 6) {
 			loadpalettes(6);
 		}
 	}, [loadpalettes, palette]);
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	}, []);
 
 	return (
 		<>

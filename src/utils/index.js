@@ -28,11 +28,16 @@ export const rgbToHex = (rgb, index) => {
 /**
  * Gradient Core
  * @returns {String}
+ * initial code https://github.com/pacocoursey/dye/blob/master/dye.js
+ * REFACTORED
  */
 export const generateGradient = () => {
 	const n = (u) => ~~(Math.random() * (u + 1));
+	const toPercentage = () => Math.floor(Math.random() * (100 - 90 + 1)) + 90;
 	const r = () => `rgb(${n(255)}, ${n(255)}, ${n(255)})`;
-	return `linear-gradient(${n(360)}deg, ${r()} ${n(23)}%, ${r()} 100%)`;
+	return `linear-gradient(${n(360)}deg, ${r()} ${n(
+		23
+	)}%, ${r()} ${toPercentage()}%)`;
 };
 
 /**

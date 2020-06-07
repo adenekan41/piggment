@@ -13,7 +13,7 @@ import SEO from 'components/seo';
 import Card from 'components/card';
 import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
-import AddToHomeScreen from 'components/add-to-homescreen';
+import AddToHomeScreen from 'components/a11y';
 import GradientLayout from '../components/card/card-container';
 import GradientContext from '../context';
 
@@ -71,6 +71,8 @@ const Explore = () => {
 	const [result, setResult] = useState({});
 
 	const [name] = useState(randomWords({ exactly: 2, join: ' ' }));
+
+	// TODO Refactor (looks ugly)
 	useEffect(() => {
 		if (isColor(formstate.from) && isColor(formstate.to)) {
 			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
@@ -105,7 +107,7 @@ const Explore = () => {
 								<h1>Explore fresh gradients.</h1>
 								<div className="row align-items-center">
 									<div className="col-md-4 col-6">
-										<label htmlFor="background">From</label>
+										<label>From</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -135,7 +137,7 @@ const Explore = () => {
 										<ArrowRight className="mt-4" />
 									</div>
 									<div className="col-md-4 col-6">
-										<label htmlFor="input">To</label>
+										<label>To</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -162,7 +164,7 @@ const Explore = () => {
 										</div>
 									</div>
 									<div className="col-md">
-										<label htmlFor="background">Angle (deg)</label>
+										<label>Angle (deg)</label>
 										<input
 											type="number"
 											className="form-control"

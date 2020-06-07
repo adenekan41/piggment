@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { Snippet } from 'components/card/style';
@@ -7,6 +7,26 @@ import { rgbToHex } from 'utils';
 import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
 
 const CodeSnippnets = ({ copyText, setViewCode, data, palette = false }) => {
+	const handleEscKey = useCallback(
+		(e) => {
+			if (e.key === 'Escape') {
+				// write your logic here.
+				setViewCode(false);
+			}
+		},
+		[setViewCode]
+	);
+
+	useEffect(
+		function setupListener() {
+			window.addEventListener('keydown', handleEscKey);
+
+			return function cleanupListener() {
+				window.removeEventListener('keydown', handleEscKey);
+			};
+		},
+		[handleEscKey]
+	);
 	return (
 		<Snippet className="snippet fadeIn">
 			<div className="css_code">

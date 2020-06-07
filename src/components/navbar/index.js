@@ -128,12 +128,6 @@ const NavWrapper = styled(Navbar)`
 		border: none;
 		box-shadow: 0 2px 15px #00000017;
 	}
-	.dropdown-item.active,
-	.dropdown-item:active {
-		color: #fff;
-		text-decoration: none;
-		background-color: var(--accent);
-	}
 
 	.nav-link {
 		color: #717171;

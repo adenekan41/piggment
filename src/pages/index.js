@@ -30,7 +30,7 @@ const Home = () => {
 									<h1>The gradient you have always wanted.</h1>
 									<p>
 										Generate, explore, easy CSS copy crossbrowser code all in
-										one place
+										one place.
 									</p>
 
 									<Link className="btn btn-piggment mr-md-3" to="/generate">
@@ -68,7 +68,7 @@ const Home = () => {
 						<div className="m-auto text-center more__cards">
 							<p>Need more gradients?</p>
 							<Link className="btn btn-piggment" to="/explore">
-								See All Gradient
+								See All Gradients
 							</Link>
 						</div>
 					</div>
@@ -77,7 +77,7 @@ const Home = () => {
 					<div className="container">
 						<div className="row align-items-center">
 							<div className="col-md-5">
-								<h3>Create the perfect Gradient.</h3>
+								<h3>Create the perfect gradient palettes.</h3>
 								<p>
 									Create the perfect gradient palette and get inspired to make
 									something beautiful.
@@ -107,7 +107,7 @@ const Home = () => {
 						>
 							<img
 								src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=204989&theme=light"
-								alt="Piggment - Gradient and colors for the next smart creator | Product Hunt Embed"
+								alt="Piggment - Gradients and colors for the next smart creator | Product Hunt Embed"
 								width="250px"
 								height="54px"
 							/>

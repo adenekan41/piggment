@@ -33,7 +33,9 @@ const ShareDropdown = ({ data, palette, save }) => {
 	};
 	return (
 		<Dropdown className="d-inline share__button ml-2">
-			<Dropdown.Toggle as={Share} />
+			<button className="none-button">
+				<Dropdown.Toggle as={Share} />
+			</button>
 
 			<Dropdown.Menu>
 				<Dropdown.Item onClick={() => copyText()}>Copy Link</Dropdown.Item>
