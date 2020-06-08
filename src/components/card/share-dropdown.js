@@ -25,7 +25,9 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 		  }
 		: {
 				link: `
-    https://piggment.co/gradient/${window.btoa(data.color)}/${data.name}`,
+    https://piggment.co/gradient/${window.btoa(
+			data.color
+		)}/${encodeURIComponent(data.name)}`,
 				message: 'View%20this%20amazing%20gradient%20by%20piggment',
 		  };
 
