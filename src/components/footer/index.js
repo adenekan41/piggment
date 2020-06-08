@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
+import PureComponent from 'components/pure-component-wrapper';
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 
-const Footer = ({ explore }) => {
+// SVG Imported as Image to avoid re-render
+import Logo from '../../assets/icons/logo_.svg';
+
+const Footer = memo(({ explore }) => {
+	/* -------------------------------- PURE SVG -------------------------------- */
+	const PureLove = PureComponent(Love);
+
 	return (
 		<FooterWrapper explore={explore}>
 			<div className="container">
 				<div className="row">
 					<div className="col-6 col-md-3">
-						<Logo />
+						<img src={Logo} alt="Piggment Logo" />
 						<h6>
 							A curated collection of amazingly colored gradients for designers,
 							developers and art makers over the world.
@@ -174,12 +180,12 @@ const Footer = ({ explore }) => {
 					</div>
 				</div>
 				<p className="text-center">
-					Created with <Love /> by Adenekan Wonderful
+					Created with <PureLove /> by Adenekan Wonderful
 				</p>
 			</div>
 		</FooterWrapper>
 	);
-};
+});
 const FooterWrapper = styled.footer`
 	border-top: 1px solid #e2e2e2;
 
@@ -187,7 +193,7 @@ const FooterWrapper = styled.footer`
 	@media (max-width: 990px) {
 		display: ${(props) => props.explore && 'none'};
 	}
-	svg {
+	img {
 		height: 30px;
 		width: auto;
 		display: block;

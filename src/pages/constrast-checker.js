@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import SEO from 'components/seo';
-
-import { ReactComponent as Banner } from '../assets/icons/banner-contrast.svg';
-import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 import { calculateContrast, ratioStatus, isColor } from 'utils';
 
+import PureComponent from 'components/pure-component-wrapper';
+import { ReactComponent as Banner } from '../assets/icons/banner-contrast.svg';
+
+// SVG Imported as image to avoid re-render
+import ArrowRight from '../assets/icons/icon-right.svg';
+
 const ContrastChecker = () => {
+	/* -------------------------------- PURE SVG -------------------------------- */
+	const PureBanner = PureComponent(Banner);
+	/* ------------------------------ END PURE SVG ------------------------------ */
+
 	const [formstate, setState] = useState({
 		background: '#fff5e0',
 		text: '#0e0a38',
@@ -19,6 +26,14 @@ const ContrastChecker = () => {
 		passBg: 'rgb(190, 255, 189)',
 		failBg: 'rgb(255, 181, 180)',
 	});
+
+	const handleChange = (e, name) => {
+		setState({
+			...formstate,
+			[name]: e.target.value,
+		});
+	};
+
 	useEffect(() => {
 		if (isColor(formstate.text) && isColor(formstate.background)) {
 			setResult(
@@ -28,14 +43,8 @@ const ContrastChecker = () => {
 				)
 			);
 		}
-	}, [formstate.text, formstate.background]);
+	}, [formstate]);
 
-	const handleChange = (e, name) => {
-		setState({
-			...formstate,
-			[name]: e.target.value,
-		});
-	};
 	return (
 		<>
 			<SEO
@@ -52,7 +61,7 @@ const ContrastChecker = () => {
 							</article>
 						</div>
 						<div className="col-md-5 d-none d-md-block">
-							<Banner className="w-100 h-100" />
+							<PureBanner className="w-100 h-100" />
 						</div>
 					</div>
 				</div>
@@ -91,7 +100,7 @@ const ContrastChecker = () => {
 										</div>
 									</div>
 									<div className="col  d-none justify-content-center d-md-flex">
-										<ArrowRight className="mt-4" />
+										<img src={ArrowRight} alt="Arrow Right" className="mt-4" />
 									</div>
 									<div className="col-md-5 col-6">
 										<label htmlFor="input">Text Color</label>
@@ -149,14 +158,7 @@ const ContrastChecker = () => {
 							</div>
 							<div className="col-md-5 d-flex justify-content-between flex-column">
 								<article>
-									<p
-									// style={{
-									// 	color: ratioStatus((result && result.ratio) || '0.00')
-									// 		.color,
-									// }}
-									>
-										Contrast Ratio{' '}
-									</p>
+									<p>Contrast Ratio </p>
 									<h2
 										style={{
 											color: ratioStatus((result && result.ratio) || '0.00')

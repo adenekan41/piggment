@@ -11,41 +11,28 @@ import Card from 'components/card';
 import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 
 import { Section as SectionPalette } from './palette';
-import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
+
+// SVG Imported as image to avoid re-render
+import ArrowRight from '../assets/icons/icon-right.svg';
 
 const SingleGradient = () => {
 	const { color, name } = useParams();
 	const { state, loadGradients } = useContext(GradientContext);
+	const [$color$] = useState(window.atob(color));
+	const [result, setResult] = useState({});
+	const [newName] = useState(randomWords({ exactly: 2, join: ' ' }));
 
-	useEffect(() => {
-		if (state.length < 6) {
-			loadGradients(6);
-		}
-	}, [loadGradients, state]);
-
+	// TODO Refactor
 	const [formstate, setState] = useState({
-		color: window.atob(color),
-		from: rgbToHex(window.atob(color), 0) || '#000000',
-		to: rgbToHex(window.atob(color), 1) || '#ffffff',
+		from: rgbToHex($color$, 0) || '#000000',
+		to: rgbToHex($color$, 1) || '#ffffff',
 		fromPercent:
-			window
-				.atob(color)
-				.substring(
-					window.atob(color).indexOf('rgb'),
-					window.atob(color).indexOf('%')
-				)
+			$color$
+				.substring($color$.indexOf('rgb'), $color$.indexOf('%'))
 				.match(/\d+/g)
 				.pop() || 20,
-		toPercent:
-			window
-				.atob(color)
-				.match(/\d+/g)
-				.pop() || 100,
-		angle:
-			window
-				.atob(color)
-				.match(/\d+/g)
-				.shift() || 20,
+		toPercent: $color$.match(/\d+/g).pop() || 100,
+		angle: $color$.match(/\d+/g).shift() || 20,
 	});
 
 	const handleChange = (e, name_value) => {
@@ -55,8 +42,11 @@ const SingleGradient = () => {
 		});
 	};
 
-	const [result, setResult] = useState({});
-	const [newName] = useState(randomWords({ exactly: 2, join: ' ' }));
+	useEffect(() => {
+		if (state.length < 6) {
+			loadGradients(6);
+		}
+	}, [loadGradients, state]);
 
 	// TODO Refactor ( looks ugly )
 	useEffect(() => {
@@ -65,23 +55,22 @@ const SingleGradient = () => {
 				formstate.from,
 				true
 			)} ${(formstate.fromPercent <= 100 && formstate.fromPercent) ||
-				formstate.color
-					.substring(
-						formstate.color.indexOf('rgb'),
-						formstate.color.indexOf('%')
-					)
+				$color$
+					.substring($color$.indexOf('rgb'), $color$.indexOf('%'))
 					.match(/\d+/g)
 					.pop() ||
 				100}%, ${hexToRgb(formstate.to, true)} ${(formstate.toPercent <= 100 &&
 				formstate.toPercent) ||
-				formstate.color.match(/\d+/g).pop()}%)`;
+				$color$.match(/\d+/g).pop()}%)`;
+
+			// Set Result Object
 			setResult({
 				id: guidGenerator(),
 				color: newColor,
-				name: formstate.color !== newColor ? newName : name,
+				name: $color$ !== newColor ? newName : name,
 			});
 		}
-	}, [formstate, name, newName]);
+	}, [formstate, name, newName, $color$]);
 
 	useEffect(() => {
 		window.scrollTo({
@@ -161,7 +150,7 @@ const SingleGradient = () => {
 										</div>
 									</div>
 									<div className="col-md-1 d-none justify-content-center d-md-flex">
-										<ArrowRight className="mt-4" />
+										<img src={ArrowRight} className="mt-4" alt="Arrow Right" />
 									</div>
 									<div className="col-md-4 col-6">
 										<label htmlFor="input">To</label>

@@ -17,17 +17,26 @@ import AddToHomeScreen from 'components/a11y';
 import GradientLayout from '../components/card/card-container';
 import GradientContext from '../context';
 
-import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
-import { ReactComponent as Loader } from '../assets/icons/loader.svg';
+// SVG Imported as image to avoid re-render
+import ArrowRight from '../assets/icons/icon-right.svg';
+import Loader from '../assets/icons/loader.svg';
 
 const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);
-
+	const [result, setResult] = useState({});
+	const [name] = useState(randomWords({ exactly: 2, join: ' ' }));
+	const [$color$] = useState(
+		'linear-gradient(58deg, rgb(182, 108, 208) 21%, rgb(12, 30, 39) 100%)'
+	);
 	const [formstate, setState] = useState({
-		color:
-			'linear-gradient(58deg, rgb(182, 108, 208) 21%, rgb(12, 30, 39) 100%)',
 		from: validateHexCode(getRandomColors()) || '#a9c3d0',
 		to: validateHexCode(getRandomColors()) || '#f0c7ff',
+		fromPercent:
+			$color$
+				.substring($color$.indexOf('rgb'), $color$.indexOf('%'))
+				.match(/\d+/g)
+				.pop() || 20,
+		toPercent: $color$.match(/\d+/g).pop() || 100,
 		angle: Math.floor(Math.random() * (100 - 58 + 1)) + 58,
 	});
 
@@ -68,29 +77,29 @@ const Explore = () => {
 		[handleScroll]
 	);
 
-	const [result, setResult] = useState({});
-
-	const [name] = useState(randomWords({ exactly: 2, join: ' ' }));
-
 	// TODO Refactor (looks ugly)
 	useEffect(() => {
 		if (isColor(formstate.from) && isColor(formstate.to)) {
 			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
 				formstate.from,
 				true
-			)} ${formstate.color
-				.substring(formstate.color.indexOf('rgb'), formstate.color.indexOf('%'))
-				.match(/\d+/g)
-				.pop()}%, ${hexToRgb(formstate.to, true)} ${formstate.color
-				.match(/\d+/g)
-				.pop()}%)`;
+			)} ${(formstate.fromPercent <= 100 && formstate.fromPercent) ||
+				$color$
+					.substring($color$.indexOf('rgb'), $color$.indexOf('%'))
+					.match(/\d+/g)
+					.pop() ||
+				100}%, ${hexToRgb(formstate.to, true)} ${(formstate.toPercent <= 100 &&
+				formstate.toPercent) ||
+				$color$.match(/\d+/g).pop()}%)`;
+
+			// Final Result
 			setResult({
 				id: guidGenerator(),
 				color: newColor,
 				name,
 			});
 		}
-	}, [formstate.from, formstate.to, formstate.angle, formstate.color, name]);
+	}, [formstate, name, $color$]);
 
 	return (
 		<main>
@@ -107,7 +116,7 @@ const Explore = () => {
 								<h1>Explore fresh gradients.</h1>
 								<div className="row align-items-center">
 									<div className="col-md-4 col-6">
-										<label>From</label>
+										<label htmlFor="background">From</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -131,13 +140,26 @@ const Explore = () => {
 												value={formstate.from}
 												onChange={(e) => handleChange(e, 'from')}
 											/>
+											<div className="input-group-append">
+												<span className="input-group-text percentage__input">
+													<input
+														type="number"
+														placeholder="30"
+														value={formstate.fromPercent}
+														maxLength="3"
+														max="100"
+														onChange={(e) => handleChange(e, 'fromPercent')}
+													/>
+													%
+												</span>
+											</div>
 										</div>
 									</div>
 									<div className="col-md-1 d-none justify-content-center d-md-flex">
-										<ArrowRight className="mt-4" />
+										<img src={ArrowRight} className="mt-4" alt="Arrow Right" />
 									</div>
 									<div className="col-md-4 col-6">
-										<label>To</label>
+										<label htmlFor="input">To</label>
 										<div className="input-group">
 											<div className="input-group-prepend">
 												<span className="input-group-text">
@@ -161,10 +183,23 @@ const Explore = () => {
 												value={formstate.to}
 												onChange={(e) => handleChange(e, 'to')}
 											/>
+											<div className="input-group-append">
+												<span className="input-group-text percentage__input">
+													<input
+														type="number"
+														placeholder="100"
+														value={formstate.toPercent}
+														maxLength="3"
+														max="100"
+														onChange={(e) => handleChange(e, 'toPercent')}
+													/>
+													%
+												</span>
+											</div>
 										</div>
 									</div>
 									<div className="col-md">
-										<label>Angle (deg)</label>
+										<label htmlFor="background">Angle (deg)</label>
 										<input
 											type="number"
 											className="form-control"
@@ -187,7 +222,7 @@ const Explore = () => {
 					<br />
 					<GradientLayout noRefresh header="Discover." state={state} />
 
-					<Loader className="w-70" />
+					<img src={Loader} className="w-70" alt="Loader" />
 				</div>
 			</Section>
 		</main>
@@ -231,6 +266,21 @@ const Header = styled.header`
 		height: 28px;
 		border: none;
 	}
+	.percentage__input {
+		padding: 0 10px 0 0 !important;
+		color: #ddd;
+		input {
+			width: 40px;
+			padding: 3px 0 3px 0;
+			border: none;
+			text-align: right;
+			color: #575e64;
+			outline: none !important;
+			@media (max-width: 787px) {
+				width: 21px;
+			}
+		}
+	}
 	.color-picker-wrapper {
 		background: rgb(0, 0, 0);
 		height: 28px;
@@ -254,6 +304,8 @@ const Section = styled.section`
 	.w-70 {
 		width: 70px;
 		height: 120px;
+		margin: auto;
+		display: block;
 	}
 	.card__wrapper {
 		margin: -10rem 0px 2rem;

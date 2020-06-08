@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import { clearState, setState as saveState } from 'codewonders-helpers';
 
+import PureComponent from 'components/pure-component-wrapper';
 import GradientContext from '../../context';
 import Card from '.';
 
@@ -15,8 +16,15 @@ import { ReactComponent as Box } from '../../assets/icons/icon-box.svg';
 
 const GradientLayout = React.memo(
 	({ header, noRefresh = false, state, mode, palette = false }) => {
+		/* ------------------------------- PURE SVG's ------------------------------- */
+		const PureReload = PureComponent(Reload);
+		const PureCircle = PureComponent(Circle);
+		const PureBox = PureComponent(Box);
+		/* ----------------------------- END PURE SVG's ----------------------------- */
+
 		const [layout, setLayout] = useState(false);
 		const { clearGradient } = useContext(GradientContext);
+
 		useEffect(() => {
 			if (getState('LAYOUT')) {
 				setLayout(true);
@@ -43,7 +51,7 @@ const GradientLayout = React.memo(
 							className="mr-4 none-button"
 							type="button"
 						>
-							<Circle
+							<PureCircle
 								className={getState('LAYOUT') || layout ? 'active' : null}
 							/>
 						</button>
@@ -56,13 +64,13 @@ const GradientLayout = React.memo(
 							}}
 							type="button"
 						>
-							<Box
+							<PureBox
 								className={!getState('LAYOUT') || !layout ? 'active' : null}
 							/>
 						</button>
 						{noRefresh && (
 							<span onClick={() => clearGradient()}>
-								<Reload className="mr-1" />
+								<PureReload className="mr-1" />
 								Refresh
 							</span>
 						)}
@@ -73,7 +81,7 @@ const GradientLayout = React.memo(
 						state.map((bg_gradient, index) => (
 							<Card
 								data={bg_gradient}
-								key={index + bg_gradient.name}
+								key={index + Date.now()}
 								mode={mode}
 								palette={
 									bg_gradient.colors && bg_gradient.colors.length > 0

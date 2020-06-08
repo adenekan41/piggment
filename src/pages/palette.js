@@ -7,10 +7,11 @@ import GradientContext from 'context';
 import GradientLayout from 'components/card/card-container';
 import Card from 'components/card';
 import { isEmpty } from 'codewonders-helpers';
-
 import AddToHomeScreen from 'components/a11y';
-import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
-import { ReactComponent as Loader } from '../assets/icons/loader.svg';
+
+// SVG Imported as image to avoid re-render
+import ArrowRight from '../assets/icons/icon-right.svg';
+import Loader from '../assets/icons/loader.svg';
 
 const Gradientpalette = () => {
 	const [formstate, setState] = useState({
@@ -124,7 +125,7 @@ const Gradientpalette = () => {
 										</div>
 									</div>
 									<div className="col-md-1 d-none d-md-flex justify-content-center">
-										<ArrowRight className="mt-4" />
+										<img src={ArrowRight} className="mt-4" alt="Arrow Right" />
 									</div>
 									<div className="col-md-4 col-6">
 										<label>End Color</label>
@@ -185,7 +186,7 @@ const Gradientpalette = () => {
 						palette
 					/>
 
-					<Loader className="w-70" />
+					<img src={Loader} className="w-70" alt="Loader" />
 				</div>
 			</Section>
 		</>
@@ -267,6 +268,8 @@ export const Section = styled.section`
 	.w-70 {
 		width: 70px;
 		height: 120px;
+		margin: auto;
+		display: block;
 	}
 	.percentage__input {
 		padding: 0 10px 0 0 !important;
@@ -278,6 +281,9 @@ export const Section = styled.section`
 			text-align: right;
 			color: #575e64;
 			outline: none !important;
+			@media (max-width: 787px) {
+				width: 21px;
+			}
 		}
 	}
 `;

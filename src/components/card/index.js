@@ -67,17 +67,21 @@ const Card = React.memo(
 			if (!getState('SAVED_GRADIENTS')) {
 				setState('SAVED_GRADIENTS', []);
 			}
-			logEvent('SAVE', 'Gradient added to pocket', 'SAVED GRADIENT');
-			setState('SAVED_GRADIENTS', [datas, ...getState('SAVED_GRADIENTS')]);
-			setLoved(true);
+			if (!getState('SAVED_GRADIENTS').find((state) => state.id === datas.id)) {
+				logEvent('SAVE', 'Gradient added to pocket', 'SAVED GRADIENT');
+				setState('SAVED_GRADIENTS', [datas, ...getState('SAVED_GRADIENTS')]);
+				setLoved(true);
+			}
 		};
 		const savePalette = (datas) => {
 			if (!getState('SAVED_PALETTE')) {
 				setState('SAVED_PALETTE', []);
 			}
-			logEvent('SAVE', 'Pallet added to pocket', 'SAVED PALETTE');
-			setState('SAVED_PALETTE', [datas, ...getState('SAVED_PALETTE')]);
-			setLoved(true);
+			if (!getState('SAVED_PALETTE').find((state) => state.id === datas.id)) {
+				logEvent('SAVE', 'Pallet added to pocket', 'SAVED PALETTE');
+				setState('SAVED_PALETTE', [datas, ...getState('SAVED_PALETTE')]);
+				setLoved(true);
+			}
 		};
 
 		const copyText = () => {
@@ -118,12 +122,7 @@ const Card = React.memo(
 								layout={layout}
 								mode={mode}
 							>
-								<canvas
-									ref={textCanvas}
-									width="1360"
-									height="768"
-									style={{ display: 'none' }}
-								/>
+								<canvas ref={textCanvas} width="1360" height="768" />
 							</SmallCard>
 						) : type === 'large' ? (
 							<LargeCard
@@ -133,12 +132,7 @@ const Card = React.memo(
 								saveGradient={saveGradient}
 								url={url}
 							>
-								<canvas
-									ref={textCanvas}
-									width="1360"
-									height="768"
-									style={{ display: 'none' }}
-								/>
+								<canvas ref={textCanvas} width="1360" height="768" />
 							</LargeCard>
 						) : (
 							<GeneratorCard
@@ -150,12 +144,7 @@ const Card = React.memo(
 								next={next}
 								prev={prev}
 							>
-								<canvas
-									ref={textCanvas}
-									width="1360"
-									height="768"
-									style={{ display: 'none' }}
-								/>
+								<canvas ref={textCanvas} width="1360" height="768" />
 							</GeneratorCard>
 						)}
 					</>

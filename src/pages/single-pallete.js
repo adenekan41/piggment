@@ -10,7 +10,9 @@ import Card from 'components/card';
 import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 
 import { Section as SectionPalette } from './palette';
-import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
+
+// SVG Imported as image to avoid re-render
+import ArrowRight from '../assets/icons/icon-right.svg';
 
 const SinglePallete = () => {
 	const { color1, color2, name, count } = useParams();
@@ -37,7 +39,7 @@ const SinglePallete = () => {
 				generatepalette(formstate.start, formstate.end, formstate.count || 6)
 			);
 		}
-	}, [formstate.start, formstate.end, formstate.count]);
+	}, [formstate]);
 
 	useEffect(() => {
 		if (palette.length < 6) {
@@ -109,7 +111,7 @@ const SinglePallete = () => {
 										</div>
 									</div>
 									<div className="col-md-1 d-none justify-content-center d-md-flex">
-										<ArrowRight className="mt-4" />
+										<img src={ArrowRight} className="mt-4" alt="Arrow Right" />
 									</div>
 									<div className="col-md-4 col-6">
 										<label htmlFor="input">End Color</label>

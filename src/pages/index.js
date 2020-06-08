@@ -7,7 +7,9 @@ import Card from '../components/card';
 import GradientContext from '../context';
 
 import GradientLayout from '../components/card/card-container';
-import { ReactComponent as Banner } from '../assets/icons/banner.svg';
+
+// SVG Imported as image to avoid re-render
+import Banner from '../assets/icons/banner.svg';
 
 const Home = () => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -90,7 +92,7 @@ const Home = () => {
 								</Link>
 							</div>
 							<div className="col-md-7 d-none d-md-block">
-								<Banner />
+								<img src={Banner} alt="Banner" />
 							</div>
 						</div>
 					</div>
@@ -156,6 +158,7 @@ const Header = styled.header`
 	}
 	.large__sum-card {
 		position: absolute;
+		text-align: left;
 		top: 27rem;
 		@media (max-width: 990px) {
 			display: none;

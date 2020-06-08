@@ -38,6 +38,7 @@ const figure = css`
 		}
 	}
 `;
+
 export const Snippet = styled.div`
 	background: #fffffff2;
 	position: absolute;
@@ -186,6 +187,9 @@ export const GenerateWrapper = styled.div`
 			}
 		}
 	}
+	canvas {
+		display: none;
+	}
 	.small__colors {
 		height: 18px;
 		width: 18px;
@@ -302,7 +306,7 @@ export const GenerateWrapper = styled.div`
 			}
 		}
 		svg {
-			font-size: 1.45em;
+			font-size: 1.35em;
 			fill: #a7a7a7;
 		}
 	}
@@ -317,6 +321,9 @@ export const LargeCardWrapper = styled.div`
 		article {
 			text-align: left;
 		}
+	}
+	canvas {
+		display: none;
 	}
 
 	&:before {
@@ -373,9 +380,14 @@ export const CardWrapper = styled.div`
 		min-height: 13em;
 		border-radius: 8px;
 		transition: all 0.4s ease;
+		animation: fadeIn;
+		animation-duration: 1s;
 		${(props) =>
 			props.layout &&
 			css`
+				animation: fadeIn;
+				animation-duration: 1s;
+				transition: all 0.4s ease;
 				height: 14em;
 				min-height: 14em;
 				width: 14em;
@@ -383,7 +395,9 @@ export const CardWrapper = styled.div`
 				margin: 1rem auto;
 			`}
 	}
-
+	canvas {
+		display: none;
+	}
 	&:hover {
 		margin-top: -8px;
 		figure {
@@ -422,7 +436,12 @@ export const CardWrapper = styled.div`
 		${(props) =>
 			props.layout &&
 			css`
-				text-align: center;
+				h4 {
+					text-align: center;
+				}
+				p {
+					text-align: center;
+				}
 			`}
 		h4 {
 			text-transform: capitalize;
@@ -455,6 +474,7 @@ export const PaletteCardWrapper = styled.div`
 	transition: all 0.4s ease;
 
 	figure {
+		transition: all 0.4s ease;
 		${figure}
 		min-height: 11em;
 		${(props) =>
@@ -493,8 +513,13 @@ export const PaletteCardWrapper = styled.div`
 		${(props) =>
 			props.layout &&
 			css`
-				text-align: center;
 				margin-top: 2rem;
+				h4 {
+					text-align: center;
+				}
+				p {
+					text-align: center;
+				}
 			`}
 		h4 {
 			text-transform: capitalize;
@@ -517,10 +542,13 @@ export const PaletteCardWrapper = styled.div`
 		margin-bottom: 1rem;
 		flex-direction: row-reverse;
 		transition: all 0.4s ease;
-
+		animation: fadeIn;
+		animation-duration: 1s;
 		${(props) =>
 			props.layout &&
 			css`
+				animation: fadeIn;
+				animation-duration: 1s;
 				flex-direction: column-reverse;
 				width: 13.2em;
 				height: 13.2em;

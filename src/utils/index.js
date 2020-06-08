@@ -1,11 +1,10 @@
+import { getRandomColors } from 'codewonders-helpers';
+
 /**
  * Hex Converter
  * @param {Number} rgb
  * @returns {Number}
  */
-
-import { getRandomColors } from 'codewonders-helpers';
-
 export const hexConverter = (rgb) => {
 	const s = '0123456789abcdef';
 	let i = parseInt(rgb, 10);
@@ -195,12 +194,25 @@ export const ratioStatus = (ratio) => {
 	}
 };
 
+/**
+ * Validate if hex code is confomed to the standard 6 length
+ * @param {String} hex
+ */
+
 export const validateHexCode = (hex) => {
 	if (hex && hex.length < 7) {
 		return validateHexCode(getRandomColors());
 	}
 	return hex;
 };
+
+/**
+ * Generate Pallete Colors
+ * @param {Function | String} colorStart
+ * @param {Function | String} colorEnd
+ * @param {Function | String} colorCount
+ * @returns {Object}
+ */
 export const generatepalette = (
 	colorStart = validateHexCode(getRandomColors()),
 	colorEnd = validateHexCode(getRandomColors()),

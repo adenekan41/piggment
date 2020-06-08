@@ -6,14 +6,21 @@ import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import { Link } from 'react-router-dom';
 import { clearState } from 'codewonders-helpers';
 import SEO from 'components/seo';
+import AddToHomeScreen from 'components/a11y';
+import PureComponent from 'components/pure-component-wrapper';
 import GradientLayout from '../components/card/card-container';
 
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
 import { ReactComponent as Love } from '../assets/icons/icon-love.svg';
 import { ReactComponent as Empty } from '../assets/icons/icon-empty.svg';
-import AddToHomeScreen from 'components/a11y';
 
 const SavedColors = () => {
+	/* ------------------------------- PURE SVG's ------------------------------- */
+	const PureBanner = PureComponent(Banner);
+	const PureLove = PureComponent(Love);
+	const PureEmpty = PureComponent(Empty);
+	/* ----------------------------------- END ---------------------------------- */
+
 	const [state, setState] = useState([]);
 	const [palette, setPalette] = useState([]);
 	const [nav, setNav] = useState('gradients');
@@ -48,7 +55,7 @@ const SavedColors = () => {
 							</article>
 						</div>
 						<div className="col-md-5 d-none d-md-block">
-							<Banner className="w-100 h-100" />
+							<PureBanner className="w-100 h-100" />
 						</div>
 					</div>
 				</div>
@@ -81,10 +88,11 @@ const SavedColors = () => {
 								/>
 								{!getState('SAVED_GRADIENTS') && (
 									<div className="text-center empty">
-										<Empty className="large__svg" />
+										<PureEmpty className="large__svg" />
 										<h3>You don't have any saved gradient yet</h3>
 										<p>
-											Click <Love className="small__svg" /> to save a gradient
+											Click <PureLove className="small__svg" /> to save a
+											gradient
 										</p>
 										<Link className="btn btn-piggment mt-4" to="/explore">
 											Explore Gradients
@@ -102,10 +110,10 @@ const SavedColors = () => {
 							/>
 							{!getState('SAVED_PALETTE') && (
 								<div className="text-center empty">
-									<Empty className="large__svg" />
+									<PureEmpty className="large__svg" />
 									<h3>You don't have any saved gradient palettes yet</h3>
 									<p>
-										Click <Love className="small__svg" /> to save a gradient
+										Click <PureLove className="small__svg" /> to save a gradient
 										palette
 									</p>
 									<Link className="btn btn-piggment mt-4" to="/palette">

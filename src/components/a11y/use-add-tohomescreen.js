@@ -7,11 +7,7 @@ const useAddToHomeScreen = () => {
 		if (prompt) {
 			return prompt.prompt();
 		}
-		return Promise.reject(
-			new Error(
-				'Tried installing before browser sent "beforeinstallprompt" event'
-			)
-		);
+		return Promise.reject(new Error('Tried installing got an error'));
 	};
 	const ready = (e) => {
 		e.preventDefault();

@@ -2,14 +2,16 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { rgbToHex } from 'utils';
+import { Link } from 'react-router-dom';
 import Card from '../card';
 import GradientLayout from '../card/card-container';
 import GradientContext from '../../context';
 
 import ModalWrapper from './style';
-import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
-import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
-import { Link } from 'react-router-dom';
+
+// SVG Imported as image to avoid re-render
+import Close from '../../assets/icons/icon-close.svg';
+import ArrowRight from '../../assets/icons/icon-right.svg';
 
 const ModalLayout = ({ show, setShow, data }) => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -28,10 +30,18 @@ const ModalLayout = ({ show, setShow, data }) => {
 			size="lg"
 			onEscapeKeyDown={setShow}
 		>
-			<Close
-				className="d-block ml-auto mb-5 close_modal"
+			<button
+				className="none-button"
 				onClick={() => setShow(false)}
-			/>
+				type="button"
+			>
+				<img
+					src={Close}
+					className="d-block ml-auto mb-5 close_modal"
+					alt="close"
+				/>
+			</button>
+
 			<h4 className="mb-4 header__modal">About Gradient.</h4>
 			<div id="wite_up">
 				<Card type="large" data={data} />
@@ -40,11 +50,13 @@ const ModalLayout = ({ show, setShow, data }) => {
 				<h2>{data.name}</h2>
 
 				<p className="mt-3">
-					<span>{rgbToHex(data.color, 1)}</span> <ArrowRight />{' '}
+					<span>{rgbToHex(data.color, 1)}</span>{' '}
+					<img src={ArrowRight} alt="Arrow Right" />{' '}
 					<span>{rgbToHex(data.color, 0)}</span>
 				</p>
 				<p>
-					Angle <ArrowRight /> {data.color.match(/\d+/g).shift()}
+					Angle <img src={ArrowRight} alt="Arrow Right" />{' '}
+					{data.color.match(/\d+/g).shift()}
 					deg
 				</p>
 				<div className="hexes__sections d-flex align-items-center">
@@ -53,7 +65,7 @@ const ModalLayout = ({ show, setShow, data }) => {
 						className="mr-4"
 					/>{' '}
 					<p className="d-block">{rgbToHex(data.color, 1)}</p>{' '}
-					<ArrowRight className="mr-2" />
+					<img src={ArrowRight} alt="Arrow Right" className="mr-2" />
 					{data.color
 						.substring(data.color.indexOf('rgb'), data.color.indexOf('%'))
 						.match(/\d+/g)
@@ -67,7 +79,7 @@ const ModalLayout = ({ show, setShow, data }) => {
 						className="mr-4"
 					/>{' '}
 					<p className="d-block">{rgbToHex(data.color, 0)}</p>{' '}
-					<ArrowRight className="mr-2" />
+					<img src={ArrowRight} alt="Arrow Right" className="mr-2" />
 					{data.color.match(/\d+/g).pop()}%
 				</div>
 				<Link

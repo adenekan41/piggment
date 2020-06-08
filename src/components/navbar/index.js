@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 
-import { ReactComponent as Logo } from '../../assets/icons/logo_.svg';
-import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
+import PureComponent from 'components/pure-component-wrapper';
 
-const NavLayout = ({ location }) => {
+import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
+// SVG's imported as image to avoid re-render
+import Logo from '../../assets/icons/logo_.svg';
+
+const NavLayout = memo(({ location }) => {
+	const PureLove = PureComponent(Love);
 	return (
 		<NavWrapper
 			collapseOnSelect
@@ -22,7 +26,7 @@ const NavLayout = ({ location }) => {
 				}
 			>
 				<Navbar.Brand as={Link} to="/">
-					<Logo />
+					<img src={Logo} alt="Piggment Logo" />
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="navbar" />
 				<Navbar.Collapse id="navbar">
@@ -77,14 +81,15 @@ const NavLayout = ({ location }) => {
 							to="/saved"
 							className="saved"
 						>
-							<Love className="mr-1" /> Saved
+							<PureLove className="mr-1" />
+							Saved
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</div>
 		</NavWrapper>
 	);
-};
+});
 const NavWrapper = styled(Navbar)`
 	background: #fff8f0;
 	&.spaced__out {
@@ -104,7 +109,7 @@ const NavWrapper = styled(Navbar)`
 		}
 	}
 	.navbar-brand {
-		svg {
+		img {
 			width: auto;
 			height: 30px;
 			@media (max-width: 990px) {
