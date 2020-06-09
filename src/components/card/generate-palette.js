@@ -1,16 +1,31 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useState, memo } from 'react';
 import CodeSnippnets from 'components/snippet';
 import PropTypes from 'prop-types';
 
+/* --------------------------- Internal Depencies --------------------------- */
 import ModalPalette from 'components/modal/palette';
 import PureComponent from 'components/pure-component-wrapper';
 import { BorderWrap, GenerateWrapper } from './style';
 import ShareDropdown from './share-dropdown';
 
+/* ---------------------------- Image Dependecies --------------------------- */
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
 import { ReactComponent as Eye } from '../../assets/icons/icon-eye.svg';
+
+/* --------------------- GeneratorPaletteCard PropTypes --------------------- */
+const propTypes = {
+	copyText: PropTypes.func,
+	data: PropTypes.object,
+	loved: PropTypes.bool,
+	next: PropTypes.func,
+	prev: PropTypes.func,
+	saveGradient: PropTypes.func,
+};
 
 const GeneratorPaletteCard = memo(
 	({ copyText, data, loved, saveGradient, next, prev }) => {
@@ -56,7 +71,8 @@ const GeneratorPaletteCard = memo(
 						<article>
 							<h4>{data.name}</h4>
 							<p className="hex__section">
-								<span>{data.start}</span> <PureArrowRight />{' '}
+								<span>{data.start}</span>{' '}
+								<PureArrowRight aria-hidden="true" focusable="false" />{' '}
 								<span>{data.end}</span>
 							</p>{' '}
 							<div
@@ -78,13 +94,27 @@ const GeneratorPaletteCard = memo(
 								Tap space bar to generate new gradient palettes
 							</h6>
 							<div className="d-flex justify-content-between">
-								<span onClick={prev}>
-									<PureArrowRight style={{ transform: 'rotate(180deg)' }} />{' '}
+								<button
+									type="button"
+									className="none-button"
+									onClick={prev}
+									aria-label="Previous"
+								>
+									<PureArrowRight
+										aria-hidden="true"
+										style={{ transform: 'rotate(180deg)' }}
+										focusable="false"
+									/>{' '}
 									Previous
-								</span>
-								<span onClick={next}>
-									Next <PureArrowRight />
-								</span>
+								</button>
+								<button
+									type="button"
+									className="none-button"
+									onClick={next}
+									aria-label="Next"
+								>
+									Next <PureArrowRight aria-hidden="true" focusable="false" />
+								</button>
 							</div>
 						</div>
 
@@ -96,8 +126,9 @@ const GeneratorPaletteCard = memo(
 								}}
 								type="button"
 								className="none-button"
+								aria-label="Show CSS Code"
 							>
-								<PureCode tabIndex="-1" />
+								<PureCode tabIndex="-1" aria-hidden="true" focusable="false" />
 							</button>
 
 							<button
@@ -106,18 +137,22 @@ const GeneratorPaletteCard = memo(
 								}}
 								type="button"
 								className="none-button ml-2"
+								aria-label="View Palette"
 							>
-								<PureEye />
+								<PureEye aria-hidden="true" focusable="false" />
 							</button>
 
 							<button
 								onClick={() => saveGradient(data)}
 								type="button"
 								className="none-button ml-2"
+								aria-label="Save Palette"
 							>
 								<PureLove
 									tabIndex="-1"
 									className={`${loved && 'active_love'}`}
+									aria-hidden="true"
+									focusable="false"
 								/>
 							</button>
 							<ShareDropdown palette data={data} />
@@ -136,13 +171,6 @@ const GeneratorPaletteCard = memo(
 	}
 );
 
-GeneratorPaletteCard.propTypes = {
-	copyText: PropTypes.func,
-	data: PropTypes.object,
-	loved: PropTypes.bool,
-	saveGradient: PropTypes.func,
-	next: PropTypes.func,
-	prev: PropTypes.func,
-};
+GeneratorPaletteCard.propTypes = propTypes;
 
 export default GeneratorPaletteCard;

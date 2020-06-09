@@ -1,11 +1,23 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { memo } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+/* -------------------------- Internal Dependencies ------------------------- */
 import { logEvent } from 'utils/analytics';
 
+/* --------------------------- Image Dependencies --------------------------- */
 import { ReactComponent as Share } from '../../assets/icons/icon-share.svg';
+
+/* ------------------------- ShareDropdown PropTypes ------------------------ */
+const propTypes = {
+	data: PropTypes.object,
+	palette: PropTypes.bool,
+	save: PropTypes.func,
+};
 
 const ShareDropdown = memo(({ data, palette, save }) => {
 	/* -------------------------------- PURE SVG -------------------------------- */
@@ -67,7 +79,7 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 						logEvent('Share', 'User Shared To Twitter', 'Share To Twitter')
 					}
 				>
-					<span className="mr-2">
+					<span className="mr-2" aria-hidden="true" focusable="false">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
@@ -90,7 +102,7 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 						logEvent('Share', 'User Shared To Linkedin', 'Share To Linkedin')
 					}
 				>
-					<span className="mr-2">
+					<span className="mr-2" aria-hidden="true" focusable="false">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
@@ -112,7 +124,7 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 						logEvent('Share', 'User Shared To Facebook', 'Share To Facebook')
 					}
 				>
-					<span className="mr-2">
+					<span className="mr-2" aria-hidden="true" focusable="false">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
@@ -132,10 +144,5 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 	);
 });
 
-ShareDropdown.propTypes = {
-	data: PropTypes.object,
-	palette: PropTypes.bool,
-	save: PropTypes.func,
-};
-
+ShareDropdown.propTypes = propTypes;
 export default ShareDropdown;

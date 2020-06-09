@@ -1,6 +1,14 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dpendencies                            */
+/* -------------------------------------------------------------------------- */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+/* -------------------------- SkipToMain PropTypes -------------------------- */
+const propTypes = {
+	content: PropTypes.string,
+};
 
 const SkipToMain = ({ content = '0' }) => {
 	return (
@@ -45,8 +53,6 @@ const Wrapper = styled.a`
 	}
 `;
 
-SkipToMain.propTypes = {
-	content: PropTypes.string,
-};
+SkipToMain.propTypes = propTypes;
 
 export default SkipToMain;

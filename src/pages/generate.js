@@ -1,7 +1,13 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { useContext, useEffect, useCallback, useState } from 'react';
-import GradientContext from 'context';
 import styled from 'styled-components';
 
+/* -------------------------- Internal Dependencies ------------------------- */
+
+import GradientContext from 'context';
 import SEO from 'components/seo';
 import Card from '../components/card';
 

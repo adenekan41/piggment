@@ -1,14 +1,21 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
 import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
-
 import { Link } from 'react-router-dom';
 import { clearState } from 'codewonders-helpers';
+
+/* -------------------------- Internal Dependencies ------------------------- */
+
 import SEO from 'components/seo';
 import AddToHomeScreen from 'components/a11y';
 import PureComponent from 'components/pure-component-wrapper';
 import GradientLayout from '../components/card/card-container';
+
+/* --------------------------- Image Dependencies --------------------------- */
 
 import { ReactComponent as Banner } from '../assets/icons/saved-banner.svg';
 import { ReactComponent as Love } from '../assets/icons/icon-love.svg';
@@ -55,7 +62,7 @@ const SavedColors = () => {
 							</article>
 						</div>
 						<div className="col-md-5 d-none d-md-block">
-							<PureBanner className="w-100 h-100" />
+							<PureBanner className="w-100 h-100" aria-hidden="true" />
 						</div>
 					</div>
 				</div>
@@ -88,11 +95,12 @@ const SavedColors = () => {
 								/>
 								{!getState('SAVED_GRADIENTS') && (
 									<div className="text-center empty">
-										<PureEmpty className="large__svg" />
+										<PureEmpty className="large__svg" aria-hidden="true" />
 										<h3>You don't have any saved gradient yet</h3>
 										<p>
-											Click <PureLove className="small__svg" /> to save a
-											gradient
+											Click{' '}
+											<PureLove className="small__svg" aria-hidden="true" /> to
+											save a gradient
 										</p>
 										<Link className="btn btn-piggment mt-4" to="/explore">
 											Explore Gradients
@@ -110,11 +118,11 @@ const SavedColors = () => {
 							/>
 							{!getState('SAVED_PALETTE') && (
 								<div className="text-center empty">
-									<PureEmpty className="large__svg" />
+									<PureEmpty className="large__svg" aria-hidden="true" />
 									<h3>You don't have any saved gradient palettes yet</h3>
 									<p>
-										Click <PureLove className="small__svg" /> to save a gradient
-										palette
+										Click <PureLove className="small__svg" aria-hidden="true" />{' '}
+										to save a gradient palette
 									</p>
 									<Link className="btn btn-piggment mt-4" to="/palette">
 										Explore Palettes

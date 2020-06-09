@@ -1,19 +1,24 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
+
+/* -------------------------- Internal Dependencies ------------------------- */
 import ErrorBoundary from 'components/error-boundary';
 import NavLayout from '../components/navbar';
 import Footer from '../components/footer';
-
 import LogoPrimary from 'components/logo-primary';
-import SingleGradient from 'pages/single-gradient';
 import SkipToMain from 'components/a11y/skip-to-main';
 
+/* ------------------------- Component Dependencies ------------------------- */
 const Explore = lazy(() => import('../pages/explore'));
 const SinglePallete = lazy(() => import('../pages/single-pallete'));
+const SingleGradient = lazy(() => import('../pages/single-gradient'));
 const NotFound = lazy(() => import('../pages/404'));
 const About = lazy(() => import('../pages/about'));
 const GeneratePalette = lazy(() => import('../pages/generate-palette'));
@@ -24,6 +29,12 @@ const Generate = lazy(() => import('../pages/generate'));
 const Terms = lazy(() => import('../pages/terms'));
 const Privacy = lazy(() => import('../pages/privacy'));
 const ContrastChecker = lazy(() => import('../pages/constrast-checker'));
+
+/* ---------------------------- Routes PropTypes ---------------------------- */
+
+const propTypes = {
+	location: PropTypes.any,
+};
 
 const routes = ({ location }) => (
 	<Wrapper>
@@ -91,8 +102,6 @@ const Wrapper = styled.div`
 	}
 `;
 
-routes.propTypes = {
-	location: PropTypes.any,
-};
+routes.propTypes = propTypes;
 
 export default withRouter(routes);

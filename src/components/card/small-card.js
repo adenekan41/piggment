@@ -1,23 +1,40 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useState, memo } from 'react';
 import CodeSnippnets from 'components/snippet';
 import PropTypes from 'prop-types';
-
-import { rgbToHex } from 'utils';
-import ModalLayout from 'components/modal';
 import {
 	setState,
 	getState,
 } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
+
+/* -------------------------- Internal Dependencies ------------------------- */
+import { rgbToHex } from 'utils';
+import ModalLayout from 'components/modal';
 import history from 'utils/history';
 import PureComponent from 'components/pure-component-wrapper';
 import { BorderWrap, CardWrapper } from './style';
+import ShareDropdown from './share-dropdown';
 
+/* --------------------------- Image Dependencies --------------------------- */
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as Save } from '../../assets/icons/icon-save.svg';
 import { ReactComponent as Delete } from '../../assets/icons/icon-delete.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
-import ShareDropdown from './share-dropdown';
+
+/* --------------------------- SmallCard PropTypes -------------------------- */
+const propTypes = {
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
+	copyText: PropTypes.func,
+	data: PropTypes.object,
+	loved: PropTypes.bool,
+	saveGradient: PropTypes.func,
+	url: PropTypes.string,
+	layout: PropTypes.string,
+	mode: PropTypes.string,
+};
 
 const SmallCard = memo(
 	({ children, copyText, data, loved, saveGradient, url, layout, mode }) => {
@@ -67,7 +84,8 @@ const SmallCard = memo(
 							<article>
 								<h4>{data.name}</h4>
 								<p className="hex__section">
-									<span>{rgbToHex(data.color, 1)}</span> <PureArrowRight />{' '}
+									<span>{rgbToHex(data.color, 1)}</span>
+									<PureArrowRight aria-hidden="true" focusable="false" />
 									<span>{rgbToHex(data.color, 0)}</span>
 								</p>
 							</article>
@@ -92,8 +110,9 @@ const SmallCard = memo(
 								}}
 								type="button"
 								className="none-button"
+								aria-label="Show CSS Code"
 							>
-								<PureCode tabIndex="-1" />
+								<PureCode tabIndex="-1" aria-hidden="true" />
 							</button>
 
 							<button type="button" className="none-button ml-2" tabIndex="-1">
@@ -102,19 +121,28 @@ const SmallCard = memo(
 									href={url}
 									title={data.name}
 									tabIndex="0"
+									aria-label="Download Gradient"
 								>
-									<PureSave tabIndex="-1" />
+									<PureSave
+										tabIndex="-1"
+										aria-hidden="true"
+										focusable="false"
+									/>
 								</a>
 							</button>
+
 							{mode !== 'delete' && (
 								<button
 									onClick={() => saveGradient(data)}
 									type="button"
 									className="none-button ml-2"
+									aria-label="Save Gradient"
 								>
 									<PureLove
 										tabIndex="-1"
 										className={`${loved && 'active_love'}`}
+										aria-hidden="true"
+										focusable="false"
 									/>
 								</button>
 							)}
@@ -123,8 +151,13 @@ const SmallCard = memo(
 									onClick={() => deleteGradient(data)}
 									type="button"
 									className="none-button ml-2"
+									aria-label="Delete Gradient"
 								>
-									<PureDelete tabIndex="-1" />
+									<PureDelete
+										tabIndex="-1"
+										aria-hidden="true"
+										focusable="false"
+									/>
 								</button>
 							)}
 							<ShareDropdown data={data} save={() => saveGradient(data)} />
@@ -143,15 +176,6 @@ const SmallCard = memo(
 	}
 );
 
-SmallCard.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
-	copyText: PropTypes.func,
-	data: PropTypes.object,
-	loved: PropTypes.bool,
-	saveGradient: PropTypes.func,
-	url: PropTypes.string,
-	layout: PropTypes.string,
-	mode: PropTypes.string,
-};
+SmallCard.propTypes = propTypes;
 
 export default SmallCard;

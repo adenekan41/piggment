@@ -1,16 +1,32 @@
 /* eslint-disable react/jsx-curly-brace-presence */
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
-import { rgbToHex } from 'utils';
 import { setState, getState } from 'codewonders-helpers';
 
+/* -------------------------- Internal Dependencies ------------------------- */
+import { rgbToHex } from 'utils';
 import { logEvent } from 'utils/analytics';
+
 import LargeCard from './large-card';
 import GeneratorCard from './generator-card';
 import SmallCard from './small-card';
 import PaletteCard from './palette-card';
 import GeneratorPaletteCard from './generate-palette';
+
+/* ----------------------------- Card PropTypes ----------------------------- */
+const propTypes = {
+	cardMode: PropTypes.string,
+	data: PropTypes.object,
+	layout: PropTypes.string,
+	mode: PropTypes.string,
+	next: PropTypes.func,
+	palette: PropTypes.bool,
+	prev: PropTypes.func,
+	type: PropTypes.string,
+};
 
 const Card = React.memo(
 	({
@@ -28,21 +44,18 @@ const Card = React.memo(
 
 		const [loved, setLoved] = useState(false);
 
-		// Get and draw canvas URL
+		// Get gradient and draw canvas URL
 		useEffect(() => {
 			if (!palette) {
 				const canvasObj = textCanvas.current;
 				const ctx = canvasObj.getContext('2d');
 				const dataAngle = data.color.match(/\d+/g).shift();
 
-				// console.log(dataAngle);
 				const angle = (dataAngle * Math.PI) / 360;
 				const x2 = Math.cos(angle) * 1360;
 				const y2 = Math.sin(angle) * 768;
 
 				const grd = ctx.createLinearGradient(0, 0, x2, y2);
-				// light blue
-
 				grd.addColorStop(
 					parseInt(
 						data.color
@@ -173,15 +186,6 @@ const Card = React.memo(
 	}
 );
 
-Card.propTypes = {
-	data: PropTypes.object,
-	mode: PropTypes.string,
-	layout: PropTypes.string,
-	type: PropTypes.string,
-	palette: PropTypes.bool,
-	next: PropTypes.func,
-	cardMode: PropTypes.string,
-	prev: PropTypes.func,
-};
+Card.propTypes = propTypes;
 
 export default Card;

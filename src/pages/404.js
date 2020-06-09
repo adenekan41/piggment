@@ -1,14 +1,19 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-
-import SEO from 'components/seo';
 import { Link } from 'react-router-dom';
+
+/* -------------------------- Internal Dependecies -------------------------- */
+import SEO from 'components/seo';
 import { logException } from 'utils/analytics';
 
 const NotFound = () => {
 	useEffect(() => {
 		logException('Page Not Found', true);
 	}, []);
+
 	return (
 		<>
 			<SEO title="404 Page not found" />

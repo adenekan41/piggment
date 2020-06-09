@@ -1,6 +1,14 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { useCallback, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import randomWords from 'random-words';
+import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
+import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
+
+/* -------------------------- Internal Dependencies ------------------------- */
 
 import {
 	debounce,
@@ -11,13 +19,12 @@ import {
 } from 'utils';
 import SEO from 'components/seo';
 import Card from 'components/card';
-import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
-import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
 import AddToHomeScreen from 'components/a11y';
 import GradientLayout from '../components/card/card-container';
 import GradientContext from '../context';
 
-// SVG Imported as image to avoid re-render
+/* --------------------------- Image Dependencies --------------------------- */
+
 import ArrowRight from '../assets/icons/icon-right.svg';
 import Loader from '../assets/icons/loader.svg';
 

@@ -1,22 +1,41 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useState, memo } from 'react';
-import CodeSnippnets from 'components/snippet';
 import PropTypes from 'prop-types';
-
-import ModalPalette from 'components/modal/palette';
 import {
 	setState,
 	getState,
 } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
+
+/* -------------------------- Internal Dependencies ------------------------- */
+import ModalPalette from 'components/modal/palette';
+import CodeSnippnets from 'components/snippet';
 import history from 'utils/history';
 import PureComponent from 'components/pure-component-wrapper';
-import { BorderWrap, PaletteCardWrapper } from './style';
 import ShareDropdown from './share-dropdown';
 
+/* ---------------------------- Style Dependency ---------------------------- */
+import { BorderWrap, PaletteCardWrapper } from './style';
+
+/* --------------------------- Image Depenedencies --------------------------- */
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Eye } from '../../assets/icons/icon-eye.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as Delete } from '../../assets/icons/icon-delete.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
+
+/* -------------------------- PaletteCard PropTypes ------------------------- */
+const propTypes = {
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
+	copyText: PropTypes.func,
+	data: PropTypes.object,
+	loved: PropTypes.bool,
+	saveGradient: PropTypes.func,
+	layout: PropTypes.string,
+	mode: PropTypes.string,
+	cardMode: PropTypes.string,
+};
 
 const PaletteCard = memo(
 	({
@@ -87,7 +106,8 @@ const PaletteCard = memo(
 									<article>
 										<h4>{data.name}</h4>
 										<p className="hex__section">
-											<span>{data.start}</span> <PureArrowRight />{' '}
+											<span>{data.start}</span>{' '}
+											<PureArrowRight aria-hidden="true" focusable="false" />{' '}
 											<span>{data.end}</span>
 										</p>
 									</article>
@@ -113,8 +133,13 @@ const PaletteCard = memo(
 										}}
 										type="button"
 										className="none-button"
+										aria-label="Show CSS Code"
 									>
-										<PureCode tabIndex="-1" />
+										<PureCode
+											tabIndex="-1"
+											aria-hidden="true"
+											focusable="false"
+										/>
 									</button>
 
 									<button
@@ -123,8 +148,9 @@ const PaletteCard = memo(
 										}}
 										type="button"
 										className="none-button ml-2"
+										aria-label="View Palette"
 									>
-										<PureEye />
+										<PureEye aria-hidden="true" focusable="false" />
 									</button>
 
 									{mode !== 'delete' && (
@@ -132,10 +158,13 @@ const PaletteCard = memo(
 											onClick={() => saveGradient(data)}
 											type="button"
 											className="none-button ml-2"
+											aria-label="Save Palette"
 										>
 											<PureLove
 												tabIndex="-1"
 												className={`${loved && 'active_love'}`}
+												aria-hidden="true"
+												focusable="false"
 											/>
 										</button>
 									)}
@@ -144,8 +173,13 @@ const PaletteCard = memo(
 											onClick={() => deleteGradient(data)}
 											type="button"
 											className="none-button ml-2"
+											aria-label="Delete Palette"
 										>
-											<PureDelete tabIndex="-1" />
+											<PureDelete
+												tabIndex="-1"
+												aria-hidden="true"
+												focusable="false"
+											/>
 										</button>
 									)}
 									<ShareDropdown palette data={data} />
@@ -180,8 +214,13 @@ const PaletteCard = memo(
 										}}
 										type="button"
 										className="none-button"
+										aria-label="Show CSS Code"
 									>
-										<PureCode tabIndex="-1" />
+										<PureCode
+											tabIndex="-1"
+											aria-hidden="true"
+											focusable="false"
+										/>
 									</button>
 
 									<button
@@ -190,18 +229,22 @@ const PaletteCard = memo(
 										}}
 										type="button"
 										className="none-button ml-2"
+										aria-label="View Palette"
 									>
-										<PureEye />
+										<PureEye aria-hidden="true" focusable="false" />
 									</button>
 
 									<button
 										onClick={() => saveGradient(data)}
 										type="button"
 										className="none-button ml-2"
+										aria-label="Save Palette"
 									>
 										<PureLove
 											tabIndex="-1"
 											className={`${loved && 'active_love'}`}
+											aria-hidden="true"
+											focusable="false"
 										/>
 									</button>
 									<ShareDropdown palette data={data} />
@@ -222,15 +265,5 @@ const PaletteCard = memo(
 	}
 );
 
-PaletteCard.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
-	copyText: PropTypes.func,
-	data: PropTypes.object,
-	loved: PropTypes.bool,
-	saveGradient: PropTypes.func,
-	layout: PropTypes.string,
-	mode: PropTypes.string,
-	cardMode: PropTypes.string,
-};
-
+PaletteCard.propTypes = propTypes;
 export default PaletteCard;

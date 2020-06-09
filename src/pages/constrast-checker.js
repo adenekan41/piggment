@@ -1,13 +1,19 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+/* -------------------------- Internal Dependencies ------------------------- */
+
 import SEO from 'components/seo';
 import { calculateContrast, ratioStatus, isColor } from 'utils';
-
 import PureComponent from 'components/pure-component-wrapper';
-import { ReactComponent as Banner } from '../assets/icons/banner-contrast.svg';
 
-// SVG Imported as image to avoid re-render
+/* --------------------------- Image Dependencies --------------------------- */
+
+import { ReactComponent as Banner } from '../assets/icons/banner-contrast.svg';
 import ArrowRight from '../assets/icons/icon-right.svg';
 
 const ContrastChecker = () => {

@@ -1,12 +1,21 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/styles/index.css';
-import App from 'App';
-import { Router } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { Router } from 'react-router-dom';
 
+/* -------------------------- Internal Dependencies ------------------------- */
+
+import App from 'App';
 import * as serviceWorker from './utils/serviceWorker';
 import history from './utils/history';
+
+/* ---------------------------- Style Dependency ---------------------------- */
+
+import './assets/styles/index.css';
 
 ReactDOM.hydrate(
 	<HelmetProvider>

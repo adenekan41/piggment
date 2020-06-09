@@ -1,17 +1,29 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-import { rgbToHex } from 'utils';
 import { Link } from 'react-router-dom';
+
+/* -------------------------- Internal Dependecies -------------------------- */
+import { rgbToHex } from 'utils';
 import Card from '../card';
 import GradientLayout from '../card/card-container';
 import GradientContext from '../../context';
 
+/* ---------------------------- Style Dependency ---------------------------- */
 import ModalWrapper from './style';
 
-// SVG Imported as image to avoid re-render
+/* --------------------------- Image Dependencies --------------------------- */
 import Close from '../../assets/icons/icon-close.svg';
 import ArrowRight from '../../assets/icons/icon-right.svg';
+
+/* -------------------------- ModalLayout PropTypes ------------------------- */
+const propTypes = {
+	show: PropTypes.bool,
+	setShow: PropTypes.func,
+	data: PropTypes.object,
+};
 
 const ModalLayout = ({ show, setShow, data }) => {
 	const { state, loadGradients } = useContext(GradientContext);
@@ -50,12 +62,12 @@ const ModalLayout = ({ show, setShow, data }) => {
 				<h2>{data.name}</h2>
 
 				<p className="mt-3">
-					<span>{rgbToHex(data.color, 1)}</span>{' '}
-					<img src={ArrowRight} alt="Arrow Right" />{' '}
+					<span>{rgbToHex(data.color, 1)}</span>
+					<img src={ArrowRight} alt="Arrow Right" />
 					<span>{rgbToHex(data.color, 0)}</span>
 				</p>
 				<p>
-					Angle <img src={ArrowRight} alt="Arrow Right" />{' '}
+					Angle <img src={ArrowRight} alt="Arrow Right" />
 					{data.color.match(/\d+/g).shift()}
 					deg
 				</p>
@@ -63,8 +75,8 @@ const ModalLayout = ({ show, setShow, data }) => {
 					<span
 						style={{ background: rgbToHex(data.color, 1) }}
 						className="mr-4"
-					/>{' '}
-					<p className="d-block">{rgbToHex(data.color, 1)}</p>{' '}
+					/>
+					<p className="d-block">{rgbToHex(data.color, 1)}</p>
 					<img src={ArrowRight} alt="Arrow Right" className="mr-2" />
 					{data.color
 						.substring(data.color.indexOf('rgb'), data.color.indexOf('%'))
@@ -77,8 +89,8 @@ const ModalLayout = ({ show, setShow, data }) => {
 					<span
 						style={{ background: rgbToHex(data.color, 0) }}
 						className="mr-4"
-					/>{' '}
-					<p className="d-block">{rgbToHex(data.color, 0)}</p>{' '}
+					/>
+					<p className="d-block">{rgbToHex(data.color, 0)}</p>
 					<img src={ArrowRight} alt="Arrow Right" className="mr-2" />
 					{data.color.match(/\d+/g).pop()}%
 				</div>
@@ -99,10 +111,6 @@ const ModalLayout = ({ show, setShow, data }) => {
 	);
 };
 
-ModalLayout.propTypes = {
-	show: PropTypes.bool,
-	setShow: PropTypes.func,
-	data: PropTypes.object,
-};
+ModalLayout.propTypes = propTypes;
 
 export default ModalLayout;

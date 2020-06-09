@@ -1,8 +1,16 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+/* --------------------------- Internal Dependency -------------------------- */
+
 import SEO from 'components/seo';
+
+/* --------------------------- Image Dependencies --------------------------- */
 
 import { ReactComponent as Banner } from '../assets/icons/banner-pallet.svg';
 import { ReactComponent as BannerMore } from '../assets/icons/banner-contrast.svg';

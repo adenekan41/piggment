@@ -1,18 +1,24 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
-import SEO from 'components/seo';
-import GradientContext from 'context';
+import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
+
+/* -------------------------- Internal Dependencies ------------------------- */
 
 import GradientLayout from 'components/card/card-container';
 import { generatepalette, isColor } from 'utils';
 import Card from 'components/card';
-import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
-
+import GradientContext from 'context';
+import SEO from 'components/seo';
 import PureComponent from 'components/pure-component-wrapper';
 import { Section as SectionPalette } from './palette';
 
-// SVG Imported as image to avoid re-render
+/* ---------------------------- Image Dependency ---------------------------- */
+
 import { ReactComponent as ArrowRight } from '../assets/icons/icon-right.svg';
 
 const SinglePallete = () => {

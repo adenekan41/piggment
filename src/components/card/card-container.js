@@ -1,18 +1,31 @@
+/* -------------------------------------------------------------------------- */
+/*                             External Dependcies                            */
+/* -------------------------------------------------------------------------- */
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import { clearState, setState as saveState } from 'codewonders-helpers';
 
+/* -------------------------- Internal Dependencies ------------------------- */
 import PureComponent from 'components/pure-component-wrapper';
 import GradientContext from '../../context';
 import Card from '.';
 
+/* --------------------------- Image Dependencies --------------------------- */
 import { ReactComponent as Reload } from '../../assets/icons/icon-refresh.svg';
 import { ReactComponent as Circle } from '../../assets/icons/icon-circle.svg';
 import { ReactComponent as Box } from '../../assets/icons/icon-box.svg';
+
+/* --------------------------- GradientLayout PropTypes --------------------------- */
+const propTypes = {
+	header: PropTypes.string,
+	mode: PropTypes.string,
+	noRefresh: PropTypes.bool,
+	palette: PropTypes.bool,
+	state: PropTypes.array,
+};
 
 const GradientLayout = React.memo(
 	({ header, noRefresh = false, state, mode, palette = false }) => {
@@ -50,9 +63,12 @@ const GradientLayout = React.memo(
 							}}
 							className="mr-4 none-button"
 							type="button"
+							aria-label="Circle Layout"
 						>
 							<PureCircle
 								className={getState('LAYOUT') || layout ? 'active' : null}
+								aria-hidden="true"
+								focusable="false"
 							/>
 						</button>
 
@@ -63,16 +79,28 @@ const GradientLayout = React.memo(
 								setLayout(false);
 							}}
 							type="button"
+							aria-label="Box Layout"
 						>
 							<PureBox
 								className={!getState('LAYOUT') || !layout ? 'active' : null}
+								aria-hidden="true"
+								focusable="false"
 							/>
 						</button>
 						{noRefresh && (
-							<span onClick={() => clearGradient()}>
-								<PureReload className="mr-1" />
+							<button
+								onClick={() => clearGradient()}
+								className="none-button"
+								type="button"
+								aria-label="Refresh"
+							>
+								<PureReload
+									className="mr-1"
+									aria-hidden="true"
+									focusable="false"
+								/>
 								Refresh
-							</span>
+							</button>
 						)}
 					</div>
 				</CardWrapper>
@@ -147,12 +175,6 @@ const Grid = styled.div`
 	grid-row-gap: 40px;
 `;
 
-GradientLayout.propTypes = {
-	header: PropTypes.string,
-	mode: PropTypes.string,
-	noRefresh: PropTypes.bool,
-	palette: PropTypes.bool,
-	state: PropTypes.array,
-};
+GradientLayout.propTypes = propTypes;
 
 export default GradientLayout;

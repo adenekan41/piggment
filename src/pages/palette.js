@@ -1,15 +1,21 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import styled from 'styled-components';
+import { isEmpty } from 'codewonders-helpers';
+
+/* -------------------------- Internal Dependencies ------------------------- */
 
 import { debounce, isColor, generatepalette } from 'utils';
 import SEO from 'components/seo';
 import GradientContext from 'context';
 import GradientLayout from 'components/card/card-container';
 import Card from 'components/card';
-import { isEmpty } from 'codewonders-helpers';
 import AddToHomeScreen from 'components/a11y';
 
-// SVG Imported as image to avoid re-render
+/* --------------------------- Image Dependencies --------------------------- */
 import ArrowRight from '../assets/icons/icon-right.svg';
 import Loader from '../assets/icons/loader.svg';
 

@@ -1,3 +1,6 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useState, useEffect } from 'react';
 
 const ErrorBoundary = ({ children }) => {

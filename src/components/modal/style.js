@@ -1,3 +1,6 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import styled from 'styled-components';
 import { Modal } from 'react-bootstrap';
 

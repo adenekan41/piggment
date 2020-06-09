@@ -1,12 +1,19 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import randomWords from 'random-words';
-import GradientContext from '.';
 
+/* --------------------------- Internal Dependencies -------------------------- */
+import GradientContext from '.';
 import { generateGradient, guidGenerator, generatepalette } from '../utils';
 
 class DataProvider extends React.PureComponent {
+	static propTypes = {
+		children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
+	};
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -60,9 +67,5 @@ class DataProvider extends React.PureComponent {
 		);
 	}
 }
-
-DataProvider.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
-};
 
 export default DataProvider;

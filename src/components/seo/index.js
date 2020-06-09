@@ -1,8 +1,18 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-
 import { Helmet } from 'react-helmet-async';
+
+/* --------------------------- Internal Dependency -------------------------- */
 import { initGA, logPageView } from '../../utils/analytics';
+
+/* ----------------------------- SEO  PropTypes ----------------------------- */
+const propTypes = {
+	title: PropTypes.string,
+	description: PropTypes.string,
+};
 
 const SEO = ({ title, description }) => {
 	const logPage = useCallback(() => {
@@ -44,9 +54,5 @@ const SEO = ({ title, description }) => {
 	);
 };
 
-SEO.propTypes = {
-	title: PropTypes.string,
-	description: PropTypes.string,
-};
-
+SEO.propTypes = propTypes;
 export default SEO;

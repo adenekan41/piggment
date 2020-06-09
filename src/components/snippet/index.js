@@ -1,10 +1,23 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
+/* -------------------------- Internal Dependecies -------------------------- */
 import { Snippet } from 'components/card/style';
 import { rgbToHex } from 'utils';
 
+/* ---------------------------- Image Dependency ---------------------------- */
 import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
+
+/* ------------------------- CodeSnippnets PropTypes ------------------------ */
+const propTypes = {
+	copyText: PropTypes.func,
+	setViewCode: PropTypes.func,
+	data: PropTypes.object,
+	palette: PropTypes.bool,
+};
 
 const CodeSnippnets = ({ copyText, setViewCode, data, palette = false }) => {
 	const handleEscKey = useCallback(
@@ -30,7 +43,14 @@ const CodeSnippnets = ({ copyText, setViewCode, data, palette = false }) => {
 	return (
 		<Snippet className="snippet fadeIn">
 			<div className="css_code">
-				<Close className="ml-auto d-block" onClick={() => setViewCode(false)} />
+				<button
+					className="ml-auto d-block none-button"
+					type="button"
+					aria-label="Close Code"
+					onClick={() => setViewCode(false)}
+				>
+					<Close aria-hidden="true" />
+				</button>
 				<h4>CSS Code.</h4>
 				{!palette ? (
 					<>
@@ -85,10 +105,6 @@ const CodeSnippnets = ({ copyText, setViewCode, data, palette = false }) => {
 	);
 };
 
-CodeSnippnets.propTypes = {
-	copyText: PropTypes.func,
-	setViewCode: PropTypes.func,
-	data: PropTypes.object,
-};
+CodeSnippnets.propTypes = propTypes;
 
 export default CodeSnippnets;

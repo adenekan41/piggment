@@ -1,6 +1,10 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+/* -------------------------- Internal Dependencies ------------------------- */
 import useAddToHomeScreen from './use-add-tohomescreen';
 
 const AddToHomeScreen = () => {

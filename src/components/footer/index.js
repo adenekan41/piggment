@@ -1,13 +1,22 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+/* -------------------------- Internal Dependencies ------------------------- */
 import PureComponent from 'components/pure-component-wrapper';
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 
-// SVG Imported as Image to avoid re-render
+/* ---------------------------- Image Dependency ---------------------------- */
 import Logo from '../../assets/icons/logo_.svg';
+
+/* ---------------------------- Footer PropTypes ---------------------------- */
+const propTypes = {
+	explore: PropTypes.bool,
+};
 
 const Footer = memo(({ explore }) => {
 	/* -------------------------------- PURE SVG -------------------------------- */
@@ -246,8 +255,6 @@ const FooterWrapper = styled.footer`
 	}
 `;
 
-Footer.propTypes = {
-	explore: PropTypes.bool,
-};
+Footer.propTypes = propTypes;
 
 export default Footer;

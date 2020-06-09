@@ -1,16 +1,33 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependecies                            */
+/* -------------------------------------------------------------------------- */
 import React, { useState, memo } from 'react';
 import CodeSnippnets from 'components/snippet';
 import PropTypes from 'prop-types';
 
+/* -------------------------- Internal Dependecies -------------------------- */
 import { rgbToHex } from 'utils';
 import PureComponent from 'components/pure-component-wrapper';
 import { BorderWrap, GenerateWrapper } from './style';
 import ShareDropdown from './share-dropdown';
 
+/* --------------------------- Image Dependencies --------------------------- */
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
 import { ReactComponent as Save } from '../../assets/icons/icon-save.svg';
+
+/* ------------------------- GeneratorCard PropTypes ------------------------ */
+const proptypes = {
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
+	copyText: PropTypes.func,
+	data: PropTypes.object,
+	loved: PropTypes.bool,
+	next: PropTypes.func,
+	prev: PropTypes.func,
+	saveGradient: PropTypes.func,
+	url: PropTypes.string,
+};
 
 const GeneratorCard = memo(
 	({ children, copyText, data, loved, saveGradient, url, next, prev }) => {
@@ -48,7 +65,8 @@ const GeneratorCard = memo(
 						<article>
 							<h4>{data.name}</h4>
 							<p className="hex__section">
-								<span>{rgbToHex(data.color, 1)}</span> <PureArrowRight />{' '}
+								<span>{rgbToHex(data.color, 1)}</span>{' '}
+								<PureArrowRight aria-hidden="true" />{' '}
 								<span>{rgbToHex(data.color, 0)}</span>
 							</p>{' '}
 							<div
@@ -70,13 +88,27 @@ const GeneratorCard = memo(
 								Tap space bar to generate new gradients
 							</h6>
 							<div className="d-flex justify-content-between">
-								<span onClick={prev}>
-									<PureArrowRight style={{ transform: 'rotate(180deg)' }} />{' '}
+								<button
+									type="button"
+									className="none-button"
+									onClick={prev}
+									aria-label="Previous"
+								>
+									<PureArrowRight
+										aria-hidden="true"
+										style={{ transform: 'rotate(180deg)' }}
+										focusable="false"
+									/>{' '}
 									Previous
-								</span>
-								<span onClick={next}>
-									Next <PureArrowRight />
-								</span>
+								</button>
+								<button
+									type="button"
+									className="none-button"
+									onClick={next}
+									aria-label="Next"
+								>
+									Next <PureArrowRight aria-hidden="true" focusable="false" />
+								</button>
 							</div>
 						</div>
 
@@ -87,7 +119,8 @@ const GeneratorCard = memo(
 									copyText();
 								}}
 								type="button"
-								className="none-button "
+								className="none-button"
+								aria-label="Show CSS Code"
 							>
 								<PureCode tabIndex="-1" />
 							</button>
@@ -98,8 +131,13 @@ const GeneratorCard = memo(
 									href={url}
 									title={data.name}
 									tabIndex="0"
+									aria-label="Download Gradient"
 								>
-									<PureSave tabIndex="-1" />
+									<PureSave
+										tabIndex="-1"
+										aria-hidden="true"
+										focusable="false"
+									/>
 								</a>
 							</button>
 
@@ -107,9 +145,12 @@ const GeneratorCard = memo(
 								onClick={() => saveGradient(data)}
 								type="button"
 								className="none-button ml-2"
+								aria-label="Save Gradient"
 							>
 								<PureLove
 									tabIndex="-1"
+									aria-hidden="true"
+									focusable="false"
 									className={`${loved && 'active_love'}`}
 								/>
 							</button>
@@ -122,15 +163,6 @@ const GeneratorCard = memo(
 	}
 );
 
-GeneratorCard.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
-	copyText: PropTypes.func,
-	data: PropTypes.object,
-	loved: PropTypes.bool,
-	saveGradient: PropTypes.func,
-	url: PropTypes.string,
-	next: PropTypes.func,
-	prev: PropTypes.func,
-};
+GeneratorCard.propTypes = proptypes;
 
 export default GeneratorCard;

@@ -1,14 +1,19 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
+
 import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import SEO from 'components/seo';
-import Card from '../components/card';
-import GradientContext from '../context';
+/* -------------------------- Internal Dependencies ------------------------- */
 
+import SEO from 'components/seo';
+import GradientContext from '../context';
+import Card from '../components/card';
 import GradientLayout from '../components/card/card-container';
 
-// SVG Imported as image to avoid re-render
+/* --------------------------- Image Dependency --------------------------- */
 import Banner from '../assets/icons/banner.svg';
 
 const Home = () => {

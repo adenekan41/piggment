@@ -1,14 +1,30 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useState, memo } from 'react';
-import CodeSnippnets from 'components/snippet';
 import PropTypes from 'prop-types';
 
+/* -------------------------- Internal Dependencies ------------------------- */
 import PureComponent from 'components/pure-component-wrapper';
-import { LargeCardWrapper, BorderWrap } from './style';
 import ShareDropdown from './share-dropdown';
+import CodeSnippnets from 'components/snippet';
+/* ---------------------------- Style Dependency ---------------------------- */
+import { LargeCardWrapper, BorderWrap } from './style';
 
+/* ---------------------------- Image Dependecies --------------------------- */
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
 import { ReactComponent as Code } from '../../assets/icons/icon-code.svg';
 import { ReactComponent as Save } from '../../assets/icons/icon-save.svg';
+
+/* --------------------------- LargeCard PropTypes -------------------------- */
+const propTypes = {
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
+	copyText: PropTypes.func,
+	data: PropTypes.object,
+	loved: PropTypes.bool,
+	saveGradient: PropTypes.func,
+	url: PropTypes.string,
+};
 
 const LargeCard = memo(
 	({ children, copyText, data, loved, saveGradient, url }) => {
@@ -50,6 +66,7 @@ const LargeCard = memo(
 								}}
 								type="button"
 								className="none-button"
+								aria-label="Show CSS Code"
 							>
 								<PureCode tabIndex="-1" />
 							</button>
@@ -60,8 +77,13 @@ const LargeCard = memo(
 									href={url}
 									title={data.name}
 									tabIndex="0"
+									aria-label="Download Gradient"
 								>
-									<PureSave tabIndex="-1" />
+									<PureSave
+										tabIndex="-1"
+										aria-hidden="true"
+										focusable="false"
+									/>
 								</a>
 							</button>
 
@@ -69,9 +91,12 @@ const LargeCard = memo(
 								onClick={() => saveGradient(data)}
 								type="button"
 								className="none-button ml-2"
+								aria-label="Save Gradient"
 							>
 								<PureLove
 									tabIndex="-1"
+									aria-hidden="true"
+									focusable="false"
 									className={`${loved && 'active_love'}`}
 								/>
 							</button>
@@ -84,13 +109,6 @@ const LargeCard = memo(
 	}
 );
 
-LargeCard.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
-	copyText: PropTypes.func,
-	data: PropTypes.object,
-	loved: PropTypes.bool,
-	saveGradient: PropTypes.func,
-	url: PropTypes.string,
-};
+LargeCard.propTypes = propTypes;
 
 export default LargeCard;

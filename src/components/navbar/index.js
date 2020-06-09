@@ -1,14 +1,23 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { memo } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 
+/* -------------------------- Internal Dependencies ------------------------- */
 import PureComponent from 'components/pure-component-wrapper';
 
+/* --------------------------- Image Dependencies --------------------------- */
 import { ReactComponent as Love } from '../../assets/icons/icon-love.svg';
-// SVG's imported as image to avoid re-render
 import Logo from '../../assets/icons/logo_.svg';
+
+/* --------------------------- NavLayout PropTypes -------------------------- */
+const propTypes = {
+	location: PropTypes.object,
+};
 
 const NavLayout = memo(({ location }) => {
 	const PureLove = PureComponent(Love);
@@ -81,7 +90,7 @@ const NavLayout = memo(({ location }) => {
 							to="/saved"
 							className="saved"
 						>
-							<PureLove className="mr-1" />
+							<PureLove className="mr-1" aria-hidden="true" />
 							Saved
 						</Nav.Link>
 					</Nav>
@@ -151,8 +160,6 @@ const NavWrapper = styled(Navbar)`
 	}
 `;
 
-NavLayout.propTypes = {
-	location: PropTypes.object,
-};
+NavLayout.propTypes = propTypes;
 
 export default withRouter(NavLayout);

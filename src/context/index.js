@@ -1,3 +1,4 @@
+/* --------------------------- External Dependency -------------------------- */
 import React from 'react';
 
 const GradientContext = React.createContext({

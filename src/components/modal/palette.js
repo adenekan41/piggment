@@ -1,14 +1,28 @@
+/* -------------------------------------------------------------------------- */
+/*                            External Dependencies                           */
+/* -------------------------------------------------------------------------- */
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
+/* -------------------------- Internal Dependencies ------------------------- */
 import Card from '../card';
 import GradientLayout from '../card/card-container';
 import GradientContext from '../../context';
+
+/* ---------------------------- Style Dependency ---------------------------- */
 import ModalWrapper from './style';
 
-import { ReactComponent as Close } from '../../assets/icons/icon-close.svg';
-import { ReactComponent as ArrowRight } from '../../assets/icons/icon-right.svg';
-import { Link } from 'react-router-dom';
+/* --------------------------- Image Dependencies --------------------------- */
+import Close from '../../assets/icons/icon-close.svg';
+import ArrowRight from '../../assets/icons/icon-right.svg';
+
+/* ------------------------- ModalPalette PropTypes ------------------------- */
+const propTypes = {
+	show: PropTypes.bool,
+	setShow: PropTypes.func,
+	data: PropTypes.object,
+};
 
 const ModalPalette = ({ show, setShow, data }) => {
 	const { palette, loadpalettes } = useContext(GradientContext);
@@ -27,10 +41,17 @@ const ModalPalette = ({ show, setShow, data }) => {
 			size="lg"
 			onEscapeKeyDown={setShow}
 		>
-			<Close
-				className="d-block ml-auto mb-5 close_modal"
+			<button
+				className="none-button"
 				onClick={() => setShow(false)}
-			/>
+				type="button"
+			>
+				<img
+					src={Close}
+					className="d-block ml-auto mb-5 close_modal"
+					alt="close"
+				/>
+			</button>
 			<h4 className="mb-4 header__modal">About Palette.</h4>
 			<div id="wite_up">
 				<Card palette cardMode="large" data={data} />
@@ -43,7 +64,7 @@ const ModalPalette = ({ show, setShow, data }) => {
 						<p className="d-block">{data.start}</p>{' '}
 						<span style={{ background: data.start }} className="mr-4" />{' '}
 					</div>
-					<ArrowRight className="mr-4" />
+					<img src={ArrowRight} alt="Arrow Right" />
 					<div className="d-flex align-items-center">
 						<span style={{ background: data.end }} className="mr-2" />{' '}
 						<p className="d-block">{data.end}</p>{' '}
@@ -69,10 +90,6 @@ const ModalPalette = ({ show, setShow, data }) => {
 	);
 };
 
-ModalPalette.propTypes = {
-	show: PropTypes.bool,
-	setShow: PropTypes.func,
-	data: PropTypes.object,
-};
+ModalPalette.propTypes = propTypes;
 
 export default ModalPalette;
