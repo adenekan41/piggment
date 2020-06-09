@@ -66,7 +66,7 @@ const Gradientpalette = () => {
 				generatepalette(
 					formstate.start || '#fff5e0',
 					formstate.end || '#0e0a38',
-					formstate.count || 6
+					(formstate.count > 0 && formstate.count) || 6
 				)
 			);
 		}
@@ -84,7 +84,7 @@ const Gradientpalette = () => {
 					<div className="row align-items-center ">
 						<div className="col-md-8 m-auto text-center">
 							<article>
-								<h1>Discover gradient palettes.</h1>
+								<h1>Discover palettes.</h1>
 								<p>Get inspiring and amazing gradient palettes.</p>
 							</article>
 						</div>

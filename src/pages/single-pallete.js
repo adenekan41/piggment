@@ -41,7 +41,11 @@ const SinglePallete = () => {
 	useEffect(() => {
 		if (isColor(formstate.start) && isColor(formstate.end)) {
 			setResult(
-				generatepalette(formstate.start, formstate.end, formstate.count || 6)
+				generatepalette(
+					formstate.start,
+					formstate.end,
+					(formstate.count > 0 && formstate.count) || 6
+				)
 			);
 		}
 	}, [formstate]);

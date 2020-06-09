@@ -15,29 +15,32 @@ class DataProvider extends React.PureComponent {
 		};
 	}
 
-	gradient = (amount) => {
+	gradient = async (amount) => {
+		const newGradient = [...this.state.gradient];
+
 		for (let i = 0; i < amount; i++) {
-			this.setState((previousState) => ({
-				gradient: [
-					...previousState.gradient,
-					{
-						id: guidGenerator(),
-						name: randomWords({ exactly: 2, join: ' ' }),
-						color: generateGradient(),
-					},
-				],
-			}));
+			await newGradient.push({
+				id: guidGenerator(),
+				name: randomWords({ exactly: 2, join: ' ' }),
+				color: generateGradient(),
+			});
 		}
+
+		this.setState({
+			gradient: newGradient,
+		});
 	};
 
 	clearGradient = () => this.setState({ gradient: [], palette: [] });
 
 	loadpalettes = (amount) => {
+		const newPalette = [...this.state.palette];
 		for (let i = 0; i < amount; i++) {
-			this.setState((previousState) => ({
-				palette: [...previousState.palette, generatepalette()],
-			}));
+			newPalette.push(generatepalette());
 		}
+		this.setState({
+			palette: newPalette,
+		});
 	};
 
 	render() {
