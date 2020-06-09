@@ -1,66 +1,66 @@
 {
-  "name": "piggment",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "codewonders-helpers": "^0.0.10-beta",
-    "express": "^4.17.1",
-    "random-words": "^1.1.1",
-    "react": "^16.12.0",
-    "react-bootstrap": "^1.0.0-beta.16",
-    "react-dom": "^16.12.0",
-    "react-ga": "^2.7.0",
-    "react-helmet-async": "^1.0.6",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
-    "react-transition-group": "^4.3.0",
-    "styled-components": "^5.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "dev:start": "SKIP_PREFLIGHT_CHECK=true nodemon ./server/index.js",
-    "dev": "npm-run-all --parallel build dev:*",
-    "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "fix": "eslint --fix .",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "check-packages": "yarn clean && yarn compile && yarn test && yarn lint"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/register": "^7.9.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "ignore-styles": "^5.0.1",
-    "nodemon": "^2.0.4",
-    "npm-run-all": "^4.1.5",
-    "prettier": "1.19.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-node-externals": "^1.7.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "piggment",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"codewonders-helpers": "^0.0.10-beta",
+		"express": "^4.17.1",
+		"random-words": "^1.1.1",
+		"react": "^16.12.0",
+		"react-bootstrap": "^1.0.0-beta.16",
+		"react-dom": "^16.12.0",
+		"react-ga": "^2.7.0",
+		"react-helmet-async": "^1.0.6",
+		"react-router-dom": "^5.1.2",
+		"react-scripts": "3.4.0",
+		"react-transition-group": "^4.3.0",
+		"styled-components": "^5.0.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"dev:start": "SKIP_PREFLIGHT_CHECK=true nodemon ./server/index.js",
+		"dev": "npm-run-all --parallel build dev:*",
+		"eject": "react-scripts eject",
+		"lint": "eslint .",
+		"fix": "eslint --fix .",
+		"format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+		"check-packages": "yarn clean && yarn compile && yarn test && yarn lint"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-class-properties": "^7.8.3",
+		"@babel/preset-env": "^7.9.6",
+		"@babel/preset-react": "^7.9.4",
+		"@babel/register": "^7.9.0",
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb": "^18.0.1",
+		"eslint-config-prettier": "^6.9.0",
+		"eslint-plugin-import": "^2.20.0",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.2",
+		"eslint-plugin-react": "^7.17.0",
+		"eslint-plugin-react-hooks": "^1.7.0",
+		"ignore-styles": "^5.0.1",
+		"nodemon": "^2.0.4",
+		"npm-run-all": "^4.1.5",
+		"prettier": "1.19.1",
+		"webpack-cli": "^3.3.11",
+		"webpack-node-externals": "^1.7.2"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

@@ -25,17 +25,17 @@
 
 ### Generate Palette
 
-<p align="center">
+<p align="left">
 	<a href="https://piggment.co/generate-palette">
-		<img src="https://i.ibb.co/JQ2gWtj/image.png" width="600" alt="piggment">
+		<img src="https://i.ibb.co/JQ2gWtj/image.png" width="100%" alt="piggment">
 	</a>
 </p>
 
 ### Generate Gradients
 
-<p align="center">
+<p align="left">
 	<a href="https://piggment.co/generate">
-		<img src="https://i.ibb.co/Jj6mVc5/image.png" width="600" alt="piggment">
+		<img src="https://i.ibb.co/Jj6mVc5/image.png" width="100%" alt="piggment">
 	</a>
 </p>
 
