@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getState } from 'codewonders-helpers/bundle-cjs/helpers/localstorage';
 import { clearState, setState as saveState } from 'codewonders-helpers';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 /* -------------------------- Internal Dependencies ------------------------- */
 import PureComponent from 'components/pure-component-wrapper';
@@ -56,37 +57,46 @@ const GradientLayout = React.memo(
 						)}
 					</h2>
 					<div className="d-flex mb-md-0 mb-3">
-						<button
-							onClick={() => {
-								saveState('LAYOUT', 1);
-								setLayout(true);
-							}}
-							className="mr-4 none-button"
-							type="button"
-							aria-label="Circle Layout"
+						<OverlayTrigger
+							overlay={<Tooltip id="tooltip-disabled">Circle Layout</Tooltip>}
 						>
-							<PureCircle
-								className={getState('LAYOUT') || layout ? 'active' : null}
-								aria-hidden="true"
-								focusable="false"
-							/>
-						</button>
+							<button
+								onClick={() => {
+									saveState('LAYOUT', 1);
+									setLayout(true);
+								}}
+								className="mr-4 none-button"
+								type="button"
+								aria-label="Circle Layout"
+							>
+								<PureCircle
+									className={getState('LAYOUT') || layout ? 'active' : null}
+									aria-hidden="true"
+									focusable="false"
+								/>
+							</button>
+						</OverlayTrigger>
 
-						<button
-							className="mr-4 none-button"
-							onClick={() => {
-								clearState('LAYOUT');
-								setLayout(false);
-							}}
-							type="button"
-							aria-label="Box Layout"
+						<OverlayTrigger
+							overlay={<Tooltip id="tooltip-disabled">Box Layout</Tooltip>}
 						>
-							<PureBox
-								className={!getState('LAYOUT') || !layout ? 'active' : null}
-								aria-hidden="true"
-								focusable="false"
-							/>
-						</button>
+							<button
+								className="mr-4 none-button"
+								onClick={() => {
+									clearState('LAYOUT');
+									setLayout(false);
+								}}
+								type="button"
+								aria-label="Box Layout"
+							>
+								<PureBox
+									className={!getState('LAYOUT') || !layout ? 'active' : null}
+									aria-hidden="true"
+									focusable="false"
+								/>
+							</button>
+						</OverlayTrigger>
+
 						{noRefresh && (
 							<button
 								onClick={() => clearGradient()}
@@ -94,12 +104,10 @@ const GradientLayout = React.memo(
 								type="button"
 								aria-label="Refresh"
 							>
-								<PureReload
-									className="mr-1"
-									aria-hidden="true"
-									focusable="false"
-								/>
-								Refresh
+								<span aria-hidden="true" focusable="false" className="pb-1">
+									<PureReload className="mr-1" />
+									Refresh
+								</span>
 							</button>
 						)}
 					</div>

@@ -3,11 +3,13 @@
 /* -------------------------------------------------------------------------- */
 import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 /* -------------------------- Internal Dependencies ------------------------- */
+import CodeSnippnets from 'components/snippet';
 import PureComponent from 'components/pure-component-wrapper';
 import ShareDropdown from './share-dropdown';
-import CodeSnippnets from 'components/snippet';
+
 /* ---------------------------- Style Dependency ---------------------------- */
 import { LargeCardWrapper, BorderWrap } from './style';
 
@@ -59,47 +61,61 @@ const LargeCard = memo(
 						</article>
 
 						<BorderWrap className="float-right border-wrap">
-							<button
-								onClick={() => {
-									setViewCode(true);
-									copyText();
-								}}
-								type="button"
-								className="none-button"
-								aria-label="Show CSS Code"
+							<OverlayTrigger
+								overlay={<Tooltip id="tooltip-disabled">CSS Code</Tooltip>}
 							>
-								<PureCode tabIndex="-1" />
-							</button>
-
-							<button type="button" className="none-button ml-2" tabIndex="-1">
-								<a
-									download={`Piggment-${data.name}`}
-									href={url}
-									title={data.name}
-									tabIndex="0"
-									aria-label="Download Gradient"
+								<button
+									onClick={() => {
+										setViewCode(true);
+										copyText();
+									}}
+									type="button"
+									className="none-button"
+									aria-label="Show CSS Code"
 								>
-									<PureSave
+									<PureCode tabIndex="-1" />
+								</button>
+							</OverlayTrigger>
+							<OverlayTrigger
+								overlay={<Tooltip id="tooltip-disabled">Download</Tooltip>}
+							>
+								<button
+									type="button"
+									className="none-button ml-2"
+									tabIndex="-1"
+								>
+									<a
+										download={`Piggment-${data.name}`}
+										href={url}
+										title={data.name}
+										tabIndex="0"
+										aria-label="Download Gradient"
+									>
+										<PureSave
+											tabIndex="-1"
+											aria-hidden="true"
+											focusable="false"
+										/>
+									</a>
+								</button>
+							</OverlayTrigger>
+							<OverlayTrigger
+								overlay={<Tooltip id="tooltip-disabled">Save</Tooltip>}
+							>
+								<button
+									onClick={() => saveGradient(data)}
+									type="button"
+									className="none-button ml-2"
+									aria-label="Save Gradient"
+								>
+									<PureLove
 										tabIndex="-1"
 										aria-hidden="true"
 										focusable="false"
+										className={`${loved && 'active_love'}`}
 									/>
-								</a>
-							</button>
-
-							<button
-								onClick={() => saveGradient(data)}
-								type="button"
-								className="none-button ml-2"
-								aria-label="Save Gradient"
-							>
-								<PureLove
-									tabIndex="-1"
-									aria-hidden="true"
-									focusable="false"
-									className={`${loved && 'active_love'}`}
-								/>
-							</button>
+								</button>
+							</OverlayTrigger>
 							<ShareDropdown data={data} save={() => saveGradient(data)} />
 						</BorderWrap>
 					</div>

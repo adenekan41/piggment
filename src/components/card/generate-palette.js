@@ -4,6 +4,7 @@
 import React, { useState, memo } from 'react';
 import CodeSnippnets from 'components/snippet';
 import PropTypes from 'prop-types';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 /* --------------------------- Internal Depencies --------------------------- */
 import ModalPalette from 'components/modal/palette';
@@ -119,42 +120,56 @@ const GeneratorPaletteCard = memo(
 						</div>
 
 						<BorderWrap className="float-right border-wrap">
-							<button
-								onClick={() => {
-									setViewCode(true);
-									copyText();
-								}}
-								type="button"
-								className="none-button"
-								aria-label="Show CSS Code"
+							<OverlayTrigger
+								overlay={<Tooltip id="tooltip-disabled">CSS Code</Tooltip>}
 							>
-								<PureCode tabIndex="-1" aria-hidden="true" focusable="false" />
-							</button>
-
-							<button
-								onClick={() => {
-									setShow(true);
-								}}
-								type="button"
-								className="none-button ml-2"
-								aria-label="View Palette"
+								<button
+									onClick={() => {
+										setViewCode(true);
+										copyText();
+									}}
+									type="button"
+									className="none-button"
+									aria-label="Show CSS Code"
+								>
+									<PureCode
+										tabIndex="-1"
+										aria-hidden="true"
+										focusable="false"
+									/>
+								</button>
+							</OverlayTrigger>
+							<OverlayTrigger
+								overlay={<Tooltip id="tooltip-disabled">Preview</Tooltip>}
 							>
-								<PureEye aria-hidden="true" focusable="false" />
-							</button>
-
-							<button
-								onClick={() => saveGradient(data)}
-								type="button"
-								className="none-button ml-2"
-								aria-label="Save Palette"
+								<button
+									onClick={() => {
+										setShow(true);
+									}}
+									type="button"
+									className="none-button ml-2"
+									aria-label="View Palette"
+								>
+									<PureEye aria-hidden="true" focusable="false" />
+								</button>
+							</OverlayTrigger>
+							<OverlayTrigger
+								overlay={<Tooltip id="tooltip-disabled">Save</Tooltip>}
 							>
-								<PureLove
-									tabIndex="-1"
-									className={`${loved && 'active_love'}`}
-									aria-hidden="true"
-									focusable="false"
-								/>
-							</button>
+								<button
+									onClick={() => saveGradient(data)}
+									type="button"
+									className="none-button ml-2"
+									aria-label="Save Palette"
+								>
+									<PureLove
+										tabIndex="-1"
+										className={`${loved && 'active_love'}`}
+										aria-hidden="true"
+										focusable="false"
+									/>
+								</button>
+							</OverlayTrigger>
 							<ShareDropdown palette data={data} />
 						</BorderWrap>
 					</div>
