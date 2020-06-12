@@ -40,7 +40,10 @@ const Home = () => {
 										one place.
 									</p>
 
-									<Link className="btn btn-piggment mr-md-3" to="/generate">
+									<Link
+										className="btn btn-piggment mr-md-3 mr-2"
+										to="/generate"
+									>
 										Start Generating
 									</Link>
 									<Link className="btn btn-outline-piggment" to="/explore">

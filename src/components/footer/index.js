@@ -157,7 +157,7 @@ const Footer = memo(({ explore }) => {
 							</li>
 							<li>
 								<a
-									href="https://github.com/adenekan41"
+									href="https://github.com/adenekan41/piggment"
 									aria-label="Navigate To Github"
 									target="_blank"
 									rel="noopener noreferrer"
@@ -167,7 +167,7 @@ const Footer = memo(({ explore }) => {
 							</li>
 							<li>
 								<a
-									href="https://instagram.com/code_wonders"
+									href="https://instagram.com/codewonders"
 									aria-label="Navigate To Instagram"
 									target="_blank"
 									rel="noopener noreferrer"
