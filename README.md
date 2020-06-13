@@ -19,9 +19,9 @@
 
 ## ⚡️About
 
-[Piggment](https://piggment.co) A curated collection of amazingly colored gradients for designers, developers and art makers over the world. **Gets gradeints and pallets on the fly**.
+[Piggment](https://piggment.co) : A curated collection of amazingly colored gradients for designers, developers and art makers over the world. **Gets gradeints and pallets on the fly**.
 
-**Using piggment** in **project** provides an **easy way** of **getting inspiring gradients and palettes** goto to [Piggment.co](https://piggment.co) to start using now.
+**Using piggment** in **project** provides an **easy way** of **getting inspiring gradients and palettes** go to [Piggment.co](https://piggment.co) to start using now.
 
 ### Generate Palette
 
