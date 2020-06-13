@@ -2,7 +2,7 @@
 /*                            External Dependencies                           */
 /* -------------------------------------------------------------------------- */
 import React, { memo } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -15,18 +15,18 @@ import Logo from '../../assets/icons/logo_.svg';
 
 /* ---------------------------- Footer PropTypes ---------------------------- */
 const propTypes = {
-	explore: PropTypes.bool,
+	discover: PropTypes.bool,
 };
 
-const Footer = memo(({ explore }) => {
+const Footer = memo(({ discover }) => {
 	/* -------------------------------- PURE SVG -------------------------------- */
 	const PureLove = PureComponent(Love);
 
 	return (
-		<FooterWrapper explore={explore}>
+		<FooterWrapper discover={discover}>
 			<div className="container">
 				<div className="row">
-					<div className="col-6 col-md-3">
+					<div className={`col-6 col-md-3 ${discover ? 'd-none' : ''}`}>
 						<img src={Logo} alt="Piggment Logo" />
 						<h6>
 							A curated collection of amazingly colored gradients for designers,
@@ -36,12 +36,18 @@ const Footer = memo(({ explore }) => {
 							Copyright © {new Date().getFullYear()}, Piggment.
 						</h6>
 					</div>
-					<div className="col-6 col-md ">
-						<h5>Piggment</h5>
+					<div className="col-6 col-md">
+						<h5 className={`${discover ? 'd-none' : ''}`}>Piggment</h5>
 
-						<ul className="list-unstyled quick-links">
+						<ul
+							className={`list-unstyled quick-links ${
+								discover
+									? 'd-flex justify-content-between align-items-center m-0'
+									: ''
+							}`}
+						>
 							<li>
-								<Link to="/explore" aria-label="Navigate To Explore Page">
+								<Link to="/discover" aria-label="Navigate To Explore Page">
 									Explore Gradients
 								</Link>
 							</li>
@@ -79,116 +85,120 @@ const Footer = memo(({ explore }) => {
 							</li>
 						</ul>
 					</div>
-					<div className="col-6 col-md ">
-						<h5>Creator</h5>
-						<ul className="list-unstyled quick-links">
-							<li>
-								<a
-									href="https://codewonders.dev"
-									aria-label="Navigate To Codewonders Page"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									@codewonders
-								</a>
-							</li>
-							<li>
-								<a
-									href="https://codewonders.dev/about"
-									aria-label="Navigate To Codewonders Page"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									About Codewonders
-								</a>
-							</li>
-							<li>
-								<a
-									href="https://codewonders.dev/projects"
-									aria-label="Navigate To Codewonders Page"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Codewonders Projects
-								</a>
-							</li>
-						</ul>
-					</div>
+					{!discover && (
+						<>
+							<div className="col-6 col-md ">
+								<h5>Creator</h5>
+								<ul className="list-unstyled quick-links">
+									<li>
+										<a
+											href="https://codewonders.dev"
+											aria-label="Navigate To Codewonders Page"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											@codewonders
+										</a>
+									</li>
+									<li>
+										<a
+											href="https://codewonders.dev/about"
+											aria-label="Navigate To Codewonders Page"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											About Codewonders
+										</a>
+									</li>
+									<li>
+										<a
+											href="https://codewonders.dev/projects"
+											aria-label="Navigate To Codewonders Page"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Codewonders Projects
+										</a>
+									</li>
+								</ul>
+							</div>
 
-					<div className="col-6 col-md ">
-						<h5>Company</h5>
+							<div className="col-6 col-md ">
+								<h5>Company</h5>
 
-						<ul className="list-unstyled quick-links">
-							<li>
-								<Link to="/about" aria-label="Navigate To About page">
-									About
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/terms"
-									aria-label="Navigate To Terms and conditon page"
-								>
-									Terms and conditons
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/privacy"
-									aria-label="Navigate To Privacy policy page"
-								>
-									Privacy Policy
-								</Link>
-							</li>
-						</ul>
-					</div>
-					<div className="col-6 col-md ">
-						<h5>Connect</h5>
-						<ul className="list-unstyled quick-links">
-							<li>
-								<a
-									href="https://twitter.com/code_wonders"
-									aria-label="Navigate To Codewonders Twitter"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Twitter
-								</a>
-							</li>
-							<li>
-								<a
-									href="https://github.com/adenekan41/piggment"
-									aria-label="Navigate To Github"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Github
-								</a>
-							</li>
-							<li>
-								<a
-									href="https://instagram.com/codewonders"
-									aria-label="Navigate To Instagram"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Instagram
-								</a>
-							</li>
-							<li>
-								<a
-									href="https://linkedin.com/in/codewonders"
-									aria-label="Navigate To Linkedin"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Linkedin
-								</a>
-							</li>
-						</ul>
-					</div>
+								<ul className="list-unstyled quick-links">
+									<li>
+										<Link to="/about" aria-label="Navigate To About page">
+											About
+										</Link>
+									</li>
+									<li>
+										<Link
+											to="/terms"
+											aria-label="Navigate To Terms and conditon page"
+										>
+											Terms and conditons
+										</Link>
+									</li>
+									<li>
+										<Link
+											to="/privacy"
+											aria-label="Navigate To Privacy policy page"
+										>
+											Privacy Policy
+										</Link>
+									</li>
+								</ul>
+							</div>
+							<div className="col-6 col-md ">
+								<h5>Connect</h5>
+								<ul className="list-unstyled quick-links">
+									<li>
+										<a
+											href="https://twitter.com/piggment_hq"
+											aria-label="Navigate To Codewonders Twitter"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Twitter
+										</a>
+									</li>
+									<li>
+										<a
+											href="https://github.com/adenekan41/piggment"
+											aria-label="Navigate To Github"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Github
+										</a>
+									</li>
+									<li>
+										<a
+											href="https://instagram.com/codewonders"
+											aria-label="Navigate To Instagram"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Instagram
+										</a>
+									</li>
+									<li>
+										<a
+											href="https://linkedin.com/in/codewonders"
+											aria-label="Navigate To Linkedin"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Linkedin
+										</a>
+									</li>
+								</ul>
+							</div>
+						</>
+					)}
 				</div>
-				<p className="text-center">
+				<p className={`${discover ? 'd-none' : ''} text-center`}>
 					Created with <PureLove /> by Adenekan Wonderful
 				</p>
 			</div>
@@ -196,11 +206,19 @@ const Footer = memo(({ explore }) => {
 	);
 });
 const FooterWrapper = styled.footer`
-	border-top: 1px solid #e2e2e2;
-
+	border-top: 1px solid transparent;
+	${(props) =>
+		props.discover &&
+		css`
+			position: fixed;
+			bottom: 0;
+			background: #fff8f0;
+			width: 100%;
+			padding: 0.5rem 0 0.5rem !important;
+		`};
 	padding: 3rem 0 1rem;
 	@media (max-width: 990px) {
-		display: ${(props) => props.explore && 'none'};
+		display: ${(props) => props.discover && 'none'};
 	}
 	img {
 		height: 30px;

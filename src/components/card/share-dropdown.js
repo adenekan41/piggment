@@ -73,7 +73,9 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 				<Dropdown.Item onClick={save}>Save in pocket</Dropdown.Item>
 				<Dropdown.Divider />
 				<Dropdown.Item
-					href={`http://twitter.com/share?text=${share.message}&url=${share.link}&hashtags=colors,gradiens,palettes`}
+					href={`http://twitter.com/share?text=${share.message}&url=${encodeURI(
+						share.link
+					)}&hashtags=colors,gradiens,palettes`}
 					target="_blank"
 					onClick={() =>
 						logEvent('Share', 'User Shared To Twitter', 'Share To Twitter')
@@ -96,7 +98,9 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 				</Dropdown.Item>
 
 				<Dropdown.Item
-					href={`https://www.linkedin.com/shareArticle?mini=true&url=${share.link}&summary=${share.message}&source=LinkedIn`}
+					href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURI(
+						share.link
+					)}&summary=${share.message}&source=LinkedIn`}
 					target="_blank"
 					onClick={() =>
 						logEvent('Share', 'User Shared To Linkedin', 'Share To Linkedin')
@@ -118,7 +122,9 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 					Share on Linkedin
 				</Dropdown.Item>
 				<Dropdown.Item
-					href={`https://www.facebook.com/sharer/sharer.php?u=${share.link}&t=${share.message}`}
+					href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURI(
+						share.link
+					)}&t=${share.message}`}
 					target="_blank"
 					onClick={() =>
 						logEvent('Share', 'User Shared To Facebook', 'Share To Facebook')
