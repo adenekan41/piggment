@@ -1,13 +1,14 @@
 /* -------------------------------------------------------------------------- */
 /*                            External Dependencies                           */
 /* -------------------------------------------------------------------------- */
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /* -------------------------- Internal Dependencies ------------------------- */
 import { logEvent } from 'utils/analytics';
+import GradientContext from 'context';
 
 /* --------------------------- Image Dependencies --------------------------- */
 import { ReactComponent as Share } from '../../assets/icons/icon-share.svg';
@@ -26,6 +27,8 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 		() => true
 	);
 	/* ----------------------------------- End ---------------------------------- */
+
+	const { setSnarkbar } = useContext(GradientContext);
 
 	const share = palette
 		? {
@@ -52,6 +55,7 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 		textField.select();
 		document.execCommand('copy');
 		textField.remove();
+		setSnarkbar('Link copied to clipboard');
 	};
 
 	return (

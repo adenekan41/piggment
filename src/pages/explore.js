@@ -16,6 +16,7 @@ import {
 	hexToRgb,
 	guidGenerator,
 	validateHexCode,
+	shouldBeLessThan,
 } from 'utils';
 import SEO from 'components/seo';
 import Card from 'components/card';
@@ -32,9 +33,12 @@ const Explore = () => {
 	const { state, loadGradients } = useContext(GradientContext);
 	const [result, setResult] = useState({});
 	const [name] = useState(randomWords({ exactly: 2, join: ' ' }));
+	const [ID] = useState(guidGenerator());
+
 	const [$color$] = useState(
 		'linear-gradient(58deg, rgb(182, 108, 208) 21%, rgb(12, 30, 39) 100%)'
 	);
+
 	const [formstate, setState] = useState({
 		from: validateHexCode(getRandomColors()) || '#a9c3d0',
 		to: validateHexCode(getRandomColors()) || '#f0c7ff',
@@ -84,29 +88,25 @@ const Explore = () => {
 		[handleScroll]
 	);
 
-	// TODO Refactor (looks ugly)
 	useEffect(() => {
 		if (isColor(formstate.from) && isColor(formstate.to)) {
-			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
-				formstate.from,
-				true
-			)} ${(formstate.fromPercent <= 100 && formstate.fromPercent) ||
-				$color$
-					.substring($color$.indexOf('rgb'), $color$.indexOf('%'))
-					.match(/\d+/g)
-					.pop() ||
-				100}%, ${hexToRgb(formstate.to, true)} ${(formstate.toPercent <= 100 &&
-				formstate.toPercent) ||
-				$color$.match(/\d+/g).pop()}%)`;
+			const newColor = `linear-gradient(${shouldBeLessThan(
+				formstate.angle,
+				360
+			)}deg, ${hexToRgb(formstate.from, true)} ${shouldBeLessThan(
+				formstate.fromPercent
+			)}%, ${hexToRgb(formstate.to, true)} ${shouldBeLessThan(
+				formstate.toPercent
+			)}%)`;
 
 			// Final Result
 			setResult({
-				id: guidGenerator(),
+				id: ID,
 				color: newColor,
 				name,
 			});
 		}
-	}, [formstate, name, $color$]);
+	}, [ID, formstate, name, $color$]);
 
 	return (
 		<main>
@@ -196,7 +196,6 @@ const Explore = () => {
 														type="number"
 														placeholder="100"
 														value={formstate.toPercent}
-														maxLength="3"
 														max="100"
 														onChange={(e) => handleChange(e, 'toPercent')}
 													/>
@@ -211,6 +210,7 @@ const Explore = () => {
 											type="number"
 											className="form-control"
 											placeholder="Angle"
+											max="360"
 											value={formstate.angle}
 											onChange={(e) => handleChange(e, 'angle')}
 										/>

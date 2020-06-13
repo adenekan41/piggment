@@ -8,6 +8,7 @@ import React from 'react';
 
 import SEO from 'components/seo';
 import DataProvider from 'context/provider';
+import SnarkBar from 'components/snark-bar';
 import Routes from './routes';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
 		<>
 			<SEO />
 			<DataProvider>
+				<SnarkBar />
 				<Routes />
 			</DataProvider>
 		</>

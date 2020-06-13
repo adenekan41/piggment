@@ -86,7 +86,7 @@ const CodeSnippnets = ({ copyText, setViewCode, data, palette = false }) => {
 							<code>
 								{'/* CSS Tokens */'}
 								{data.colors.map((color, index) => (
-									<dd key={index * Date.now()}>{`--color${index +
+									<dd key={index * Math.random()}>{`--color${index +
 										1}: ${color};`}</dd>
 								))}
 							</code>

@@ -106,7 +106,6 @@ const SmallCard = memo(
 							<button
 								onClick={() => {
 									setViewCode(true);
-									copyText();
 								}}
 								type="button"
 								className="none-button"

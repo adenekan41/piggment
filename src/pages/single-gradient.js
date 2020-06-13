@@ -11,7 +11,13 @@ import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 /* -------------------------- Internal Dependencies ------------------------- */
 
 import GradientLayout from 'components/card/card-container';
-import { isColor, rgbToHex, guidGenerator, hexToRgb } from 'utils';
+import {
+	isColor,
+	rgbToHex,
+	guidGenerator,
+	hexToRgb,
+	shouldBeLessThan,
+} from 'utils';
 import Card from 'components/card';
 import SEO from 'components/seo';
 import GradientContext from 'context';
@@ -31,8 +37,8 @@ const SingleGradient = () => {
 	const [$color$] = useState(window.atob(color));
 	const [result, setResult] = useState({});
 	const [newName] = useState(randomWords({ exactly: 2, join: ' ' }));
+	const [ID] = useState(guidGenerator());
 
-	// TODO Refactor
 	const [formstate, setState] = useState({
 		from: rgbToHex($color$, 0) || '#000000',
 		to: rgbToHex($color$, 1) || '#ffffff',
@@ -58,29 +64,24 @@ const SingleGradient = () => {
 		}
 	}, [loadGradients, state]);
 
-	// TODO Refactor ( looks ugly )
 	useEffect(() => {
 		if (isColor(formstate.from) && isColor(formstate.to)) {
-			const newColor = `linear-gradient(${formstate.angle}deg, ${hexToRgb(
-				formstate.from,
-				true
-			)} ${(formstate.fromPercent <= 100 && formstate.fromPercent) ||
-				$color$
-					.substring($color$.indexOf('rgb'), $color$.indexOf('%'))
-					.match(/\d+/g)
-					.pop() ||
-				100}%, ${hexToRgb(formstate.to, true)} ${(formstate.toPercent <= 100 &&
-				formstate.toPercent) ||
-				$color$.match(/\d+/g).pop()}%)`;
+			const newColor = `linear-gradient(${shouldBeLessThan(
+				formstate.angle
+			)}deg, ${hexToRgb(formstate.from, true)} ${shouldBeLessThan(
+				formstate.fromPercent
+			)}%, ${hexToRgb(formstate.to, true)} ${shouldBeLessThan(
+				formstate.toPercent
+			)}%)`;
 
 			// Set Result Object
 			setResult({
-				id: guidGenerator(),
+				id: ID,
 				color: newColor,
 				name: $color$ !== newColor ? newName : name,
 			});
 		}
-	}, [formstate, name, newName, $color$]);
+	}, [ID, formstate, name, newName, $color$]);
 
 	useEffect(() => {
 		window.scrollTo({

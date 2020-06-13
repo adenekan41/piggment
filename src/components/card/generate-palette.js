@@ -59,7 +59,10 @@ const GeneratorPaletteCard = memo(
 					<div className="d-flex bordered">
 						{data.colors.map((color, index) => (
 							<figure
-								key={index * Date.now()}
+								key={index * Math.random()}
+								onClick={() => {
+									copyText(color);
+								}}
 								style={{
 									background: color,
 								}}
@@ -126,7 +129,6 @@ const GeneratorPaletteCard = memo(
 								<button
 									onClick={() => {
 										setViewCode(true);
-										copyText();
 									}}
 									type="button"
 									className="none-button"

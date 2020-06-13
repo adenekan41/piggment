@@ -117,7 +117,7 @@ const GradientLayout = React.memo(
 						state.map((bg_gradient, index) => (
 							<Card
 								data={bg_gradient}
-								key={index + Date.now()}
+								key={bg_gradient.id}
 								mode={mode}
 								palette={
 									bg_gradient.colors && bg_gradient.colors.length > 0

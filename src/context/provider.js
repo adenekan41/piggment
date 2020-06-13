@@ -19,6 +19,7 @@ class DataProvider extends React.PureComponent {
 		this.state = {
 			gradient: [],
 			palette: [],
+			snarkbars: [],
 		};
 	}
 
@@ -50,6 +51,33 @@ class DataProvider extends React.PureComponent {
 		});
 	};
 
+	setSnarkbar = (alertMsg, type = 'success', duration = 5000) => {
+		const id = guidGenerator();
+		this.setState({
+			snarkbars: [
+				...this.state.snarkbars,
+				{
+					id,
+					msg: alertMsg,
+					type,
+				},
+			],
+		});
+
+		setTimeout(() => {
+			this.removeSnarkbar(id);
+		}, duration);
+	};
+
+	removeSnarkbar = (id) => {
+		const filteredSnarkbars = this.state.snarkbars.filter(
+			(alert) => alert.id !== id
+		);
+		this.setState({
+			snarkbars: filteredSnarkbars,
+		});
+	};
+
 	render() {
 		const { children } = this.props;
 		return (
@@ -57,6 +85,9 @@ class DataProvider extends React.PureComponent {
 				value={{
 					state: this.state.gradient,
 					palette: this.state.palette,
+					snarkbars: this.state.snarkbars,
+					setSnarkbar: this.setSnarkbar,
+					removeSnarkbar: this.removeSnarkbar,
 					loadpalettes: this.loadpalettes,
 					loadGradients: this.gradient,
 					clearGradient: this.clearGradient,

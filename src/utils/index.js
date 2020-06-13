@@ -254,3 +254,11 @@ export const generatepalette = (
 		end: colorEnd,
 	};
 };
+
+export const shouldBeLessThan = (val, lessThan = 100) => {
+	if (!val) return;
+	if (parseInt(val, 10) > lessThan) {
+		return lessThan;
+	}
+	return val;
+};

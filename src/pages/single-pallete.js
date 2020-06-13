@@ -10,7 +10,7 @@ import isEmpty from 'codewonders-helpers/bundle-cjs/helpers/is-empty';
 /* -------------------------- Internal Dependencies ------------------------- */
 
 import GradientLayout from 'components/card/card-container';
-import { generatepalette, isColor } from 'utils';
+import { generatepalette, isColor, shouldBeLessThan } from 'utils';
 import Card from 'components/card';
 import GradientContext from 'context';
 import SEO from 'components/seo';
@@ -50,7 +50,7 @@ const SinglePallete = () => {
 				generatepalette(
 					formstate.start,
 					formstate.end,
-					(formstate.count > 0 && formstate.count) || 6
+					(formstate.count > 0 && shouldBeLessThan(formstate.count, 100)) || 6
 				)
 			);
 		}

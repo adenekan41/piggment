@@ -66,7 +66,7 @@ const ModalPalette = ({ show, setShow, data }) => {
 					</div>
 					<img src={ArrowRight} alt="Arrow Right" />
 					<div className="d-flex align-items-center">
-						<span style={{ background: data.end }} className="mr-2" />{' '}
+						<span style={{ background: data.end }} className="ml-4 mr-2" />{' '}
 						<p className="d-block">{data.end}</p>{' '}
 					</div>
 				</div>{' '}

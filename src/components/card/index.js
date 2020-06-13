@@ -2,7 +2,7 @@
 /* -------------------------------------------------------------------------- */
 /*                            External Dependencies                           */
 /* -------------------------------------------------------------------------- */
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { setState, getState } from 'codewonders-helpers';
 
@@ -10,6 +10,7 @@ import { setState, getState } from 'codewonders-helpers';
 import { rgbToHex } from 'utils';
 import { logEvent } from 'utils/analytics';
 
+import GradientContext from 'context';
 import LargeCard from './large-card';
 import GeneratorCard from './generator-card';
 import SmallCard from './small-card';
@@ -41,7 +42,7 @@ const Card = React.memo(
 	}) => {
 		const textCanvas = useRef(null);
 		const [url, setUrl] = useState('');
-
+		const { setSnarkbar } = useContext(GradientContext);
 		const [loved, setLoved] = useState(false);
 
 		// Get gradient and draw canvas URL
@@ -80,10 +81,13 @@ const Card = React.memo(
 			if (!getState('SAVED_GRADIENTS')) {
 				setState('SAVED_GRADIENTS', []);
 			}
+
 			if (!getState('SAVED_GRADIENTS').find((state) => state.id === datas.id)) {
 				logEvent('SAVE', 'Gradient added to pocket', 'SAVED GRADIENT');
 				setState('SAVED_GRADIENTS', [datas, ...getState('SAVED_GRADIENTS')]);
+
 				setLoved(true);
+				setSnarkbar('Gradient saved succesfully. <a href="/saved">View</a>');
 			}
 		};
 		const savePalette = (datas) => {
@@ -94,31 +98,39 @@ const Card = React.memo(
 				logEvent('SAVE', 'Pallet added to pocket', 'SAVED PALETTE');
 				setState('SAVED_PALETTE', [datas, ...getState('SAVED_PALETTE')]);
 				setLoved(true);
+				setSnarkbar('Palette saved succesfully. <a href="/saved">View</a>');
 			}
 		};
 
-		const copyText = () => {
+		const copyText = (text) => {
 			const textField = document.createElement('textarea');
-
-			if (palette) {
-				textField.innerText = `
+			let msg = 'CSS code copied to clipboard';
+			if (!text) {
+				if (palette) {
+					textField.innerText = `
         background: ${data.colors[0]}; /* fallback for old browsers */ \n
         :root{
           ${data.colors.map((color, index) => `--color${index + 1}: ${color};`)}
         }`;
-			} else {
-				textField.innerText = `
+				} else {
+					textField.innerText = `
         background: ${rgbToHex(
 					data.color,
 					0
 				)}; /* fallback for old browsers */ \n
         background: -webkit-${data.color}; /* Chrome 10-25, Safari 5.1-6 */ \n
         background: ${data.color}`;
+				}
+			} else {
+				textField.innerText = text;
+				msg = 'Color code copied to clipboard';
 			}
+
 			document.body.appendChild(textField);
 			textField.select();
 			document.execCommand('copy');
 			textField.remove();
+			setSnarkbar(msg);
 		};
 
 		return (

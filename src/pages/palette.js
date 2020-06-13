@@ -5,10 +5,17 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import styled from 'styled-components';
 import { isEmpty } from 'codewonders-helpers';
+import getRandomColors from 'codewonders-helpers/bundle-cjs/helpers/get-random-colors';
 
 /* -------------------------- Internal Dependencies ------------------------- */
 
-import { debounce, isColor, generatepalette } from 'utils';
+import {
+	debounce,
+	isColor,
+	generatepalette,
+	shouldBeLessThan,
+	validateHexCode,
+} from 'utils';
 import SEO from 'components/seo';
 import GradientContext from 'context';
 import GradientLayout from 'components/card/card-container';
@@ -16,13 +23,14 @@ import Card from 'components/card';
 import AddToHomeScreen from 'components/a11y';
 
 /* --------------------------- Image Dependencies --------------------------- */
+
 import ArrowRight from '../assets/icons/icon-right.svg';
 import Loader from '../assets/icons/loader.svg';
 
 const Gradientpalette = () => {
 	const [formstate, setState] = useState({
-		start: '#fff5e0',
-		end: '#0e0a38',
+		start: validateHexCode(getRandomColors()) || '#fff5e0',
+		end: validateHexCode(getRandomColors()) || '#0e0a38',
 		count: 6,
 	});
 	const [result, setResult] = useState({});
@@ -72,7 +80,7 @@ const Gradientpalette = () => {
 				generatepalette(
 					formstate.start || '#fff5e0',
 					formstate.end || '#0e0a38',
-					(formstate.count > 0 && formstate.count) || 6
+					(formstate.count > 0 && shouldBeLessThan(formstate.count, 100)) || 6
 				)
 			);
 		}
