@@ -47,7 +47,7 @@ const Footer = memo(({ discover }) => {
 							}`}
 						>
 							<li>
-								<Link to="/discover" aria-label="Navigate To Explore Page">
+								<Link to="/explore" aria-label="Navigate To Explore Page">
 									Explore Gradients
 								</Link>
 							</li>
