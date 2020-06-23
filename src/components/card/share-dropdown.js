@@ -36,7 +36,7 @@ const ShareDropdown = memo(({ data, palette, save }) => {
     https://piggment.co/palette/${data.start.slice(1)}/${data.end.slice(
 					1
 				)}/${data.name.slice(1)}/${data.count}`,
-				message: 'View%20this%20amazing%20gradient%20pallet%20by%20piggment',
+				message: 'View%20this%20amazing%20gradient%20palette%20by%20piggment',
 		  }
 		: {
 				link: `

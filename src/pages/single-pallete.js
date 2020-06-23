@@ -71,7 +71,7 @@ const SinglePallete = () => {
 
 	return (
 		<>
-			<SEO title={`About pallete ${name}`} />
+			<SEO title={`About palette ${name}`} />
 			{!isEmpty(result) ? (
 				<Header>
 					<div className="container">

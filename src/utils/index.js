@@ -211,7 +211,7 @@ export const validateHexCode = (hex) => {
 };
 
 /**
- * Generate Pallete Colors
+ * Generate Palette Colors
  * @param {Function | String} colorStart
  * @param {Function | String} colorEnd
  * @param {Function | String} colorCount

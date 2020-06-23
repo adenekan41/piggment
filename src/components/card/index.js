@@ -95,7 +95,7 @@ const Card = React.memo(
 				setState('SAVED_PALETTE', []);
 			}
 			if (!getState('SAVED_PALETTE').find((state) => state.id === datas.id)) {
-				logEvent('SAVE', 'Pallet added to pocket', 'SAVED PALETTE');
+				logEvent('SAVE', 'Palette added to pocket', 'SAVED PALETTE');
 				setState('SAVED_PALETTE', [datas, ...getState('SAVED_PALETTE')]);
 				setLoved(true);
 				setSnarkbar('Palette saved succesfully. <a href="/saved">View</a>');
