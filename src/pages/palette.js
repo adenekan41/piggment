@@ -15,6 +15,7 @@ import {
 	generatepalette,
 	shouldBeLessThan,
 	validateHexCode,
+	guidGenerator,
 } from 'utils';
 import SEO from 'components/seo';
 import GradientContext from 'context';
@@ -34,7 +35,7 @@ const Gradientpalette = () => {
 		count: 6,
 	});
 	const [result, setResult] = useState({});
-
+	const [new_name] = useState(`#Palette${guidGenerator().slice(0, 4)}`);
 	const handleChange = (e, name) => {
 		setState({
 			...formstate,
@@ -76,15 +77,16 @@ const Gradientpalette = () => {
 
 	useEffect(() => {
 		if (isColor(formstate.end) && isColor(formstate.start)) {
-			setResult(
-				generatepalette(
+			setResult({
+				...generatepalette(
 					formstate.start || '#fff5e0',
 					formstate.end || '#0e0a38',
 					(formstate.count > 0 && shouldBeLessThan(formstate.count, 100)) || 6
-				)
-			);
+				),
+				name: new_name,
+			});
 		}
-	}, [formstate.start, formstate.end, formstate.count]);
+	}, [formstate.start, formstate.end, formstate.count, new_name]);
 
 	return (
 		<>

@@ -95,9 +95,9 @@ const Explore = () => {
 				360
 			)}deg, ${hexToRgb(formstate.from, true)} ${shouldBeLessThan(
 				formstate.fromPercent
-			)}%, ${hexToRgb(formstate.to, true)} ${shouldBeLessThan(
+			) || 20}%, ${hexToRgb(formstate.to, true)} ${shouldBeLessThan(
 				formstate.toPercent
-			)}%)`;
+			) || 100}%)`;
 
 			// Final Result
 			setResult({
