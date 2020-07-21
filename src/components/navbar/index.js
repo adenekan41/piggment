@@ -87,6 +87,14 @@ const NavLayout = memo(({ location }) => {
 							activeClassName="is-active"
 							exact
 							as={NavLink}
+							to="/extension"
+						>
+							Chrome Extension
+						</Nav.Link>
+						<Nav.Link
+							activeClassName="is-active"
+							exact
+							as={NavLink}
 							to="/saved"
 							className="saved"
 						>

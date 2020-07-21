@@ -17,6 +17,7 @@ import SkipToMain from 'components/a11y/skip-to-main';
 
 /* ------------------------- Component Dependencies ------------------------- */
 const Explore = lazy(() => import('../pages/explore'));
+const Extension = lazy(() => import('../pages/extension'));
 const SinglePallete = lazy(() => import('../pages/single-pallete'));
 const SingleGradient = lazy(() => import('../pages/single-gradient'));
 const NotFound = lazy(() => import('../pages/404'));
@@ -56,6 +57,7 @@ const routes = ({ location }) => (
 								<Route path="/generate" component={Generate} />
 								<Route path="/terms" component={Terms} />
 								<Route path="/privacy" component={Privacy} />
+								<Route path="/extension" component={Extension} />
 								<Route exact path="/palette" component={Palette} />
 								<Route
 									path="/palette/:color1/:color2/:name/:count"
