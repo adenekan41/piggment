@@ -83,6 +83,11 @@ const Footer = memo(({ discover }) => {
 									Saved Gradients
 								</Link>
 							</li>
+							<li>
+								<Link to="/extension" aria-label="Navigate To Extensions Page">
+									Install Chrome Extension
+								</Link>
+							</li>
 						</ul>
 					</div>
 					{!discover && (

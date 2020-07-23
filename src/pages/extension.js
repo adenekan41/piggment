@@ -31,15 +31,15 @@ const Extension = () => {
 						<div className="row align-items-center justify-content-center  pos-rel">
 							<div className="col-md-7">
 								<article>
-									<h1>Gradient in your new tab.</h1>
+									<h1>Gradients in your new tab.</h1>
 									<p>
 										Generate, explore & download gradients all in your chrome
-										new tab.
+										browser new tab.
 									</p>
 
 									<a
 										className="btn btn-piggment mr-md-3 mr-2"
-										href="https://chrome.google.com/webstore"
+										href="https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg"
 									>
 										Install Chrome Extension
 									</a>
@@ -64,7 +64,10 @@ const Extension = () => {
 									alt="Light Smoke Theme"
 								/>
 								<p>
-									<a className="" href="https://chrome.google.com/webstore">
+									<a
+										className=""
+										href="https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg"
+									>
 										Light Smoke
 									</a>
 								</p>
@@ -76,7 +79,10 @@ const Extension = () => {
 									alt="Gummy Black Theme"
 								/>
 								<p>
-									<a className="" href="https://chrome.google.com/webstore">
+									<a
+										className=""
+										href="https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg"
+									>
 										Gummy Black
 									</a>
 								</p>
@@ -96,7 +102,7 @@ const Extension = () => {
 								<br />
 								<a
 									className="btn btn-piggment mr-3"
-									href="https://chrome.google.com/webstore"
+									href="https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg"
 								>
 									Install Chrome Extension
 								</a>
