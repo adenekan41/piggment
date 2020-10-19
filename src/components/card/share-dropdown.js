@@ -79,7 +79,7 @@ const ShareDropdown = memo(({ data, palette, save }) => {
 				<Dropdown.Item
 					href={`http://twitter.com/share?text=${share.message}&url=${encodeURI(
 						share.link
-					)}&hashtags=colors,gradiens,palettes`}
+					)}&hashtags=colors,gradients,palettes`}
 					target="_blank"
 					onClick={() =>
 						logEvent('Share', 'User Shared To Twitter', 'Share To Twitter')
