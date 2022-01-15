@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"aimscroll": "^1.1.1",
 		"codewonders-helpers": "^0.0.10-beta",
 		"express": "^4.17.1",
 		"random-words": "^1.1.1",
