@@ -208,12 +208,10 @@ const Header = styled.header`
 	-moz-transition: background 10s ease-out;
 	-o-transition: background 10s ease-out;
 	transition: background 10s ease-out;
-
+	@media (max-width: 992px) {
+		background: #fff8f0 !important;
+	}
 	h1 {
-		/* font-weight: 900;
-		font-size: var(--font-x-lg);
-		color: var(--black);
-		letter-spacing: -1.3px; */
 		font-weight: 600;
 		margin: 0.47em 0;
 		font-size: calc(var(--font-x-lg) + 5px);
@@ -278,7 +276,7 @@ const Header = styled.header`
 const Section = styled.section`
 	margin-top: 26rem;
 	@media (max-width: 990px) {
-		margin-top: 6rem;
+		margin-top: 4rem;
 	}
 	.w-70 {
 		width: 70px;
