@@ -36,6 +36,7 @@ const Gradientpalette = () => {
 	});
 	const [result, setResult] = useState({});
 	const [new_name] = useState(`#Palette${guidGenerator().slice(0, 4)}`);
+
 	const handleChange = (e, name) => {
 		setState({
 			...formstate,
@@ -75,18 +76,33 @@ const Gradientpalette = () => {
 		[handleScroll]
 	);
 
-	useEffect(() => {
-		if (isColor(formstate.end) && isColor(formstate.start)) {
+	const handleDebouncedChange = useCallback(
+		debounce(() => {
+			const newColor = generatepalette(
+				formstate.start || '#fff5e0',
+				formstate.end || '#0e0a38',
+				(formstate.count > 0 && shouldBeLessThan(formstate.count, 100)) || 6
+			);
+
 			setResult({
-				...generatepalette(
-					formstate.start || '#fff5e0',
-					formstate.end || '#0e0a38',
-					(formstate.count > 0 && shouldBeLessThan(formstate.count, 100)) || 6
-				),
+				...newColor,
 				name: new_name,
 			});
+		}, 100),
+		[formstate]
+	);
+
+	useEffect(() => {
+		if (isColor(formstate.end) && isColor(formstate.start)) {
+			handleDebouncedChange();
 		}
-	}, [formstate.start, formstate.end, formstate.count, new_name]);
+	}, [
+		formstate.start,
+		formstate.end,
+		formstate.count,
+		new_name,
+		handleDebouncedChange,
+	]);
 
 	return (
 		<>
