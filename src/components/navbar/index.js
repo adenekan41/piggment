@@ -4,9 +4,9 @@
 import React, { memo } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link, NavLink, withRouter } from 'react-router-dom';
-
+import { useAimScroll } from 'aimscroll';
 /* -------------------------- Internal Dependencies ------------------------- */
 import PureComponent from 'components/pure-component-wrapper';
 
@@ -21,9 +21,12 @@ const propTypes = {
 
 const NavLayout = memo(({ location }) => {
 	const PureLove = PureComponent(Love);
+	const [isScrolled] = useAimScroll(50);
+
 	return (
 		<NavWrapper
 			collapseOnSelect
+			isScrolled={location.pathname.includes('generate') ? true : isScrolled}
 			expand="md"
 			fixed="top"
 			className={location.pathname.includes('generate') && 'spaced__out'}
@@ -108,7 +111,13 @@ const NavLayout = memo(({ location }) => {
 	);
 });
 const NavWrapper = styled(Navbar)`
-	background: #fff8f0;
+	background: transparent;
+	padding: 15px 1rem;
+	${({ isScrolled }) =>
+		isScrolled &&
+		css`
+			background: #fff8f0;
+		`}
 	&.spaced__out {
 		width: calc(100% - 40px);
 		left: 50%;
