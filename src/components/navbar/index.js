@@ -27,7 +27,7 @@ const NavLayout = memo(({ location }) => {
 		<NavWrapper
 			collapseOnSelect
 			isScrolled={location.pathname.includes('generate') ? true : isScrolled}
-			expand="md"
+			expand="lg"
 			fixed="top"
 			className={location.pathname.includes('generate') && 'spaced__out'}
 		>
@@ -118,6 +118,11 @@ const NavWrapper = styled(Navbar)`
 		css`
 			background: #fff8f0;
 		`}
+	.navbar-collapse {
+		@media (max-width: 992px) {
+			background: #fff8f0 !important;
+		}
+	}
 	&.spaced__out {
 		width: calc(100% - 40px);
 		left: 50%;

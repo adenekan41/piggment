@@ -57,7 +57,7 @@ const Home = () => {
 						<div className="row align-items-center justify-content-center  pos-rel">
 							<div className="col-md-7">
 								<article>
-									<h1>Discover just the perect gradient.</h1>
+									<h1>Discover just the perfect gradient.</h1>
 									<p>
 										Create the perfect gradient and palettes for your next
 										project.
@@ -258,12 +258,15 @@ const Header = styled.header`
 			background: transparent;
 			opacity: 0.9;
 			width: 10%;
+			@media (max-width: 1095px) {
+				display: none;
+			}
 		}
 		.carousel-control-next {
-			right: -95px;
+			right: -9%;
 		}
 		.carousel-control-prev {
-			left: -95px;
+			left: -9%;
 		}
 	}
 	.large__sum-card {
