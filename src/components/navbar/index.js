@@ -116,11 +116,11 @@ const NavWrapper = styled(Navbar)`
 	${({ isScrolled }) =>
 		isScrolled &&
 		css`
-			background: #fff8f0;
+			background: #fff;
 		`}
 	.navbar-collapse {
 		@media (max-width: 992px) {
-			background: #fff8f0 !important;
+			background: #fff !important;
 		}
 	}
 	&.spaced__out {
@@ -166,7 +166,7 @@ const NavWrapper = styled(Navbar)`
 	}
 
 	.nav-link {
-		color: #717171;
+		color: rgb(0 0 0 / 80%) !important;
 		font-size: var(--font-sm);
 		padding: 0.5rem 1rem !important;
 		&.is-active {

@@ -2,15 +2,13 @@
 /*                            External Dependencies                           */
 /* -------------------------------------------------------------------------- */
 
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Carousel } from 'react-bootstrap';
 /* -------------------------- Internal Dependencies ------------------------- */
 
 import SEO from 'components/seo';
 import GradientContext from '../context';
-import Card from '../components/card';
 import GradientLayout from '../components/card/card-container';
 
 /* --------------------------- Image Dependency --------------------------- */
@@ -20,17 +18,6 @@ const Home = () => {
 	const { state, palette, loadGradients, loadpalettes } = useContext(
 		GradientContext
 	);
-	const [index, setIndex] = useState({
-		index: 0,
-		state: 3,
-	});
-
-	const handleSelect = (selectedIndex) => {
-		setIndex({
-			index: selectedIndex,
-			state: selectedIndex + 3,
-		});
-	};
 
 	useEffect(() => {
 		if (state.length < 7) {
@@ -44,23 +31,17 @@ const Home = () => {
 			<SEO />
 
 			<main>
-				<Header
-					style={{
-						background: `linear-gradient(${state[index.state || 3]?.color
-							.split(' ')
-							.slice(1, 4)
-							.join('')} -200%, white)`,
-					}}
-					className="fadeIn"
-				>
+				<Header className="fadeIn">
 					<div className="container">
 						<div className="row align-items-center justify-content-center  pos-rel">
-							<div className="col-md-7">
+							<div className="col-lg-7">
 								<article>
-									<h1>Discover just the perfect gradient.</h1>
+									<h1>
+										Discover just the perfect <b>gradient</b>
+									</h1>
 									<p>
-										Create the perfect gradient and palettes for your next
-										project.
+										Find the best color gradient and palettes for your next
+										design project.
 									</p>
 
 									<Link
@@ -73,44 +54,12 @@ const Home = () => {
 										Explore Gradients
 									</Link>
 									<p className="mt-3">
-										Used by over <span>100K</span> creators.
+										You can be colorful too!. Join over <b>120K</b> active
+										creators.
 									</p>
 								</article>
 							</div>
-							<Carousel
-								indicators={false}
-								activeIndex={index.index}
-								onSelect={handleSelect}
-								nextIcon={
-									<img
-										src="data:image/svg+xml,%0A%3Csvg width='34' height='16' viewBox='0 0 34 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.99719 7.00045H30.1662L24.5765 1.41068L25.9964 0.000732422L33.9961 8.00041L25.9964 16.0001L24.5865 14.5901L30.1662 9.00037H6.99719V7.00045Z' fill='black' fill-opacity='0.54'/%3E%3C/svg%3E%0A"
-										alt=""
-									/>
-								}
-								prevIcon={
-									<img
-										src="data:image/svg+xml,%0A%3Csvg width='34' height='16' viewBox='0 0 34 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='arrow_back_24px'%3E%3Cpath id='icon/navigation/arrow_back_24px' d='M27.0028 7.00045H3.83375L9.42352 1.41068L8.00358 0.000732422L0.00390625 8.00041L8.00358 16.0001L9.41352 14.5901L3.83375 9.00037H27.0028V7.00045Z' fill='black' fill-opacity='0.54'/%3E%3C/g%3E%3C/svg%3E%0A"
-										alt=""
-									/>
-								}
-							>
-								{state.slice(3, 6).map((gradient, i) => (
-									<Carousel.Item key={i}>
-										{gradient && (
-											<Card
-												data={
-													gradient || {
-														name: '1234',
-														color:
-															'linear-gradient(2deg, rgb(255,255,255,0.4) 3%, rgb(255,255,255,0.8) 30%)',
-													}
-												}
-												type="large"
-											/>
-										)}
-									</Carousel.Item>
-								))}
-							</Carousel>
+							{/* <img src="https://i.ibb.co/ZBCFRxM/Group-9.png" /> */}
 						</div>
 					</div>
 				</Header>
@@ -197,35 +146,55 @@ const Home = () => {
 
 const Header = styled.header`
 	/* background: #fff8f0; */
-	min-height: 42em;
+	// background: linear-gradient(180deg, #fce9d4, #ffffff);
+	background: linear-gradient(180deg, #fff5ea, #ffffff);
+	margin-bottom: 4rem;
+	min-height: 35em;
 	align-items: center;
 	/* background-size: calc(20 * 0.5px) calc(20 * 0.5px); */
 	/* background-image: radial-gradient(#0a113e47 0.5px, transparent 0.5px); */
 	justify-content: center;
-	text-align: center;
+	// text-align: center;
 	display: flex;
-	-webkit-transition: background 10s ease-out;
-	-moz-transition: background 10s ease-out;
-	-o-transition: background 10s ease-out;
-	transition: background 10s ease-out;
+
 	@media (max-width: 992px) {
 		background: #fff8f0 !important;
 	}
+	article {
+		text-align: center;
+	}
 	h1 {
 		font-weight: 600;
-		margin: 0.47em 0;
-		font-size: calc(var(--font-x-lg) + 5px);
+		margin: 0.35em 0;
+		font-size: calc(var(--font-x-lg) + 10px);
 		color: var(--black);
-		letter-spacing: -1.5px;
+		letter-spacing: -2.8px;
+
+		color: var(--black);
+		line-height: 1.04;
+	}
+	h1,
+	p {
+		b {
+			background: linear-gradient(90deg, #3512b2, #d18873);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+		}
 	}
 	.pos-rel {
 		position: relative;
 	}
+
+	img {
+		width: 100%;
+	}
 	p {
-		color: #5e6986;
-		margin: 5px 0;
+		color: #6f6f6f;
+		margin: 12px 0;
 		font-size: calc(var(--font-sm) + 1.1px);
 		font-weight: 400;
+		letter-spacing: -0.1px;
 		span {
 			color: var(--black);
 			font-weight: 800;
@@ -277,7 +246,7 @@ const Header = styled.header`
 `;
 
 const Section = styled.section`
-	margin-top: 26rem;
+	margin-top: 2rem;
 	@media (max-width: 990px) {
 		margin-top: 4rem;
 	}

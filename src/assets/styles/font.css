@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Piggment GT';
-  src: url('../fonts/GT-Walsheim-Regular.woff2') format('woff2');
+  src: url('../fonts/CircularStd-Book.ttf');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'Piggment GT';
-  src: url('../fonts/GT-Walsheim-Medium.woff2') format('woff2');
+  src: url('../fonts/CircularStd-Medium.ttf');
   font-weight: 500;
   font-display: swap;
   font-style: normal;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'Piggment GT';
-  src: url('../fonts/GT-Walsheim-Bold.woff2') format('woff2');
+  src: url('../fonts/CircularStd-Bold.ttf');
   font-weight: 600;
   font-display: swap;
   font-style: normal;
@@ -26,7 +26,7 @@
 
 @font-face {
   font-family: 'Piggment GT';
-  src: url('../fonts/GT-Walsheim-Black.woff2') format('woff2');
+  src: url('../fonts/CircularStd-Black.ttf');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
