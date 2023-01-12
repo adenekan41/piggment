@@ -10,18 +10,18 @@
 
 ## ✨ Features
 
-- 😎 Inspiring Gradients And Palettes
-- 💻 Offline Support
-- 🙅‍♂️ Zero dependencies
-- ✂️ Super-flexible Core
-- ✅ Fully tested and reliable
-- ⚒ CommonJS, ESM & browser standalone support
+- 😎 Vibrant Gradients and Color Palettes to spark inspiration
+- 💻 Offline functionality ensuring uninterrupted use
+- 🙅‍♂️ A lightweight design with Zero Dependencies
+- ✂️ An incredibly adaptable Core to suit any need
+- ✅ Fully Tested and Dependable
+- ⚒ Compatible with CommonJS, ESM, and as a Standalone Browser version
 
 ## ⚡️About
 
-[Piggment](https://piggment.co): A curated collection of amazingly colored gradients for designers, developers and art makers over the world. **Gets gradients and palettes on the fly**.
+Introducing [Piggment](https://piggment.co) - a meticulously curated collection of breathtaking gradients and color palettes. Piggment is the ultimate tool for designers, developers, and creators around the world to elevate their projects to new heights. 
 
-**Using piggment** in **project** provides an **easy way** of **getting inspiring gradients and palettes** go to [Piggment.co](https://piggment.co) to start using now.
+With **Piggment**, you can effortlessly access a vast array of **inspiring gradients** and palettes on-demand. Experience the creativity-boosting power of Piggment for yourself by visiting **Piggment.co** and start using it in your projects today.
 
 ### Generate Palette
 
