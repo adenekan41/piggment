@@ -112,7 +112,7 @@ const NavLayout = memo(({ location }) => {
 });
 const NavWrapper = styled(Navbar)`
 	background: transparent;
-	padding: 15px 1rem;
+	padding: 24px 1rem;
 	${({ isScrolled }) =>
 		isScrolled &&
 		css`

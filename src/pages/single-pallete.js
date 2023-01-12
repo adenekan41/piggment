@@ -204,7 +204,7 @@ const SinglePallete = () => {
 
 const Header = styled.header`
 	background: #fff8f0;
-	min-height: 19em;
+	min-height: 22em;
 	align-items: center;
 	justify-content: center;
 	background-size: calc(20 * 0.5px) calc(20 * 0.5px);

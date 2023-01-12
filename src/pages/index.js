@@ -37,7 +37,7 @@ const Home = () => {
 							<div className="col-lg-7">
 								<article>
 									<h1>
-										Discover just the perfect <b>gradient</b>
+										Unlock the full potential of your design <b>gradient</b>
 									</h1>
 									<p>
 										Find the best color gradient and palettes for your next
@@ -149,7 +149,7 @@ const Header = styled.header`
 	// background: linear-gradient(180deg, #fce9d4, #ffffff);
 	background: linear-gradient(180deg, #fff5ea, #ffffff);
 	margin-bottom: 4rem;
-	min-height: 35em;
+	min-height: 40em;
 	align-items: center;
 	/* background-size: calc(20 * 0.5px) calc(20 * 0.5px); */
 	/* background-image: radial-gradient(#0a113e47 0.5px, transparent 0.5px); */
@@ -248,7 +248,7 @@ const Header = styled.header`
 const Section = styled.section`
 	margin-top: 2rem;
 	@media (max-width: 990px) {
-		margin-top: 4rem;
+		margin-top: 1.5rem;
 	}
 	.w-70 {
 		width: 70px;
