@@ -28,7 +28,6 @@ bower_components
 
 # Package json data
 package-lock.json
-yarn.lock
 
 # node-waf configuration
 .lock-wscript

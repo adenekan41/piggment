@@ -37,7 +37,7 @@ const Home = () => {
 							<div className="col-lg-7">
 								<article>
 									<h1>
-										Unlock the full potential of your design <b>gradient</b>
+										Find your perfect <b>gradient</b> match
 									</h1>
 									<p>
 										Find the best color gradient and palettes for your next
@@ -147,7 +147,10 @@ const Home = () => {
 const Header = styled.header`
 	/* background: #fff8f0; */
 	// background: linear-gradient(180deg, #fce9d4, #ffffff);
-	background: linear-gradient(180deg, #fff5ea, #ffffff);
+	/* background: linear-gradient(180deg, #fff5ea, #ffffff);
+   */
+	background: #fafbe5;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
 	margin-bottom: 4rem;
 	min-height: 40em;
 	align-items: center;

@@ -6,7 +6,7 @@
 		"aimscroll": "^1.1.1",
 		"codewonders-helpers": "^0.0.10-beta",
 		"express": "^4.17.1",
-		"random-words": "^1.1.1",
+		"random-words": "1.1.1",
 		"react": "^16.12.0",
 		"react-bootstrap": "^1.0.0-beta.16",
 		"react-dom": "^16.12.0",
@@ -52,6 +52,9 @@
 		"webpack-cli": "^3.3.11",
 		"webpack-node-externals": "^1.7.2"
 	},
+  "engines": {
+    "node": "16.20.1",
+  },
 	"browserslist": {
 		"production": [
 			">0.2%",
