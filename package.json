@@ -53,7 +53,7 @@
 		"webpack-node-externals": "^1.7.2"
 	},
   "engines": {
-    "node": "16.20.1",
+    "node": "16.20.1"
   },
 	"browserslist": {
 		"production": [
