@@ -5,7 +5,7 @@
 	"dependencies": {
 		"aimscroll": "^1.1.1",
 		"codewonders-helpers": "^0.0.10-beta",
-		"express": "^4.17.1",
+		"express": "^4.19.2",
 		"random-words": "1.1.1",
 		"react": "^16.12.0",
 		"react-bootstrap": "^1.0.0-beta.16",
